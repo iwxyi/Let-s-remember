@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.iwxyi.letsremember.R;
 
-public class BoxFragment extends Fragment {
+public class TypeinFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,6 @@ public class BoxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_box, container, false);
+        return inflater.inflate(R.layout.fragment_typein, container, false);
     }
 }
