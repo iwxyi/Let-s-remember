@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/nav_home"
+        android:title="主页" />
+
+    <item
+        android:id="@+id/navigation_box"
+        android:icon="@drawable/nav_box"
+        android:title="记忆盒子" />
+
+    <item
+        android:id="@+id/navigation_typein"
+        android:icon="@drawable/nav_typein"
+        android:title="录入吧" />
+
+    <item
+        android:id="@+id/navigation_rank"
+        android:icon="@drawable/nav_rank"
+        android:title="排行榜" />
+
+    <item
+        android:id="@+id/navigation_group"
+        android:icon="@drawable/nav_group"
+        android:title="圈子" />
+
+</menu>
