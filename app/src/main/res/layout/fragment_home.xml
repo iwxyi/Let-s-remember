@@ -134,6 +134,7 @@
                         android:text="已学 45%"
                         android:gravity="center_vertical"
                         android:textSize="15sp"
+                        android:textColor="@color/fontBlack"
                         android:paddingLeft="@dimen/text_padding"
                         loonggg:layout_constraintLeft_toLeftOf="@id/layout_already_study"
                         loonggg:layout_constraintRight_toLeftOf="@id/btn_change_plan"
@@ -156,6 +157,23 @@
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_start_remember"
+            android:text="开始记忆吧"
+            android:textColor="@color/fontBlack"
+            android:layout_marginVertical="@dimen/border_margin_big"
+            android:background="@drawable/textview_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_my_typein"
+            android:text="我的录入吧"
+            android:textColor="@color/fontBlack"
+            android:background="@drawable/textview_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

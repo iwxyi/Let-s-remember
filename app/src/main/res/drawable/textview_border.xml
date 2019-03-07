@@ -3,5 +3,5 @@
     <!--内部颜色-->
     <solid android:color="#FFFFFF" />
     <!--边框颜色-->
-    <stroke android:width="1dip" android:color="@color/colorPrimary"/>
+    <stroke android:width="1dip" android:color="#555555"/>
 </shape>
