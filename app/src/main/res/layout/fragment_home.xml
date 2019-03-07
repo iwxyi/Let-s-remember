@@ -3,12 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:loonggg="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="主页" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.iwxyi.letsremember.Views.RoundImageView
+                android:id="@+id/im_head"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/default_head"
+                loonggg:border_incolor="@color/colorAccent"
+                loonggg:border_outcolor="@color/colorPrimary"
+                loonggg:border_width="3dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
