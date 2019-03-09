@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--录入框-->
         <EditText
             android:id="@+id/et_typein"
             android:hint="录入框"

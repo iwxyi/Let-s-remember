@@ -80,13 +80,13 @@
                         <TextView
                             android:id="@+id/tv_memory_plan"
                             android:text="小学四年级语文"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/square_fontSize"
                             android:gravity="center"
                             android:padding="@dimen/text_padding"
                             android:background="@drawable/textview_border"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="130dp"/>
+                            android:minHeight="@dimen/square_height"/>
 
                     </LinearLayout>
 
@@ -110,12 +110,12 @@
                             android:id="@+id/tv_remain_days"
                             android:text="18天"
                             android:gravity="center"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/square_fontSize"
                             android:padding="@dimen/text_padding"
                             android:background="@drawable/textview_border"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="130dp"/>
+                            android:minHeight="@dimen/square_height"/>
 
                     </LinearLayout>
 

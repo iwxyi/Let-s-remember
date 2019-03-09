@@ -5,10 +5,73 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.RankFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--上下两排按钮-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="排行榜" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/border_margin_big"
+        android:orientation="vertical">
+
+        <!--第一排-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="单词排行榜"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/textview_border"
+                android:layout_margin="@dimen/border_margin_big"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/square_height"/>
+
+            <TextView
+                android:text="诗文排行榜"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/textview_border"
+                android:layout_margin="@dimen/border_margin_big"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/square_height"/>
+
+        </LinearLayout>
+
+        <!--第二排-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="录入排行榜"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/textview_border"
+                android:layout_margin="@dimen/border_margin_big"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/square_height"/>
+
+            <TextView
+                android:text="其他排行榜"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/textview_border"
+                android:layout_margin="@dimen/border_margin_big"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/square_height"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
