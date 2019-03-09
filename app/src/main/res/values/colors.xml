@@ -7,4 +7,8 @@
     <color name="transparent">#0000</color>
     <color name="backgroundGray">#DDDDDD</color>
     <color name="fontBlack">#000000</color>
+
+    <color name="golden">#FFD700</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="copper">#ABAFB2</color>
 </resources>
