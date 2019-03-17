@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.User;
+package com.iwxyi.letsremember.Global;
 
 import android.app.Application;
 import android.content.Context;

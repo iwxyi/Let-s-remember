@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.User;
+package com.iwxyi.letsremember.Global;
 
 public class Paths {
     public static final String NETPATH = "http://iwxyi.com/easymeeting/public/index.php/android/Client/"; // 网络路径

@@ -1,9 +1,16 @@
 package com.iwxyi.letsremember.Utils;
 
+/**
+ * @Author: mrxy001
+ * @Time: 2019
+ * @Change: 2019.3.16
+ */
+
 import android.annotation.SuppressLint;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateTimeUtil {
@@ -25,7 +32,7 @@ public class DateTimeUtil {
         return System.currentTimeMillis();
     }
 
-    /***************************************************************/
+    /********************************10位时间戳转具体数值**********************************/
 
     /**
      * 时间戳转换到年
@@ -105,7 +112,7 @@ public class DateTimeUtil {
         return Integer.parseInt(s);
     }
 
-    /***********************************************************************************/
+    /************************************13位时间戳转具体数值************************************/
 
     /**
      * 时间戳转换到年
@@ -179,7 +186,7 @@ public class DateTimeUtil {
         return Integer.parseInt(s);
     }
 
-    /*******************************************************************/
+    /**************************转换成字符串*******************************/
 
     /**
      * 散落的数字转换成文本（填充0）
@@ -188,7 +195,7 @@ public class DateTimeUtil {
      * @param date
      * @return
      */
-    public static String dataToString(int year, int month, int date) {
+    public static String dateToString(int year, int month, int date) {
         String rst = year + "/";
         if (month < 10)
             rst += "0";
@@ -197,6 +204,10 @@ public class DateTimeUtil {
             rst += "0";
         rst += date;
         return rst;
+    }
+
+    public static String valuesToString(int year, int month, int date) {
+        return dateToString(year, month, date);
     }
 
     /**
@@ -216,6 +227,16 @@ public class DateTimeUtil {
         return rst;
     }
 
+    public static String valuesToString(int hour, int minute) {
+        return timeToString(hour, minute);
+    }
+
+    public static String valuesToString(int year, int month, int date, int hour, int minute) {
+        return valuesToString(year, month, date) + " " + valuesToString(hour, minute);
+    }
+
+    /***************************************转换成时间戳、时间戳/Date转换***********************************/
+
     /**
      * 散落的日期时间转换到具体的时间戳
      * @param year
@@ -234,6 +255,15 @@ public class DateTimeUtil {
         Date d = null;
         d = stringToDate(o, "yyyy-MM-dd HH:mm:ss");
         return d.getTime();
+    }
+
+    public static long valuesToTimestamp(int year, int month, int date, int hour, int minute, int second) {
+        return datetimeToTimestamp(year, month, date, hour, minute, second);
+    }
+
+    public static int valuesToTimestamp(int year, int month, int date, int hour, int minute) {
+        long timestamp = datetimeToTimestamp(year, month, date, hour, minute, 0);
+        return (int)(timestamp/1000);
     }
 
     public static String timestampToString(int timestamp, String formatType) {
@@ -281,5 +311,37 @@ public class DateTimeUtil {
             e.printStackTrace();
         }
         return date;
+    }
+
+    /*********************************获取具体的数值**********************************/
+
+    public static int getYear() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR);
+    }
+
+    public static int getMonth() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.MONTH);
+    }
+
+    public static int getDate() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.DATE);
+    }
+
+    public static int getHour() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.HOUR);
+    }
+
+    public static int getMinute() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.MINUTE);
+    }
+
+    public static int getSecond() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.SECOND);
     }
 }

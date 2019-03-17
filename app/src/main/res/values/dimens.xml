@@ -9,5 +9,6 @@
     <dimen name="text_padding">10dp</dimen>
 
     <dimen name="square_height">100dp</dimen>
+    <dimen name="square_height_big">150dp</dimen>
     <dimen name="square_fontSize">18sp</dimen>
 </resources>
