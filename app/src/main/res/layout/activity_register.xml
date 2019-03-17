@@ -129,6 +129,7 @@
                 android:background="@drawable/login_btn_style"
                 android:layout_weight="1"
                 android:textColor="@color/white"
+                android:onClick="toRegister"
                 android:text="注册"/>
         </LinearLayout>
 

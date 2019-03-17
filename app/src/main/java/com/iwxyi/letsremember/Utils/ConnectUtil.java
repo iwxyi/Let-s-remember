@@ -3,9 +3,12 @@ package com.iwxyi.letsremember.Utils;
 /**
  * @author: mrxy001
  * @time: 2019.2.20
- * @Change: 2019.3.2
+ * @Change: 2019.3.17
  * 宇宙超级无敌联网类
  * 一行搞定取网页源码问题
+ * 注意需要联网权限(否则本类最后一个方法会报错，但是能通过编译)
+ * <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
  */
 
 import android.annotation.SuppressLint;
@@ -22,7 +25,7 @@ import java.net.URLEncoder;
 
 public class ConnectUtil implements Runnable {
 
-    /******************************** Runnable(JDK1.8) ************************************/
+    /******************************** Runnable+Lambda(JDK1.8) ************************************/
 
     static String temp_result = "";
 

@@ -10,15 +10,7 @@ public class User {
     public static String email;      // 邮箱
 
     public static boolean isLogin() {
-        return state != 0;
-    }
-
-    public static boolean isUser() {
-        return state == 1;
-    }
-
-    public static boolean isAdmin() {
-        return state == 2;
+        return user_id != 0;
     }
 
     public static String id() {

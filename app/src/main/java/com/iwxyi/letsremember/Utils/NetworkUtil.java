@@ -1,5 +1,7 @@
 package com.iwxyi.letsremember.Utils;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -28,6 +30,7 @@ public class NetworkUtil {
     }
 
     public static String getWebPagSource(String path, String method, String param) {
+        Log.i("====getWebSource", "msg");
         URL url = null;
         try {
             url = new URL(path);
@@ -47,11 +50,12 @@ public class NetworkUtil {
                 // flush输出流的缓冲
                 printWriter.flush();
             }
-
+            Log.i("====param", param);
             int code = urlConnection.getResponseCode();
             if (code == 200) {
                 InputStream in = urlConnection.getInputStream();
                 String content = StreamUtil.readStream(in);
+                Log.i("====content", content);
                 return content;
             }
         } catch (IOException e) {
