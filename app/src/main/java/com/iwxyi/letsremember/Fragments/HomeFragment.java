@@ -8,15 +8,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.iwxyi.letsremember.Global.Def;
+import com.iwxyi.letsremember.Global.User;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.RememberActivity;
 import com.iwxyi.letsremember.TypeinActivity;
+import com.iwxyi.letsremember.User.LoginActivity;
+import com.iwxyi.letsremember.User.PersonActivity;
+import com.iwxyi.letsremember.Views.RoundImageView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private Button mStartRememberBtn;
     private Button mMyTypeinBtn;
+    private RoundImageView mHeadIm;
+    private TextView mInspirationTv;
+    private TextView mMemoryPlanTv;
+    private TextView mRemainDaysTv;
+    private Button mChangePlanBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,16 +47,38 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mStartRememberBtn.setOnClickListener(this);
         mMyTypeinBtn = (Button) itemView.findViewById(R.id.btn_my_typein);
         mMyTypeinBtn.setOnClickListener(this);
+        mHeadIm = (RoundImageView) itemView.findViewById(R.id.im_head);
+        mHeadIm.setOnClickListener(this);
+        mInspirationTv = (TextView) itemView.findViewById(R.id.tv_inspiration);
+        mMemoryPlanTv = (TextView) itemView.findViewById(R.id.tv_memory_plan);
+        mRemainDaysTv = (TextView) itemView.findViewById(R.id.tv_remain_days);
+        mChangePlanBtn = (Button) itemView.findViewById(R.id.btn_change_plan);
+        mChangePlanBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.im_head:
+                if (!User.isLogin()) {
+                    startActivityForResult(new Intent(getContext(), LoginActivity.class), Def.code_login);
+                } else {
+                    startActivityForResult(new Intent(getContext(), PersonActivity.class), Def.code_person);
+                }
+                break;
             case R.id.btn_start_remember:
                 startActivity(new Intent(getContext(), RememberActivity.class));
                 break;
             case R.id.btn_my_typein:
                 startActivity(new Intent(getContext(), TypeinActivity.class));
+                break;
+            case R.id.btn_change_plan:// TODO 19/03/17
+                break;
+            case R.id.tv_inspiration:// TODO 19/03/17
+                break;
+            case R.id.tv_memory_plan:// TODO 19/03/17
+                break;
+            case R.id.tv_remain_days:// TODO 19/03/17
                 break;
             default:
                 break;

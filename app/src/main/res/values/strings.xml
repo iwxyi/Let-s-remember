@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Let\'s remember</string>
+    <string name="app_name">全民记忆</string>
+    <string name="title_activity_person">用户信息</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+    </string>
+    <string name="action_settings">设置</string>
 </resources>

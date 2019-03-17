@@ -11,4 +11,7 @@
     <dimen name="square_height">100dp</dimen>
     <dimen name="square_height_big">150dp</dimen>
     <dimen name="square_fontSize">18sp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

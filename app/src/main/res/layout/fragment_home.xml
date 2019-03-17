@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <!--圆形头像-->
             <com.iwxyi.letsremember.Views.RoundImageView
                 android:id="@+id/im_head"
                 android:layout_width="40dp"
@@ -26,6 +27,7 @@
                 loonggg:border_outcolor="@color/transparent"
                 loonggg:border_width="3dp"/>
 
+            <!--励志语-->
             <TextView
                 android:id="@+id/tv_inspiration"
                 android:text="记得住的才是自己的！"
