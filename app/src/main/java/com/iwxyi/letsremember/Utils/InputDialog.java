@@ -14,12 +14,17 @@ import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
 
 /*
- * File Description
+ * 输入一串文字，适合临时使用
+ * 需要配合 StringCallback 来充当回调函数
  *
  * @author MRXY001
- * @date   2019/3/3 14 37
+ * @date   2019/3/3
+ * @Change 2019/3/21
+ * @Update 新增全选默认文字
  * @email  wxy19980615@gmail.com
- */public class InputDialog {
+ */
+
+public class InputDialog {
 
     public static String inputDialog(Context context, String title, String def,
                                      final StringCallback stringCallback) {
