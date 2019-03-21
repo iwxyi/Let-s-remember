@@ -1,6 +1,5 @@
 package com.iwxyi.letsremember.Users;
 
-import android.app.Person;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
@@ -229,12 +227,13 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
         String[] params = new String[]{"user_id", User.id(), key, val};
         ConnectUtil.Get(path, params, new StringCallback() {
             @Override
-            public void onFinish(String result) {
-                if (result.equals("OK") || result.equals("1")) {
+            public void onFinish(String content) {
+                content = StringUtil.getXml(content, "result");
+                if (content.equals("OK") || content.equals("1")) {
                     Snackbar.make(findViewById(R.id.fab), "修改成功", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-                } else if (!result.isEmpty()) {
-                    Snackbar.make(findViewById(R.id.fab), "修改失败:" + StringUtil.getXml(result, "result"), Snackbar.LENGTH_LONG)
+                } else if (!content.isEmpty()) {
+                    Snackbar.make(findViewById(R.id.fab), "修改失败:" + StringUtil.getXml(content, "result"), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             }

@@ -18,6 +18,8 @@ import com.iwxyi.letsremember.RememberActivity;
 import com.iwxyi.letsremember.TypeinActivity;
 import com.iwxyi.letsremember.Users.LoginActivity;
 import com.iwxyi.letsremember.Users.PersonActivity;
+import com.iwxyi.letsremember.Utils.InputDialog;
+import com.iwxyi.letsremember.Utils.StringCallback;
 import com.iwxyi.letsremember.Views.RoundImageView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -56,6 +58,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mRemainDaysTv = (TextView) itemView.findViewById(R.id.tv_remain_days);
         mChangePlanBtn = (Button) itemView.findViewById(R.id.btn_change_plan);
         mChangePlanBtn.setOnClickListener(this);
+
+        mInspirationTv.setOnClickListener(this);
     }
 
     private void initData() {
@@ -82,7 +86,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_change_plan:// TODO 19/03/17
                 break;
-            case R.id.tv_inspiration:// TODO 19/03/17
+            case R.id.tv_inspiration:
+                InputDialog.inputDialog(getContext(), "请输入励志语", App.getVal("inspiration"),
+                        new StringCallback(){
+                            @Override
+                            public void onFinish(String content) {
+                                mInspirationTv.setText(content);
+                                App.setVal("inspiration", content);
+                            }
+                        });
                 break;
             case R.id.tv_memory_plan:// TODO 19/03/17
                 break;

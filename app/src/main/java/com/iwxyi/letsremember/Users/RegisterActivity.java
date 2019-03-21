@@ -56,9 +56,9 @@ public class RegisterActivity extends AppCompatActivity {
         String[] param = {"username", username, "password", password, "nickname", nickname};
         ConnectUtil.Post(Paths.getNetpath("register"), param, new StringCallback(){
             @Override
-            public void onFinish(String result) {
+            public void onFinish(String content) {
                 progressDialog.dismiss();
-                XmlParser xmlParser = new XmlParser(result);
+                XmlParser xmlParser = new XmlParser(content);
                 if (xmlParser.judgeSuccess()) {
                     Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
 

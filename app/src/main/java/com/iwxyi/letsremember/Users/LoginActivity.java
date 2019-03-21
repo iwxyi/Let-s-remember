@@ -57,9 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         String[] params = {"username", username, "password", password};
         ConnectUtil.Post(Paths.getNetpath("login"), params, new StringCallback(){
             @Override
-            public void onFinish(String result) {
+            public void onFinish(String content) {
                 progressDialog.dismiss();
-                XmlParser xmlParser = new XmlParser(result);
+                XmlParser xmlParser = new XmlParser(content);
                 if (xmlParser.judgeSuccess()) {
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
 

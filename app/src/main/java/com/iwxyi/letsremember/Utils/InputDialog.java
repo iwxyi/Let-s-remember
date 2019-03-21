@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
 
 /*
@@ -20,11 +21,14 @@ import com.iwxyi.letsremember.R;
  * @email  wxy19980615@gmail.com
  */public class InputDialog {
 
-    public static String inputDialog(Context context, String title, String def, final StringCallback stringCallback) {
+    public static String inputDialog(Context context, String title, String def,
+                                     final StringCallback stringCallback) {
         return inputDialog(context, title, def, 0, stringCallback);
     }
 
-    public static String inputDialog(final Context context, String title, String def, final String pat, final String error, final StringCallback stringCallback) {
+    public static String inputDialog(final Context context, String title, String def,
+                                     final String pat, final String error,
+                                     final StringCallback stringCallback) {
         return inputDialog(context, title, def, 0, pat, error, stringCallback);
     }
 
@@ -34,7 +38,8 @@ import com.iwxyi.letsremember.R;
      * @param def 默认值
      * @return 输入的字符串
      */
-    public static String inputDialog(Context context, String title, String def, int inputType, final StringCallback stringCallback) {
+    public static String inputDialog(Context context, String title, String def, int inputType,
+                                     final StringCallback stringCallback) {
         final String[] result = new String[1];
         LayoutInflater factory = LayoutInflater.from(context);//提示框
         final View view = factory.inflate(R.layout.edit_box, null);//这里必须是final的
@@ -42,6 +47,9 @@ import com.iwxyi.letsremember.R;
         edit.setText(def);
         if (inputType > 0)
             edit.setInputType(inputType);
+        if (!def.isEmpty()) {
+            edit.selectAll();
+        }
         new AlertDialog.Builder(context)
                 .setTitle(title)//提示框标题
                 .setView(view)
@@ -70,7 +78,9 @@ import com.iwxyi.letsremember.R;
      * @param stringCallback
      * @return
      */
-    public static String inputDialog(final Context context, String title, String def, int inputType, final String pat, final String error, final StringCallback stringCallback) {
+    public static String inputDialog(final Context context, String title, String def, int inputType,
+                                     final String pat, final String error,
+                                     final StringCallback stringCallback) {
         final String[] result = new String[1];
         LayoutInflater factory = LayoutInflater.from(context);//提示框
         final View view = factory.inflate(R.layout.edit_box, null);//这里必须是final的
@@ -78,6 +88,9 @@ import com.iwxyi.letsremember.R;
         edit.setText(def);
         if (inputType > 0)
             edit.setInputType(inputType);
+        if (!def.isEmpty()) {
+            edit.selectAll();
+        }
         new AlertDialog.Builder(context)
                 .setTitle(title)//提示框标题
                 .setView(view)
@@ -96,10 +109,6 @@ import com.iwxyi.letsremember.R;
                 .setNegativeButton("取消", null)
                 .create().show();
         return result[0];
-    }
-
-    public void onFinish(String result) {
-
     }
 
     static boolean canMatch(String str, String pat) {
