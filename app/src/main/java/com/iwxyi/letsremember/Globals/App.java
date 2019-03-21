@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.Global;
+package com.iwxyi.letsremember.Globals;
 
 import android.app.Application;
 import android.content.Context;

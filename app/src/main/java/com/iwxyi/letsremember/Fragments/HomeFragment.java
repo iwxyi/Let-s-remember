@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.iwxyi.letsremember.Global.Def;
-import com.iwxyi.letsremember.Global.User;
+import com.iwxyi.letsremember.Globals.Def;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.RememberActivity;
 import com.iwxyi.letsremember.TypeinActivity;
-import com.iwxyi.letsremember.User.LoginActivity;
-import com.iwxyi.letsremember.User.PersonActivity;
+import com.iwxyi.letsremember.Users.LoginActivity;
+import com.iwxyi.letsremember.Users.PersonActivity;
 import com.iwxyi.letsremember.Views.RoundImageView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {

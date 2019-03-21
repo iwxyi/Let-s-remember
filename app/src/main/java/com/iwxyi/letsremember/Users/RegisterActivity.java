@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.User;
+package com.iwxyi.letsremember.Users;
 
 import android.app.ActionBar;
 import android.app.ProgressDialog;
@@ -8,14 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.iwxyi.letsremember.Global.App;
-import com.iwxyi.letsremember.Global.Def;
-import com.iwxyi.letsremember.Global.Paths;
-import com.iwxyi.letsremember.Global.User;
+import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Def;
+import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Utils.ConnectUtil;
 import com.iwxyi.letsremember.Utils.StringCallback;
-import com.iwxyi.letsremember.Utils.StringUtil;
 import com.iwxyi.letsremember.Utils.XmlParser;
 
 public class RegisterActivity extends AppCompatActivity {

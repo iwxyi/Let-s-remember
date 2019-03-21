@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.Global;
+package com.iwxyi.letsremember.Globals;
 
 /*
  * File Description

@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.Global;
+package com.iwxyi.letsremember.Globals;
 
 public class User {
     public static int    state;      // 0 未登录；1 用户；2管理员

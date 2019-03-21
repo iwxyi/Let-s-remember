@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.Global;
+package com.iwxyi.letsremember.Globals;
 
 public class Paths {
     public static final String NETPATH = "http://iwxyi.com/letsremember/public/index.php/index/index/"; // 网络路径

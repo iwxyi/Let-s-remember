@@ -5,13 +5,235 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".User.PersonActivity"
+    tools:context=".Users.PersonActivity"
     tools:showIn="@layout/activity_person">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="昵　称："
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:labelFor="@id/tv_nickname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:text="昵　称"
+                android:layout_weight="5"
+                android:textAlignment="textStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/colorLightGray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="账　号："
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:labelFor="@id/tv_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_username"
+                android:text="账　号"
+                android:layout_weight="5"
+                android:textAlignment="textStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/colorLightGray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="密　码："
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:labelFor="@id/tv_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_password"
+                android:text="密　码"
+                android:layout_weight="5"
+                android:textAlignment="textStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:inputType="textPassword"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/colorLightGray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="手　机："
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:labelFor="@id/tv_mobile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:text="手　机"
+                android:layout_weight="5"
+                android:textAlignment="textStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/colorLightGray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="邮　箱："
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:labelFor="@id/tv_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_email"
+                android:text="邮　箱"
+                android:layout_weight="5"
+                android:textAlignment="textStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/colorLightGray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="积分："
+                android:labelFor="@id/tv_credit"
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_credit"
+                android:text="积分"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="@color/colorLightGray" />
+
+        <TextView
+            android:id="@+id/tv_terms"
+            android:text="您已经使用了 ？ 天"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="3dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:text="共有记录 ？ 条"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:text="退出登录"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

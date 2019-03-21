@@ -1,6 +1,6 @@
 package com.iwxyi.letsremember.Utils;
 
-import com.iwxyi.letsremember.Global.App;
+import com.iwxyi.letsremember.Globals.App;
 
 /*
  * 自制XML解析器

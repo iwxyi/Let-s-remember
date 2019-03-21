@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.User;
+package com.iwxyi.letsremember.Users;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
