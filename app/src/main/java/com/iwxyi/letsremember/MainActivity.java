@@ -1,5 +1,6 @@
 package com.iwxyi.letsremember;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,6 +16,11 @@ import com.iwxyi.letsremember.Fragments.GroupFragment;
 import com.iwxyi.letsremember.Fragments.HomeFragment;
 import com.iwxyi.letsremember.Fragments.RankFragment;
 import com.iwxyi.letsremember.Fragments.TypeinFragment;
+import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Def;
+import com.iwxyi.letsremember.Globals.User;
+import com.iwxyi.letsremember.Users.LoginActivity;
+import com.iwxyi.letsremember.Utils.DateTimeUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -115,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
+        }
+
+        if (!User.isLogin() && App.getInt("user_id") != 0) {
+            startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), Def.code_login);
+        }
+
+        if (App.getInt("firstOpen") == 0) {
+            App.setVal("firstOpen", DateTimeUtil.getTimestamp());
         }
     }
 

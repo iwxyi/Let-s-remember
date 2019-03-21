@@ -29,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+        if (App.getInt("user_id") != 0) {
+            toLogin(null);
+        }
     }
 
     private void initView() {
@@ -64,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                     User.nickname = xmlParser.get("nickname");
                     App.setVal("username", User.username = username);
                     App.setVal("password", User.password = password);
+                    App.setVal("user_id", User.user_id);
 
                     setResult(Def.code_login);
                     finish();
