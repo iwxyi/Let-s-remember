@@ -181,7 +181,7 @@
             android:orientation="horizontal">
             <TextView
                 android:text="积分："
-                android:labelFor="@id/tv_credit"
+                android:labelFor="@id/tv_integral"
                 android:layout_weight="3"
                 android:textAlignment="textEnd"
                 android:layout_width="0dp"
@@ -190,7 +190,7 @@
                 android:layout_marginLeft="25dp"
                 android:textSize="18sp"/>
             <TextView
-                android:id="@+id/tv_credit"
+                android:id="@+id/tv_integral"
                 android:text="积分"
                 android:layout_weight="5"
                 android:layout_width="0dp"
@@ -208,7 +208,7 @@
 
         <TextView
             android:id="@+id/tv_terms"
-            android:text="您已经使用了 ？ 天"
+            android:text="您已经使用了？天"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
 
         <TextView
             android:id="@+id/tv_count"
-            android:text="共有记录 ？ 条"
+            android:text="共有记录？条"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
