@@ -9,6 +9,7 @@ package com.iwxyi.letsremember.Utils;
  * 注意需要联网权限(否则本类最后一个方法会报错，但是能通过编译)
  * <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+ * Android P 需要 android:usesCleartextTraffic="true"
  */
 
 import android.annotation.SuppressLint;
