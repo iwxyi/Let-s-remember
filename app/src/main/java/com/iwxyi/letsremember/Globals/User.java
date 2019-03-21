@@ -16,5 +16,4 @@ public class User {
     public static String id() {
         return ""+user_id;
     }
-
 }

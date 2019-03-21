@@ -1,5 +1,6 @@
 package com.iwxyi.letsremember.Users;
 
+import android.app.Person;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -106,7 +107,27 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
                 inputDialog("email", "修改邮箱", User.email);
                 break;
             case R.id.btn_logout:
-                Toast.makeText(this, "当前为演示模式，无法退出", Toast.LENGTH_SHORT).show();
+                AlertDialog dialog = new AlertDialog.Builder(PersonActivity.this)
+                        .setTitle("提示")
+                        .setMessage("是否确认退出登录？\n已有数据仍然存在，在下次登录时重新同步至云端")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                User.user_id = 0;
+                                User.username = User.password = User.nickname = User.mobile = User.email = "";
+                                App.setVal("user_id", 0);
+                                App.setVal("password", "");
+                                PersonActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .show();
                 break;
             case R.id.fab:
                 Snackbar.make(findViewById(R.id.fab), "用户反馈邮箱：482582886@qq.com", Snackbar.LENGTH_LONG)
