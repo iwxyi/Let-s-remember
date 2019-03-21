@@ -230,7 +230,7 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
         ConnectUtil.Get(path, params, new StringCallback() {
             @Override
             public void onFinish(String result) {
-                if (result.equals("OK")) {
+                if (result.equals("OK") || result.equals("1")) {
                     Snackbar.make(findViewById(R.id.fab), "修改成功", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 } else if (!result.isEmpty()) {

@@ -137,7 +137,7 @@
                         android:gravity="center_vertical"
                         android:textSize="15sp"
                         android:textColor="@color/fontBlack"
-                        android:paddingLeft="@dimen/text_padding"
+                        android:paddingHorizontal="@dimen/text_padding"
                         loonggg:layout_constraintLeft_toLeftOf="@id/layout_already_study"
                         loonggg:layout_constraintRight_toLeftOf="@id/btn_change_plan"
                         loonggg:layout_constraintTop_toTopOf="@id/layout_already_study"

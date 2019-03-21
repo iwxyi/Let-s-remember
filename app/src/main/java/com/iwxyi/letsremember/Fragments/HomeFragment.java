@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
@@ -39,6 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initView(view);
+        initData();
         return view;
     }
 
@@ -54,6 +56,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mRemainDaysTv = (TextView) itemView.findViewById(R.id.tv_remain_days);
         mChangePlanBtn = (Button) itemView.findViewById(R.id.btn_change_plan);
         mChangePlanBtn.setOnClickListener(this);
+    }
+
+    private void initData() {
+        if (!App.getVal("inspiration").isEmpty()) {
+            mInspirationTv.setText(App.getVal("inspiration"));
+        }
     }
 
     @Override
