@@ -19,6 +19,7 @@
             android:background="@drawable/textview_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/text_margin"
             android:layout_marginBottom="@dimen/border_margin"
             android:minHeight="200dp"/>
 

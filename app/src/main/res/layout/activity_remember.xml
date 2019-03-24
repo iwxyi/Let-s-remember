@@ -58,7 +58,7 @@
         <TextView
             android:id="@+id/tv_describe"
             android:text="vt./vi. 记得 牢记\nvt. 记着 纪念 回想起 送钱[礼物]给"
-            android:background="@color/backgroundGray"
+            android:background="@drawable/textview_border"
             android:layout_margin="@dimen/border_margin_big"
             android:padding="30dp"
             android:layout_width="match_parent"
