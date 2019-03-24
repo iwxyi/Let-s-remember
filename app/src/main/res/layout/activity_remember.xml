@@ -13,7 +13,8 @@
 
         <TextView
             android:id="@+id/tv_content"
-            android:text="单词"
+            android:text="remember"
+            android:textSize="20sp"
             android:gravity="center"
             android:background="@drawable/textview_border"
             android:layout_margin="@dimen/border_margin_big"
@@ -22,7 +23,6 @@
             android:minHeight="@dimen/square_height_big"/>
 
         <LinearLayout
-            android:background="@color/backgroundGray"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -32,6 +32,9 @@
                 android:text="正面"
                 android:gravity="center"
                 android:textSize="15sp"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent"
+                android:layout_marginLeft="@dimen/border_margin_big"
                 android:padding="@dimen/border_margin"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -42,6 +45,8 @@
                 android:text="反面"
                 android:gravity="center"
                 android:textSize="15sp"
+                android:textColor="@color/fontBlack"
+                android:layout_marginRight="@dimen/border_margin_big"
                 android:padding="@dimen/border_margin"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -51,10 +56,10 @@
 
         <TextView
             android:id="@+id/tv_describe"
-            android:text="此处为单词描述"
-            android:gravity="center"
+            android:text="vt./vi. 记得 牢记\nvt. 记着 纪念 回想起 送钱[礼物]给"
             android:background="@color/backgroundGray"
             android:layout_margin="@dimen/border_margin_big"
+            android:padding="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/square_height_big"/>
