@@ -3,7 +3,7 @@
     <item android:state_pressed="false">
         <shape>
             <!-- 色值 -->
-            <solid android:color="#228B22" />
+            <solid android:color="@color/colorPrimary" />
             <!-- 圆角 -->
             <corners android:radius="10dp" />
         </shape>
@@ -11,7 +11,7 @@
     <item android:state_pressed="true">
         <shape>
             <!-- 色值 -->
-            <solid android:color="#006400" />
+            <solid android:color="@color/colorAccent" />
             <!-- 圆角 -->
             <corners android:radius="10dp" />
         </shape>
