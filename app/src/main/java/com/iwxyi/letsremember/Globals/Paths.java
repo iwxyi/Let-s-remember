@@ -1,38 +1,37 @@
 package com.iwxyi.letsremember.Globals;
 
+import android.os.Environment;
+
+import java.io.File;
+
 public class Paths {
-    public static final String NETPATH = "http://iwxyi.com/letsremember/public/index.php/index/index/"; // 网络路径
-    public static final String DATAPATH = "/letsremember/";
+
+    public static final String NET_PATH = "http://iwxyi.com/letsremember/public/index.php/index/index/"; // 网络路径
+    public static final String DATA_PATH = "/letsremember/";
     public static final String PC_IP = "192.168.43.135"; // 本机电脑IP，调试用 // 192.168.103.2 不知道为啥这个IP也可以诶？
-    public static final String NETPATHD = "http://"+PC_IP+"/letsremember/public/index.php/index/index/"; // 调试
+    public static final String NET_PATHD = "http://"+PC_IP+"/letsremember/public/index.php/index/index/"; // 调试
+    public static String SDDir = "";
 
-    public static String getNetpath(String action) {
-        return NETPATHD + action;
+    public static String getNetPath(String action) {
+        return NET_PATHD + action;
     }
 
-    public static String getNetpath(String action, String[] arg) {
-        StringBuilder url = new StringBuilder(NETPATHD + action + "?");
-        int count = arg.length;
-        for (int i = 0; i < count; i++) {
-            if (i % 2 == 0) {
-                if (i > 0)
-                    url.append("&");
-                url.append(arg[i]).append("=");
-            }
-            else {
-                url.append(arg[i]);
-            }
+    public static String getLocalPath(String fileName) {
+        if (SDDir.isEmpty()) {
+            SDDir = getSDPath();
         }
-        return url.toString();
+        return SDDir+DATA_PATH+fileName;
     }
 
-    public static String getNetUser(String action, String[] arg) {
-        String url = getNetpath(action, arg);
-        if (arg.length == 0)
-            url += "?";
-        else
-            url += "&";
-        url += "user=" + User.user_id;
-        return url;
+    public static String getSDPath(){
+        File sdDir = null;
+        boolean sdCardExist = Environment.getExternalStorageState()
+                .equals(android.os.Environment.MEDIA_MOUNTED);//判断sd卡是否存在
+        if(sdCardExist)
+        {
+            sdDir = Environment.getExternalStorageDirectory();//获取跟目录
+            return sdDir.getPath();
+        }
+        return "/sdcard";
     }
 }

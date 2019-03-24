@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         final ProgressDialog progressDialog = ProgressDialog.show(this, "请稍等", "正在登录", true, false);
         String[] params = {"username", username, "password", password};
-        ConnectUtil.Post(Paths.getNetpath("login"), params, new StringCallback(){
+        ConnectUtil.Post(Paths.getNetPath("login"), params, new StringCallback(){
             @Override
             public void onFinish(String content) {
                 progressDialog.dismiss();

@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         progressDialog = ProgressDialog.show(this, "请稍等", "正在注册", true, false);
         String[] param = {"username", username, "password", password, "nickname", nickname};
-        ConnectUtil.Post(Paths.getNetpath("register"), param, new StringCallback(){
+        ConnectUtil.Post(Paths.getNetPath("register"), param, new StringCallback(){
             @Override
             public void onFinish(String content) {
                 progressDialog.dismiss();

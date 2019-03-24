@@ -223,7 +223,7 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
      * @param val 数值
      */
     private void updateContent(final String key, final String val) {
-        String path = Paths.getNetpath("updateUserInfo");
+        String path = Paths.getNetPath("updateUserInfo");
         String[] params = new String[]{"user_id", User.id(), key, val};
         ConnectUtil.Get(path, params, new StringCallback() {
             @Override
