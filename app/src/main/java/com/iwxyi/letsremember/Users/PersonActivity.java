@@ -1,6 +1,7 @@
 package com.iwxyi.letsremember.Users;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,7 @@ import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
+import com.iwxyi.letsremember.SettingsActivity;
 import com.iwxyi.letsremember.Utils.ConnectUtil;
 import com.iwxyi.letsremember.Utils.StringCallback;
 import com.iwxyi.letsremember.Utils.StringUtil;
@@ -128,8 +130,9 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
                         .show();
                 break;
             case R.id.fab:
-                Snackbar.make(findViewById(R.id.fab), "用户反馈邮箱：482582886@qq.com", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(findViewById(R.id.fab), "用户反馈邮箱：482582886@qq.com", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+                startActivity(new Intent(PersonActivity.this, SettingsActivity.class));
                 break;
             default:
                 break;

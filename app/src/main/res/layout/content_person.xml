@@ -228,7 +228,7 @@
         <Button
             android:id="@+id/btn_logout"
             android:text="退出登录"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorAccent"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
