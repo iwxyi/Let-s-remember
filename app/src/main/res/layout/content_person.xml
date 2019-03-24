@@ -180,7 +180,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:text="积分："
+                android:text="积　分："
                 android:labelFor="@id/tv_integral"
                 android:layout_weight="3"
                 android:textAlignment="textEnd"
@@ -191,7 +191,7 @@
                 android:textSize="18sp"/>
             <TextView
                 android:id="@+id/tv_integral"
-                android:text="积分"
+                android:text="积　分"
                 android:layout_weight="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -32,7 +32,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Users.RegisterActivity" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Users.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
     </application>
 

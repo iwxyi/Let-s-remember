@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember;
+package com.iwxyi.letsremember.Users;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

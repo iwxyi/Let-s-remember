@@ -3,17 +3,17 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="com.iwxyi.letsremember.SettingsActivity$GeneralPreferenceFragment"
+        android:fragment="com.iwxyi.letsremember.Users.SettingsActivity$GeneralPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="com.iwxyi.letsremember.SettingsActivity$NotificationPreferenceFragment"
+        android:fragment="com.iwxyi.letsremember.Users.SettingsActivity$NotificationPreferenceFragment"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/pref_header_notifications" />
 
     <header
-        android:fragment="com.iwxyi.letsremember.SettingsActivity$DataSyncPreferenceFragment"
+        android:fragment="com.iwxyi.letsremember.Users.SettingsActivity$DataSyncPreferenceFragment"
         android:icon="@drawable/ic_sync_black_24dp"
         android:title="@string/pref_header_data_sync" />
 

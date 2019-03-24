@@ -18,7 +18,6 @@ import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.SettingsActivity;
 import com.iwxyi.letsremember.Utils.ConnectUtil;
 import com.iwxyi.letsremember.Utils.StringCallback;
 import com.iwxyi.letsremember.Utils.StringUtil;
