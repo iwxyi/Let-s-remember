@@ -4,7 +4,7 @@
 
     <corners android:radius="@dimen/round_border_radius" />
     <!--内部颜色-->
-    <solid android:color="#FFFFFF" />
+    <solid android:color="@color/colorAccent" />
     <!--边框颜色-->
     <stroke android:width="1dip" android:color="@color/colorBorder"/>
 </shape>

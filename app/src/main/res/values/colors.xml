@@ -7,6 +7,7 @@
     <color name="transparent">#0000</color>
     <color name="backgroundGray">#DDDDDD</color>
     <color name="fontBlack">#000000</color>
+    <color name="colorBorder">#6495ED</color>
 
     <color name="golden">#FFD700</color>
     <color name="silver">#C0C0C0</color>
@@ -14,4 +15,5 @@
     <color name="white">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightGray">#CDCDCD</color>
+
 </resources>

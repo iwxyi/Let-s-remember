@@ -51,15 +51,15 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.tv_positive:
                 mPositiveTv.setTextColor(getResources().getColor(R.color.white));
-                mPositiveTv.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border_selected));
                 mReverseTv.setTextColor(getResources().getColor(R.color.fontBlack));
-                mReverseTv.setBackgroundColor(getResources().getColor(R.color.transparent));
+                mReverseTv.setBackground(getResources().getDrawable(R.drawable.button_border));
                 break;
             case R.id.tv_reverse:
                 mReverseTv.setTextColor(getResources().getColor(R.color.white));
-                mReverseTv.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                mReverseTv.setBackground(getResources().getDrawable(R.drawable.button_border_selected));
                 mPositiveTv.setTextColor(getResources().getColor(R.color.fontBlack));
-                mPositiveTv.setBackgroundColor(getResources().getColor(R.color.transparent));
+                mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border));
                 break;
             case R.id.tv_describe:
                 // TODO 19/03/24
