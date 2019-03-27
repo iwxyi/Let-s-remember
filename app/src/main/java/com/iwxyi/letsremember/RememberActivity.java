@@ -1,12 +1,19 @@
 package com.iwxyi.letsremember;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class RememberActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
+public class RememberActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mContentTv;
     private TextView mPositiveTv;
@@ -23,6 +30,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
         initView();
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private void initView() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -40,7 +48,47 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
         //mContentTv.setFocusableInTouchMode(false);
         //mContentTv.setEnabled(false);
         mContentTv.setTextIsSelectable(true);
-        mContentTv.setOnLongClickListener(this);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            Toast.makeText(this, "安卓版本过低（<23），将无法使用文字隐藏的功能", Toast.LENGTH_SHORT).show();
+        }
+        mContentTv.setCustomSelectionActionModeCallback(new ActionMode.Callback2() {
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                MenuInflater inflater = mode.getMenuInflater();
+                if (inflater != null) {
+                    inflater.inflate(R.menu.menu_material, menu);
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                if (item.getItemId() == R.id.hide) {
+                    final int selectStart = mContentTv.getSelectionStart();
+                    final int selectEnd = mContentTv.getSelectionEnd();
+                    int start = Math.max(0, Math.min(selectStart, selectEnd));
+                    int end = Math.max(0, Math.max(selectStart, selectEnd));
+
+                } else if (item.getItemId() == R.id.show) {
+
+                } else if (item.getItemId() == R.id.search) {
+
+                }
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -67,11 +115,5 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
             default:
                 break;
         }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-
-        return false;
     }
 }
