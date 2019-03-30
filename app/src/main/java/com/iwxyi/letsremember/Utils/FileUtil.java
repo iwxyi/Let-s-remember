@@ -16,17 +16,21 @@ import java.io.InputStreamReader;
 public class FileUtil {
 
     private static final String FOLEDER_NAME = "letsremember";
+    private static String LOCAL_FOLDER = "";
 
     /**
      * 寻找程序数据存储的外部文件夹
      * @return 文件夹路径（带"/"）
      */
     public static String getFolder() {
+        if (!LOCAL_FOLDER.isEmpty()) {
+            return LOCAL_FOLDER;
+        }
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            return Environment.getExternalStorageDirectory().getPath() + "/" + FOLEDER_NAME;
+            return LOCAL_FOLDER = Environment.getExternalStorageDirectory().getPath() + "/" + FOLEDER_NAME;
         }
         else {
-            return "/data/data/com.letsremember/files/"+FOLEDER_NAME;
+            return LOCAL_FOLDER = "/data/data/com.letsremember/files/"+FOLEDER_NAME;
         }
     }
 
@@ -51,7 +55,7 @@ public class FileUtil {
         if (!fileName.startsWith(getFolder()) && !fileName.startsWith("/"))
             fileName = getFolder()+"/"+fileName;
         try {
-            return readTextFile(getFolder() + "/" +fileName);
+            return readTextFile(fileName);
         } catch (IOException e) {
             return "";
         }
@@ -99,7 +103,6 @@ public class FileUtil {
 
     private static boolean writeTextFile(String filePath, String text) {
         createFile(filePath);
-
         try{
             // 创建 File类 指定数据存储的位置
             File file = new File(filePath);
@@ -117,7 +120,6 @@ public class FileUtil {
 
     private static String readTextFile(String filePath) throws IOException {
         createFile(filePath);
-
         File file = new File(filePath);
         FileInputStream fis = new FileInputStream(file);
         BufferedReader bufr = new BufferedReader(new InputStreamReader(fis));

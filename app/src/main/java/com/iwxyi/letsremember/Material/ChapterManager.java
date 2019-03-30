@@ -30,8 +30,9 @@ public class ChapterManager {
     public void initList(String pack, String file) {
         pack_name = pack;
         file_name = file;
-        String file_path = Paths.getLocalPath(pack+"/"+file+".txt");
+        String file_path = Paths.getLocalPath("material/"+pack+"/"+file+".txt");
         full_text = FileUtil.readTextVals(file_path);
+        App.toast(full_text);
         chapter_list = StringUtil.getXmls(full_text, "chapter");
         index = App.getInt("chapter:"+pack_name+"/"+file_name);
         if (chapter_list.size() == 0) {
