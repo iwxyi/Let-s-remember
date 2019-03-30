@@ -68,6 +68,18 @@ public class FileUtil {
         return createFolder(getFolder());
     }
 
+    /**
+     * 确保某个目录一定存在
+     * @param folder_name
+     * @return
+     */
+    public static boolean ensureFolder(String folder_name) {
+        if (!folder_name.startsWith(getFolder())) {
+            folder_name = getFolder() + folder_name;
+        }
+        return createFolder(folder_name);
+    }
+
     private static boolean writeTextFile(String filePath, String text) {
         createFile(filePath);
 
