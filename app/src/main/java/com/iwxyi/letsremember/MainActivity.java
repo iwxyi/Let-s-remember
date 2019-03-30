@@ -18,9 +18,11 @@ import com.iwxyi.letsremember.Fragments.RankFragment;
 import com.iwxyi.letsremember.Fragments.TypeinFragment;
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
+import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Users.LoginActivity;
 import com.iwxyi.letsremember.Utils.DateTimeUtil;
+import com.iwxyi.letsremember.Utils.FileUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        initApplicationFirstUse();
     }
 
     private void initView() {
@@ -139,4 +142,12 @@ public class MainActivity extends AppCompatActivity {
         ft.add(R.id.frame_layout, homeFragment, "home").commit();
     }
 
+
+    private void initApplicationFirstUse() {
+        String path = Paths.getLocalPath("");
+        FileUtil.ensureFolder(path);
+
+        FileUtil.ensureFolder("index");
+        FileUtil.writeTextVals("index/index.txt", "全民记忆存储格式\nletsremember/material/packagename/filename\n\n<chapter>\n\t<positive>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t位置1,位置2,位置3,位置4...\n\t\t</hides>\n\t</positive>\n\t<reverse>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t位置1,位置2,位置3,位置4...\n\t\t</hides>\n\t</reverse>\n</chapter>");
+    }
 }
