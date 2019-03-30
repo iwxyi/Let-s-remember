@@ -145,14 +145,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initApplicationFirstUse() {
-        String path = Paths.getLocalPath("");
-        Log.i("===path", path);
         if (!FileUtil.ensureFolder()) {
             App.deb("初始化数据失败");
             return;
         }
-        App.deb("first:"+path);
-        FileUtil.ensureFolder("index");
-        FileUtil.writeTextVals("index/index.txt", "全民记忆存储格式\nletsremember/material/packagename/filename\n\n<chapter>\n\t<positive>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t位置1,位置2,位置3,位置4...\n\t\t</hides>\n\t</positive>\n\t<reverse>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t位置1,位置2,位置3,位置4...\n\t\t</hides>\n\t</reverse>\n</chapter>");
+        if (FileUtil.exist(("material"))) // 已经初始化过了
+            return ;
+        FileUtil.ensureFolder("material");
+        FileUtil.ensureFolder("material/index");
+        FileUtil.ensureFile("material/index/index.txt");
+        FileUtil.writeTextVals("material/index/index.txt", "全民记忆存储格式\nletsremember/material/packagename/filename\n\n<chapter>\n\t<positive>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t\n\t\t</hides>\n\t</positive>\n\t<reverse>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t\n\t\t</hides>\n\t</reverse>\n</chapter>");
     }
 }
