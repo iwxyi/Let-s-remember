@@ -31,10 +31,9 @@ public class RememberBean extends StringUtil {
     private void initFromStr(String str) {
         places.clear();
 
-        String all = getXml(str, "positive");
-        content = getXml(all, "content");
-        description = getXml(all, "description");
-        String place_str = getXml(all, "hides");
+        content = getXml(str, "content");
+        description = getXml(str, "description");
+        String place_str = getXml(str, "hides");
         String[] places_str = place_str.split(",");
         int size = places_str.length;
         for (int i = 0; i < size-1; i+=2) {
@@ -47,18 +46,16 @@ public class RememberBean extends StringUtil {
      * @return
      */
     public String toString() {
-        String all = "<chapter>";
+        String all = "";
         StringBuilder places_build = new StringBuilder("");
         int size = places.size();
         for (int i = 0; i < size; i++) {
             places_build.append(places.get(i).toString()).append(",");
         }
         places_build = new StringBuilder(places_build.substring(0, places_build.length() - 1));
-        all += toXml(toXml(content, "content")
+        all += toXml(content, "content")
                         + toXml(description, "description")
-                        + places_build
-                , "positive");
-        all += "</chapter>";
+                        + toXml(places_build.toString(), "hide");
         return all;
     }
 
@@ -141,7 +138,7 @@ public class RememberBean extends StringUtil {
         }
 
         public String toString() {
-            return String.format("%d,%d", start, end);
+            return ""+start+","+end;
         }
 
     }
