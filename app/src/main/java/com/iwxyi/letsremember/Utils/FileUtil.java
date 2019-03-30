@@ -1,6 +1,7 @@
 package com.iwxyi.letsremember.Utils;
 
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -12,7 +13,7 @@ import java.io.InputStreamReader;
 
 public class FileUtil {
 
-    private static final String FOLEDER_NAME = "Poorrow";
+    private static final String FOLEDER_NAME = "letsremember";
 
     /**
      * 寻找程序数据存储的外部文件夹
@@ -23,7 +24,7 @@ public class FileUtil {
             return Environment.getExternalStorageDirectory().getPath() + "/" + FOLEDER_NAME;
         }
         else {
-            return "/data/data/com.Poorrow/files/"+FOLEDER_NAME;
+            return "/data/data/com.letsremember/files/"+FOLEDER_NAME;
         }
     }
 
@@ -116,6 +117,7 @@ public class FileUtil {
         File file;
         try {
             file = new File(path);
+            Log.i("====file", path);
             return file.exists() || file.mkdirs();
         } catch (Exception e) {
             e.printStackTrace();

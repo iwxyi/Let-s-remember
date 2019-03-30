@@ -23,7 +23,7 @@ public class ChapterManager {
     private int index;
     private ChapterBean chapter;
 
-    ChapterManager(String pack, String file) {
+    public ChapterManager(String pack, String file) {
         initList(pack, file);
     }
 

@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Material.ChapterManager;
+
 public class RememberActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mContentTv;
@@ -21,6 +23,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     private TextView mDescribeTv;
 
     private boolean positive = false;
+    ChapterManager chapter_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_remember);
 
         initView();
+        initData();
     }
 
     @SuppressLint("ObsoleteSdkInt")
@@ -89,6 +93,10 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
         });
 
 
+    }
+
+    private void initData() {
+        chapter_manager = new ChapterManager("index", "index");
     }
 
     @Override

@@ -36,6 +36,10 @@ public class App extends Application {
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 
+    public static void deb(String str) {
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+    }
+
     public static void log(String str) {
         Log.i("====App", str);
     }
