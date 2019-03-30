@@ -121,6 +121,18 @@ public class RememberBean extends StringUtil {
 
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ArrayList<PlaceBean> getPlaces() {
+        return places;
+    }
+
     /**
      * 存储隐藏位置的类
      */

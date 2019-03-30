@@ -22,7 +22,6 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     private TextView mReverseTv;
     private TextView mDescribeTv;
 
-    private boolean positive = false;
     ChapterManager chapter_manager;
 
     @Override
@@ -97,6 +96,10 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 
     private void initData() {
         chapter_manager = new ChapterManager("index", "index");
+        initShowed();
+    }
+
+    private void initShowed() {
         mContentTv.setText(chapter_manager.getContent());
         mDescribeTv.setText(chapter_manager.getDescription());
     }
@@ -112,12 +115,16 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border_selected));
                 mReverseTv.setTextColor(getResources().getColor(R.color.fontBlack));
                 mReverseTv.setBackground(getResources().getDrawable(R.drawable.button_border));
+                chapter_manager.switchPositive(true);
+                initShowed();
                 break;
             case R.id.tv_reverse:
                 mReverseTv.setTextColor(getResources().getColor(R.color.white));
                 mReverseTv.setBackground(getResources().getDrawable(R.drawable.button_border_selected));
                 mPositiveTv.setTextColor(getResources().getColor(R.color.fontBlack));
                 mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border));
+                chapter_manager.switchPositive(false);
+                initShowed();
                 break;
             case R.id.tv_describe:
                 // TODO 19/03/24

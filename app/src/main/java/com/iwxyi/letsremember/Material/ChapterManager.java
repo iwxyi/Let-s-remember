@@ -32,7 +32,6 @@ public class ChapterManager {
         file_name = file;
         String file_path = Paths.getLocalPath("material/"+pack+"/"+file+".txt");
         full_text = FileUtil.readTextVals(file_path);
-        App.toast(full_text);
         chapter_list = StringUtil.getXmls(full_text, "chapter");
         index = App.getInt("chapter:"+pack_name+"/"+file_name);
         if (chapter_list.size() == 0) {
@@ -46,14 +45,35 @@ public class ChapterManager {
     }
 
     public String getContent() {
-        return chapter.getContent();
+        return chapter.getRemeber().getContent();
     }
 
     public String getDescription() {
-        return chapter.getDescription();
+        return chapter.getRemeber().getDescription();
+    }
+
+    public ArrayList<RememberBean.PlaceBean> getPlaces() {
+        return chapter.getRemeber().getPlaces();
     }
 
     public void switchPositive() {
         chapter.switchPositive();
+    }
+
+    public void switchPositive(boolean posi) {
+        chapter.switchPositive(posi);
+    }
+
+    public void increaseHide(int start, int end) {
+        chapter.getRemeber().increaseHide(start, end);
+        chapter_list.set(index, chapter.toString());
+
+        StringBuilder all = new StringBuilder();
+        for (String c :
+                chapter_list) {
+            all.append(c);
+        }
+
+        FileUtil.writeTextVals("material/index/index.txt", all.toString());
     }
 }

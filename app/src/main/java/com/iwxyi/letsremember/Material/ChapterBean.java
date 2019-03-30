@@ -23,7 +23,7 @@ public class ChapterBean {
         String positive_str = StringUtil.getXml(str, "positive");
         positive_remember = new RememberBean(positive_str);
 
-        String reverse_str = StringUtil.getXml(str, "positive");
+        String reverse_str = StringUtil.getXml(str, "reverse");
         reverse_remember = new RememberBean(reverse_str);
     }
 
@@ -35,20 +35,17 @@ public class ChapterBean {
         positive = posi;
     }
 
-    public String getContent() {
+    public RememberBean getRemeber() {
         if (positive) {
-            return positive_remember.content;
+            return positive_remember;
         } else {
-            return reverse_remember.content;
+            return reverse_remember;
         }
     }
 
-    public String getDescription() {
-        if (positive) {
-            return positive_remember.description;
-        } else {
-            return reverse_remember.description;
-        }
+    public String toString() {
+        String all = StringUtil.toXml(positive_remember.toString(), "positive");
+        all += StringUtil.toXml(reverse_remember.toString(), "reverse");
+        return all;
     }
-
 }

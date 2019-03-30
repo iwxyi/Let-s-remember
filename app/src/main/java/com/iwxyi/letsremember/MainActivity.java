@@ -154,6 +154,6 @@ public class MainActivity extends AppCompatActivity {
         FileUtil.ensureFolder("material");
         FileUtil.ensureFolder("material/index");
         FileUtil.ensureFile("material/index/index.txt");
-        FileUtil.writeTextVals("material/index/index.txt", "全民记忆存储格式\nletsremember/material/packagename/filename\n\n<chapter>\n\t<positive>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t\n\t\t</hides>\n\t</positive>\n\t<reverse>\n\t\t<content>\n\t\t\t内容（支持HTML）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t\n\t\t</hides>\n\t</reverse>\n</chapter>");
+        FileUtil.writeTextVals("material/index/index.txt", "<chapter>\n\t<positive>\n\t\t<content>\n\t\t\t内容（正面）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t\n\t\t</hides>\n\t</positive>\n\t<reverse>\n\t\t<content>\n\t\t\t内容（反面）\n\t\t</content>\n\t\t<description>\n\t\t\t描述\n\t\t</description>\n\t\t<hides>\n\t\t\t\n\t\t</hides>\n\t</reverse>\n</chapter>");
     }
 }
