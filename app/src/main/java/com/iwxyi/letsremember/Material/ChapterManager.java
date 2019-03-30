@@ -44,4 +44,16 @@ public class ChapterManager {
         }
         chapter = new ChapterBean(chapter_list.get(index));
     }
+
+    public String getContent() {
+        return chapter.getContent();
+    }
+
+    public String getDescription() {
+        return chapter.getDescription();
+    }
+
+    public void switchPositive() {
+        chapter.switchPositive();
+    }
 }

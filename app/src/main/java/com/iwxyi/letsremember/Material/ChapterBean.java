@@ -1,7 +1,6 @@
 package com.iwxyi.letsremember.Material;
 
 
-import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
 /*
@@ -14,10 +13,10 @@ import com.iwxyi.letsremember.Utils.StringUtil;
 public class ChapterBean {
     RememberBean positive_remember;
     RememberBean reverse_remember;
-    boolean model = true;
+    boolean positive = true;
 
     ChapterBean(String str) {
-
+        readStr(str);
     }
 
     public void readStr(String str) {
@@ -28,11 +27,27 @@ public class ChapterBean {
         reverse_remember = new RememberBean(reverse_str);
     }
 
+    public void switchPositive() {
+        switchPositive(!positive);
+    }
+
     public void switchPositive(boolean posi) {
-        if (posi) {
-            model = true;
+        positive = posi;
+    }
+
+    public String getContent() {
+        if (positive) {
+            return positive_remember.content;
         } else {
-            model = false;
+            return reverse_remember.content;
+        }
+    }
+
+    public String getDescription() {
+        if (positive) {
+            return positive_remember.description;
+        } else {
+            return reverse_remember.description;
         }
     }
 

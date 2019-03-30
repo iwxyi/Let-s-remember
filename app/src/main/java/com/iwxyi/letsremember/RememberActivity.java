@@ -97,6 +97,8 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 
     private void initData() {
         chapter_manager = new ChapterManager("index", "index");
+        mContentTv.setText(chapter_manager.getContent());
+        mDescribeTv.setText(chapter_manager.getDescription());
     }
 
     @Override

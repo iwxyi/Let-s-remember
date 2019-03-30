@@ -31,9 +31,9 @@ public class RememberBean extends StringUtil {
     private void initFromStr(String str) {
         places.clear();
 
-        content = getXml(str, "content");
-        description = getXml(str, "description");
-        String place_str = getXml(str, "hides");
+        content = getXml(str, "content").trim();
+        description = getXml(str, "description").trim();
+        String place_str = getXml(str, "hides").trim();
         String[] places_str = place_str.split(",");
         int size = places_str.length;
         for (int i = 0; i < size-1; i+=2) {
