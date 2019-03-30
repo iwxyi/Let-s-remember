@@ -4,6 +4,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Globals.App;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +37,9 @@ public class FileUtil {
      * @return 写入文件是否成功
      */
     public static boolean writeTextVals(String fileName, String text) {
-        return writeTextFile(getFolder() + "/" +fileName, text);
+        if (!fileName.startsWith(getFolder()) && !fileName.startsWith("/"))
+            fileName = getFolder()+"/"+fileName;
+        return writeTextFile(fileName, text);
     }
 
     /**
@@ -44,6 +48,8 @@ public class FileUtil {
      * @return 读取到的文本内容
      */
     public static String readTextVals(String fileName) {
+        if (!fileName.startsWith(getFolder()) && !fileName.startsWith("/"))
+            fileName = getFolder()+"/"+fileName;
         try {
             return readTextFile(getFolder() + "/" +fileName);
         } catch (IOException e) {
@@ -75,10 +81,20 @@ public class FileUtil {
      * @return
      */
     public static boolean ensureFolder(String folder_name) {
-        if (!folder_name.startsWith(getFolder())) {
-            folder_name = getFolder() + folder_name;
-        }
+        if (!folder_name.startsWith(getFolder()) && !folder_name.startsWith("/"))
+            folder_name = getFolder()+"/"+folder_name;
         return createFolder(folder_name);
+    }
+
+    /**
+     * 确保文件存在
+     * @param fileName
+     * @return
+     */
+    public static boolean ensureFile(String fileName) {
+        if (!fileName.startsWith(getFolder()) && !fileName.startsWith("/"))
+            fileName = getFolder()+"/"+fileName;
+        return createFile(fileName);
     }
 
     private static boolean writeTextFile(String filePath, String text) {
@@ -117,7 +133,6 @@ public class FileUtil {
         File file;
         try {
             file = new File(path);
-            Log.i("====file", path);
             return file.exists() || file.mkdirs();
         } catch (Exception e) {
             e.printStackTrace();
