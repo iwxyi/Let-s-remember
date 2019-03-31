@@ -57,7 +57,7 @@ public class ChapterBean extends StringUtil {
         all += toXml(content, "content")
                         + toXml(description, "description")
                         + toXml(places_build.toString(), "hides");
-        return all;
+        return toXml(all, "chapter");
     }
 
     /**
