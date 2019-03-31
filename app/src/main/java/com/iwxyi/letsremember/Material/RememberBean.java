@@ -52,7 +52,8 @@ public class RememberBean extends StringUtil {
         for (int i = 0; i < size; i++) {
             places_build.append(places.get(i).toString()).append(",");
         }
-        places_build = new StringBuilder(places_build.substring(0, places_build.length() - 1));
+        if (places_build.length() > 0)
+            places_build = new StringBuilder(places_build.substring(0, places_build.length() - 1));
         all += toXml(content, "content")
                         + toXml(description, "description")
                         + toXml(places_build.toString(), "hide");
@@ -100,24 +101,30 @@ public class RememberBean extends StringUtil {
             }
         }
         if (i == size) { // 没有变化，则按顺序插入到对应的位置
-            for (i = 0; i < size; i++) {
-                if (places.get(i).start < start && (i == size-1 || places.get(i + 1).start > start)) {
-                    if (i == size-1) {
-                        places.add(new PlaceBean(start, end));
-                    } else {
-                        places.add(i+1, new PlaceBean(start, end));
+            Log.i("====increaseHide", "Add");
+            if (size == 0) {
+                places.add(new PlaceBean(start, end));
+            } else {
+                for (i = 0; i < size; i++) {
+                    if (places.get(i).start < start && (i == size-1 || places.get(i + 1).start > start)) {
+                        if (i == size-1) {
+                            places.add(new PlaceBean(start, end));
+                        } else {
+                            places.add(i+1, new PlaceBean(start, end));
+                        }
                     }
                 }
             }
+
         }
     }
 
     /**
-     * 添加显示的区域(可能重复)
+     * 减少隐藏的区域(很可能覆盖)
      * @param start
      * @param end
      */
-    public void descreaseHide(int start, int end) {
+    public void decreaseHide(int start, int end) {
 
     }
 

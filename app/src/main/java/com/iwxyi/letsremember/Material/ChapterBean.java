@@ -46,6 +46,6 @@ public class ChapterBean {
     public String toString() {
         String all = StringUtil.toXml(positive_remember.toString(), "positive");
         all += StringUtil.toXml(reverse_remember.toString(), "reverse");
-        return all;
+        return StringUtil.toXml(all, "chapter");
     }
 }

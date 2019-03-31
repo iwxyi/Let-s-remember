@@ -76,4 +76,17 @@ public class ChapterManager {
 
         FileUtil.writeTextVals("material/index/index.txt", all.toString());
     }
+
+    public void decreaseHide(int start, int end) {
+        chapter.getRemeber().decreaseHide(start, end);
+        chapter_list.set(index, chapter.toString());
+
+        StringBuilder all = new StringBuilder();
+        for (String c :
+                chapter_list) {
+            all.append(c);
+        }
+
+        FileUtil.writeTextVals("material/index/index.txt", all.toString());
+    }
 }

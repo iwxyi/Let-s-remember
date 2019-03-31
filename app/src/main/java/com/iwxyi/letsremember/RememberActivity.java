@@ -76,9 +76,13 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                     final int selectEnd = mContentTv.getSelectionEnd();
                     int start = Math.max(0, Math.min(selectStart, selectEnd));
                     int end = Math.max(0, Math.max(selectStart, selectEnd));
-
+                    chapter_manager.increaseHide(start, end);
                 } else if (item.getItemId() == R.id.show) {
-
+                    final int selectStart = mContentTv.getSelectionStart();
+                    final int selectEnd = mContentTv.getSelectionEnd();
+                    int start = Math.max(0, Math.min(selectStart, selectEnd));
+                    int end = Math.max(0, Math.max(selectStart, selectEnd));
+                    chapter_manager.decreaseHide(start, end);
                 } else if (item.getItemId() == R.id.search) {
 
                 }
