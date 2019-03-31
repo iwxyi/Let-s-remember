@@ -34,6 +34,7 @@ public class RememberBean extends StringUtil {
         content = getXml(str, "content").trim();
         description = getXml(str, "description").trim();
         String place_str = getXml(str, "hides").trim();
+        Log.i("====place_str", place_str);
         String[] places_str = place_str.split(",");
         int size = places_str.length;
         for (int i = 0; i < size-1; i+=2) {
@@ -56,7 +57,7 @@ public class RememberBean extends StringUtil {
             places_build = new StringBuilder(places_build.substring(0, places_build.length() - 1));
         all += toXml(content, "content")
                         + toXml(description, "description")
-                        + toXml(places_build.toString(), "hide");
+                        + toXml(places_build.toString(), "hides");
         return all;
     }
 
@@ -144,7 +145,7 @@ public class RememberBean extends StringUtil {
      * 存储隐藏位置的类
      */
     public class PlaceBean{
-        int start, end;
+        public int start, end;
 
         PlaceBean(int s, int e) {
             start = s;
