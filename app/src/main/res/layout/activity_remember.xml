@@ -82,10 +82,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/box_golden" />
+                    android:src="@drawable/box_copper" />
 
                 <TextView
-                    android:text="金盒子"
+                    android:text="铁盒子"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -103,10 +103,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/box_silver" />
+                    android:src="@drawable/box_wood" />
 
                 <TextView
-                    android:text="银盒子"
+                    android:text="木盒子"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -124,10 +124,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/box_copper" />
+                    android:src="@drawable/box_ice" />
 
                 <TextView
-                    android:text="铁盒子"
+                    android:text="冰盒子"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
