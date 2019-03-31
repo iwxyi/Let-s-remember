@@ -1,10 +1,13 @@
 package com.iwxyi.letsremember;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwxyi.letsremember.Material.ChapterManager;
+import com.iwxyi.letsremember.Material.RememberBean;
+
+import java.util.ArrayList;
 
 public class RememberActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -77,12 +83,16 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                     int start = Math.max(0, Math.min(selectStart, selectEnd));
                     int end = Math.max(0, Math.max(selectStart, selectEnd));
                     chapter_manager.increaseHide(start, end);
+                    initShowed();
+                    mContentTv.setSelected(false);
                 } else if (item.getItemId() == R.id.show) {
                     final int selectStart = mContentTv.getSelectionStart();
                     final int selectEnd = mContentTv.getSelectionEnd();
                     int start = Math.max(0, Math.min(selectStart, selectEnd));
                     int end = Math.max(0, Math.max(selectStart, selectEnd));
                     chapter_manager.decreaseHide(start, end);
+                    initShowed();
+                    mContentTv.setSelected(false);
                 } else if (item.getItemId() == R.id.search) {
 
                 }
@@ -104,10 +114,29 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initShowed() {
-        mContentTv.setText(chapter_manager.getContent());
+        mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
         mDescribeTv.setText(chapter_manager.getDescription());
     }
 
+    private CharSequence htmlToString(String text, ArrayList<RememberBean.PlaceBean> places) {
+        String html = text, left_tag = "<font color='#FFFFFF'>", right_tag = "</font>";
+        int offset = 0, left_length = left_tag.length(), right_length = right_tag.length();
+        for (int i = 0; i < places .size(); i++) {
+            RememberBean.PlaceBean place = places.get(i);
+            int start = place.start, end = place.end;
+            if (start >= 0 && start <= html.length() - offset) {
+                html = html.substring(0, start+offset) + left_tag + html.substring(start+offset, html.length());
+                offset += left_length;
+            }
+            if (end > 0 && end <= html.length()-offset) {
+                html = html.substring(0, end+offset) + right_tag + html.substring(end+offset, html.length());
+                offset += right_length;
+            }
+        }
+        Log.i("===HTML", html);
+        CharSequence charSequence = Html.fromHtml(html);
+        return charSequence;
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

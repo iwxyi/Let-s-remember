@@ -34,7 +34,6 @@ public class RememberBean extends StringUtil {
         content = getXml(str, "content").trim();
         description = getXml(str, "description").trim();
         String place_str = getXml(str, "hides").trim();
-        Log.i("====place_str", place_str);
         String[] places_str = place_str.split(",");
         int size = places_str.length;
         for (int i = 0; i < size-1; i+=2) {
