@@ -20,7 +20,7 @@
             android:layout_margin="@dimen/border_margin_big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/square_height_big"/>
+            android:minHeight="300dp"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -55,15 +55,15 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_describe"
-            android:text="vt./vi. 记得 牢记\nvt. 记着 纪念 回想起 送钱[礼物]给"
-            android:background="@drawable/textview_border"
-            android:layout_margin="@dimen/border_margin_big"
-            android:padding="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/square_height_big"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_describe"-->
+            <!--android:text="vt./vi. 记得 牢记\nvt. 记着 纪念 回想起 送钱[礼物]给"-->
+            <!--android:background="@drawable/textview_border"-->
+            <!--android:layout_margin="@dimen/border_margin_big"-->
+            <!--android:padding="30dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:minHeight="@dimen/square_height_big"/>-->
 
         <!--横向三个-->
         <LinearLayout
@@ -76,13 +76,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/border_margin_big"
+                android:layout_marginHorizontal="@dimen/border_margin_big"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/box_copper" />
+                    android:src="@drawable/box_copper"
+                    android:layout_marginBottom="-25dp" />
 
                 <TextView
                     android:text="铁盒子"
@@ -97,13 +98,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/border_margin_big"
+                android:layout_marginHorizontal="@dimen/border_margin_big"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/box_wood" />
+                    android:src="@drawable/box_wood"
+                    android:layout_marginBottom="-25dp" />
 
                 <TextView
                     android:text="木盒子"
@@ -118,13 +120,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/border_margin_big"
+                android:layout_marginHorizontal="@dimen/border_margin_big"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/box_ice" />
+                    android:src="@drawable/box_ice"
+                    android:layout_marginBottom="-25dp" />
 
                 <TextView
                     android:text="冰盒子"

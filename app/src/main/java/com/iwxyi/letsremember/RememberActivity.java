@@ -26,7 +26,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     private TextView mContentTv;
     private TextView mPositiveTv;
     private TextView mReverseTv;
-    private TextView mDescribeTv;
+//    private TextView mDescribeTv;
 
     ChapterManager chapter_manager;
 
@@ -51,8 +51,8 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
         mPositiveTv.setOnClickListener(this);
         mReverseTv = (TextView) findViewById(R.id.tv_reverse);
         mReverseTv.setOnClickListener(this);
-        mDescribeTv = (TextView) findViewById(R.id.tv_describe);
-        mDescribeTv.setOnClickListener(this);
+//        mDescribeTv = (TextView) findViewById(R.id.tv_describe);
+//        mDescribeTv.setOnClickListener(this);
 
         //mContentTv.setFocusableInTouchMode(false);
         //mContentTv.setEnabled(false);
@@ -115,7 +115,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 
     private void initShowed() {
         mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
-        mDescribeTv.setText(chapter_manager.getDescription());
+//        mDescribeTv.setText(chapter_manager.getDescription());
     }
 
     private CharSequence htmlToString(String text, ArrayList<RememberBean.PlaceBean> places) {
@@ -133,7 +133,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 offset += right_length;
             }
         }
-        Log.i("===HTML", html);
+        Log.i("====HTML", html);
         CharSequence charSequence = Html.fromHtml(html);
         return charSequence;
     }
@@ -158,9 +158,6 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border));
                 chapter_manager.switchPositive(false);
                 initShowed();
-                break;
-            case R.id.tv_describe:
-                // TODO 19/03/24
                 break;
             default:
                 break;
