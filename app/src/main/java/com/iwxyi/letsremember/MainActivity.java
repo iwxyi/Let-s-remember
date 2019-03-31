@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setLabelVisibilityMode(1); // 强制显示标签（默认超过3个标签就会自动隐藏）
 
         initFragment();
 
