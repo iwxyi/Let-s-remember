@@ -83,6 +83,11 @@ public class ChapterManager {
         FileUtil.writeTextVals("material/index/index.txt", all.toString());
     }
 
+    public void addRememberTimestamp() {
+        int timestamp = App.getTimestamp();
+
+    }
+
     public void jumpChapter(int x) {
         if (chapter_list.size() == 0 || x == 0) {
             return ;

@@ -18,7 +18,9 @@ import java.util.List;
 public class ChapterBean extends StringUtil {
     String content;
     String description;
+    String label;
     ArrayList<PlaceBean>places = new ArrayList<>();
+    ArrayList<Integer>reads = new ArrayList<>();
 
     public ChapterBean(String str) {
         initFromStr(str);
@@ -30,14 +32,24 @@ public class ChapterBean extends StringUtil {
      */
     private void initFromStr(String str) {
         places.clear();
+        reads.clear();
 
         content = getXml(str, "content").trim();
         description = getXml(str, "description").trim();
-        String place_str = getXml(str, "hides").trim();
-        String[] places_str = place_str.split(",");
-        int size = places_str.length;
+        label = getXml(str, "label").trim();
+
+        String places_str = getXml(str, "hides").trim();
+        String[] places_list_str = places_str.split(",");
+        int size = places_list_str.length;
         for (int i = 0; i < size-1; i+=2) {
-            places.add(new PlaceBean(places_str[i], places_str[i+1]));
+            places.add(new PlaceBean(places_list_str[i], places_list_str[i+1]));
+        }
+
+        String reads_str = getXml(str, "reads").trim();
+        String[] reads_list_str = reads_str.split(",");
+        size = reads_list_str.length;
+        for (int i = 0; i < size; i++) {
+            reads.add(Integer.parseInt(reads_list_str[i]));
         }
     }
 
@@ -47,6 +59,7 @@ public class ChapterBean extends StringUtil {
      */
     public String toString() {
         String all = "";
+
         StringBuilder places_build = new StringBuilder("");
         int size = places.size();
         for (int i = 0; i < size; i++) {
@@ -54,9 +67,21 @@ public class ChapterBean extends StringUtil {
         }
         if (places_build.length() > 0)
             places_build = new StringBuilder(places_build.substring(0, places_build.length() - 1));
+
+        StringBuilder reads_build = new StringBuilder();
+        size = reads.size();
+        for (int i = 0; i < size; i++) {
+            reads_build.append(reads.get(i)).append(",");
+        }
+        if (reads_build.length() > 0)
+            reads_build = new StringBuilder(reads_build.substring(0, reads_build.length()-1));
+
         all += toXml(content, "content")
                         + toXml(description, "description")
-                        + toXml(places_build.toString(), "hides");
+                        + toXml(label, "label")
+                        + toXml(places_build.toString(), "hides")
+                        + toXml(reads_build.toString(), "reads");
+
         return toXml(all, "chapter");
     }
 
