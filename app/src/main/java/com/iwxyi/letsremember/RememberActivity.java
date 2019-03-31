@@ -1,7 +1,6 @@
 package com.iwxyi.letsremember;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwxyi.letsremember.Material.ChapterManager;
-import com.iwxyi.letsremember.Material.RememberBean;
+import com.iwxyi.letsremember.Material.ChapterBean;
 
 import java.util.ArrayList;
 
@@ -118,11 +117,11 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 //        mDescribeTv.setText(chapter_manager.getDescription());
     }
 
-    private CharSequence htmlToString(String text, ArrayList<RememberBean.PlaceBean> places) {
+    private CharSequence htmlToString(String text, ArrayList<ChapterBean.PlaceBean> places) {
         String html = text, left_tag = "<font color='#FFFFFF'>", right_tag = "</font>";
         int offset = 0, left_length = left_tag.length(), right_length = right_tag.length();
         for (int i = 0; i < places .size(); i++) {
-            RememberBean.PlaceBean place = places.get(i);
+            ChapterBean.PlaceBean place = places.get(i);
             int start = place.start, end = place.end;
             if (start >= 0 && start <= html.length() - offset) {
                 html = html.substring(0, start+offset) + left_tag + html.substring(start+offset, html.length());

@@ -5,7 +5,6 @@ import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Utils.FileUtil;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
-import java.net.FileNameMap;
 import java.util.ArrayList;
 
 /*
@@ -45,27 +44,19 @@ public class ChapterManager {
     }
 
     public String getContent() {
-        return chapter.getRemeber().getContent();
+        return chapter.getContent();
     }
 
     public String getDescription() {
-        return chapter.getRemeber().getDescription();
+        return chapter.getDescription();
     }
 
-    public ArrayList<RememberBean.PlaceBean> getPlaces() {
-        return chapter.getRemeber().getPlaces();
-    }
-
-    public void switchPositive() {
-        chapter.switchPositive();
-    }
-
-    public void switchPositive(boolean posi) {
-        chapter.switchPositive(posi);
+    public ArrayList<ChapterBean.PlaceBean> getPlaces() {
+        return chapter.getPlaces();
     }
 
     public void increaseHide(int start, int end) {
-        chapter.getRemeber().increaseHide(start, end);
+        chapter.increaseHide(start, end);
         chapter_list.set(index, chapter.toString());
 
         StringBuilder all = new StringBuilder();
@@ -78,7 +69,7 @@ public class ChapterManager {
     }
 
     public void decreaseHide(int start, int end) {
-        chapter.getRemeber().decreaseHide(start, end);
+        chapter.decreaseHide(start, end);
         chapter_list.set(index, chapter.toString());
 
         StringBuilder all = new StringBuilder();
