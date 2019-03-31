@@ -125,7 +125,51 @@ public class RememberBean extends StringUtil {
      * @param end
      */
     public void decreaseHide(int start, int end) {
-
+        Log.i("====decreaseHide", "start:"+start+", end:"+end);
+        int size = places.size();
+        int i;
+        for (i = 0; i < size; i++) {
+            PlaceBean place = places.get(i);
+            if (place.start == start && place.end == end) { // 刚好删除
+                places.remove(i);
+                break;
+            } else if (place.start > start && place.end < end) { // 删除整个
+                start = place.start; // 调整删除范围，继续下去
+                places.remove(i);
+            } else if (place.start < start && place.end == end) { // 刚好删除右边
+                place.end = start;
+                places.set(i, place);
+                break;
+            } else if (place.start == start && place.end > end) { // 刚好删除左边
+                place.start = end;
+                places.set(i, place);
+                break;
+            } else if (place.start < start && place.end > end) { // 删除中间
+                PlaceBean place2 = new PlaceBean(end, place.end);
+                place.end = start;
+                places.set(i, place);
+                if (i == size - 1) {
+                    places.add(place2);
+                } else {
+                    places.add(i + 1, place2);
+                }
+                break;
+            } else if (place.start <= start && place.end > start && place.end < end) { // 删除右边
+                int temp = place.end;
+                place.end = start;
+                start = temp;
+                places.set(i, place);
+            } else if (place.start > start && place.start < end && place.end >= end) { // 删除左边
+                int temp = place.start;
+                place.start = end;
+                end = temp;
+                places.set(i, place);
+                break;
+            }
+        }
+        if (i == size) {
+            Log.i("====decreaseHide", "None");
+        }
     }
 
     public String getContent() {
