@@ -28,6 +28,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 //    private TextView mDescribeTv;
 
     ChapterManager chapter_manager;
+    boolean positive = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +54,6 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 //        mDescribeTv = (TextView) findViewById(R.id.tv_describe);
 //        mDescribeTv.setOnClickListener(this);
 
-        //mContentTv.setFocusableInTouchMode(false);
-        //mContentTv.setEnabled(false);
         mContentTv.setTextIsSelectable(true);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             Toast.makeText(this, "安卓版本过低（<23），将无法使用文字隐藏的功能", Toast.LENGTH_SHORT).show();
@@ -113,7 +112,11 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initShowed() {
-        mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
+        if (positive) {
+            mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
+        } else {
+            mContentTv.setText(chapter_manager.getContent());
+        }
 //        mDescribeTv.setText(chapter_manager.getDescription());
     }
 
@@ -147,7 +150,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border_selected));
                 mReverseTv.setTextColor(getResources().getColor(R.color.fontBlack));
                 mReverseTv.setBackground(getResources().getDrawable(R.drawable.button_border));
-                chapter_manager.switchPositive(true);
+                positive = true;
                 initShowed();
                 break;
             case R.id.tv_reverse:
@@ -155,7 +158,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 mReverseTv.setBackground(getResources().getDrawable(R.drawable.button_border_selected));
                 mPositiveTv.setTextColor(getResources().getColor(R.color.fontBlack));
                 mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border));
-                chapter_manager.switchPositive(false);
+                positive = false;
                 initShowed();
                 break;
             default:
