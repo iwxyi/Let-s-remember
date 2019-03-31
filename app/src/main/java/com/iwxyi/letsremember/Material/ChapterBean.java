@@ -73,7 +73,7 @@ public class ChapterBean extends StringUtil {
             PlaceBean place = places.get(i);
             if (place.start <= start && place.end >= end) { // 已经存在了
                 break;
-            } else if (place.start <= start && place.end < end) { // 扩大右边
+            } else if (place.start <= start && place.end >= start && place.end < end) { // 扩大右边
                 place.end = end;
                 while (i < size - 1 && places.get(i + 1).start <= end) { // 循环删除右边重复的
                     end = Math.max(end, places.get(i+1).end);
@@ -83,7 +83,7 @@ public class ChapterBean extends StringUtil {
                 }
                 places.set(i, place);
                 break;
-            } else if (place.start > start && place.end >= end) { // 扩大左边
+            } else if (place.start > start && place.start <= end && place.end >= end) { // 扩大左边
                 place.start = start;
                 places.set(i, place);
                 break;
@@ -106,11 +106,13 @@ public class ChapterBean extends StringUtil {
                 places.add(new PlaceBean(start, end));
             } else {
                 for (i = 0; i < size; i++) {
-                    if (places.get(i).start < start && (i == size-1 || places.get(i + 1).start > start)) {
+                    if ((i == 0 || places.get(i).start < start) && (i == size-1 || places.get(i + 1).start > start)) {
                         if (i == size-1) {
                             places.add(new PlaceBean(start, end));
+                        } else if (i == 0) {
+                            places.add(0, new PlaceBean(start, end));
                         } else {
-                            places.add(i+1, new PlaceBean(start, end));
+                            places.add(i + 1, new PlaceBean(start, end));
                         }
                     }
                 }
@@ -135,7 +137,8 @@ public class ChapterBean extends StringUtil {
                 break;
             } else if (place.start > start && place.end < end) { // 删除整个
                 start = place.start; // 调整删除范围，继续下去
-                places.remove(i);
+                places.remove(i--);
+                size--;
             } else if (place.start < start && place.end == end) { // 刚好删除右边
                 place.end = start;
                 places.set(i, place);
