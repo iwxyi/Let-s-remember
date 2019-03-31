@@ -1,5 +1,7 @@
 package com.iwxyi.letsremember.Material;
 
+import android.util.Log;
+
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Utils.FileUtil;
@@ -79,5 +81,21 @@ public class ChapterManager {
         }
 
         FileUtil.writeTextVals("material/index/index.txt", all.toString());
+    }
+
+    public void jumpChapter(int x) {
+        if (chapter_list.size() == 0 || x == 0) {
+            return ;
+        }
+        index += x;
+        Log.i("====章节位置", ""+index+"/"+chapter_list.size());
+        if (index < 0) {
+            index = 0;
+        } else if (index >= chapter_list.size()) {
+            index = chapter_list.size()-1;
+        }
+
+        chapter = new ChapterBean(chapter_list.get(index));
+        App.setVal("chapter:"+pack_name+"/"+file_name, index);
     }
 }

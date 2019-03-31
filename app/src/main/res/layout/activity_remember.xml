@@ -20,7 +20,7 @@
             android:layout_margin="@dimen/border_margin_big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="300dp"/>
+            android:minHeight="250dp"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -43,6 +43,40 @@
             <TextView
                 android:id="@+id/tv_reverse"
                 android:text="反面"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/fontBlack"
+                android:background="@drawable/button_border"
+                android:layout_marginRight="@dimen/border_margin_big"
+                android:padding="@dimen/border_margin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/border_margin_big">
+
+            <Button
+                android:id="@+id/btn_prev"
+                android:text="上一个"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/fontBlack"
+                android:background="@drawable/button_border"
+                android:layout_marginLeft="@dimen/border_margin_big"
+                android:padding="@dimen/border_margin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:text="已记住"
                 android:gravity="center"
                 android:textSize="15sp"
                 android:textColor="@color/fontBlack"

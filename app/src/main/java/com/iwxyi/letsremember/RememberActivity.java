@@ -12,11 +12,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iwxyi.letsremember.Material.ChapterManager;
 import com.iwxyi.letsremember.Material.ChapterBean;
+import com.iwxyi.letsremember.Material.ChapterManager;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,8 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 
     ChapterManager chapter_manager;
     boolean positive = true;
+    private Button mPrevBtn;
+    private Button mNextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,10 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
         mReverseTv.setOnClickListener(this);
 //        mDescribeTv = (TextView) findViewById(R.id.tv_describe);
 //        mDescribeTv.setOnClickListener(this);
+        mPrevBtn = (Button) findViewById(R.id.btn_prev);
+        mPrevBtn.setOnClickListener(this);
+        mNextBtn = (Button) findViewById(R.id.btn_next);
+        mNextBtn.setOnClickListener(this);
 
         mContentTv.setTextIsSelectable(true);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -102,8 +109,6 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 
             }
         });
-
-
     }
 
     private void initData() {
@@ -123,22 +128,23 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     private CharSequence htmlToString(String text, ArrayList<ChapterBean.PlaceBean> places) {
         String html = text, left_tag = "<font color='#FFFFFF'>", right_tag = "</font>";
         int offset = 0, left_length = left_tag.length(), right_length = right_tag.length();
-        for (int i = 0; i < places .size(); i++) {
+        for (int i = 0; i < places.size(); i++) {
             ChapterBean.PlaceBean place = places.get(i);
             int start = place.start, end = place.end;
             if (start >= 0 && start <= html.length() - offset) {
-                html = html.substring(0, start+offset) + left_tag + html.substring(start+offset, html.length());
+                html = html.substring(0, start + offset) + left_tag + html.substring(start + offset, html.length());
                 offset += left_length;
             }
-            if (end > 0 && end <= html.length()-offset) {
-                html = html.substring(0, end+offset) + right_tag + html.substring(end+offset, html.length());
+            if (end > 0 && end <= html.length() - offset) {
+                html = html.substring(0, end + offset) + right_tag + html.substring(end + offset, html.length());
                 offset += right_length;
             }
         }
-        Log.i("====HTML", html);
+        Log.i("====章节富文本", html);
         CharSequence charSequence = Html.fromHtml(html);
         return charSequence;
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -159,6 +165,14 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 mPositiveTv.setTextColor(getResources().getColor(R.color.fontBlack));
                 mPositiveTv.setBackground(getResources().getDrawable(R.drawable.button_border));
                 positive = false;
+                initShowed();
+                break;
+            case R.id.btn_prev:// TODO 19/03/31
+                chapter_manager.jumpChapter(-1);
+                initShowed();
+                break;
+            case R.id.btn_next:// TODO 19/03/31
+                chapter_manager.jumpChapter(1);
                 initShowed();
                 break;
             default:
