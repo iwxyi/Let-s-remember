@@ -88,17 +88,35 @@ public class ChapterManager {
 
     }
 
-    public void jumpChapter(int x) {
+    /**
+     * 移动章节，相对于当前位置的差异
+     * @param x
+     */
+    public void moveChapter(int x) {
         if (chapter_list.size() == 0 || x == 0) {
             return ;
         }
-        index += x;
-        Log.i("====章节位置", ""+index+"/"+chapter_list.size());
+        int index = this.index + x;
         if (index < 0) {
             index = 0;
         } else if (index >= chapter_list.size()) {
             index = chapter_list.size()-1;
         }
+        jumpChapter(index);
+    }
+
+    /**
+     * 切换章节
+     * @param x 和当前的距离
+     */
+    public void jumpChapter(int x) {
+        index = x;
+        if (index < 0) {
+            index = 0;
+        } else if (index >= chapter_list.size()) {
+            index = chapter_list.size()-1;
+        }
+        Log.i("====章节位置", ""+index+"/"+chapter_list.size());
 
         chapter = new ChapterBean(chapter_list.get(index));
         App.setVal("chapter:"+pack_name+"/"+file_name, index);
