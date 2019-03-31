@@ -1,7 +1,5 @@
 package com.iwxyi.letsremember.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +8,10 @@ import android.view.ViewGroup;
 
 import com.iwxyi.letsremember.R;
 
-public class GroupFragment extends Fragment {
+public class MineFragment extends Fragment {
 
-    public static GroupFragment newInstance(String param1, String param2) {
-        GroupFragment fragment = new GroupFragment();
+    public static MineFragment newInstance(String param1, String param2) {
+        MineFragment fragment = new MineFragment();
         return fragment;
     }
 

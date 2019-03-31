@@ -8,18 +8,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.iwxyi.letsremember.Fragments.BoxFragment;
-import com.iwxyi.letsremember.Fragments.GroupFragment;
+import com.iwxyi.letsremember.Fragments.MineFragment;
 import com.iwxyi.letsremember.Fragments.HomeFragment;
-import com.iwxyi.letsremember.Fragments.RankFragment;
 import com.iwxyi.letsremember.Fragments.TypeinFragment;
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
-import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Users.LoginActivity;
 import com.iwxyi.letsremember.Utils.DateTimeUtil;
@@ -28,10 +23,8 @@ import com.iwxyi.letsremember.Utils.FileUtil;
 public class MainActivity extends AppCompatActivity {
 
     private HomeFragment homeFragment;
-    private BoxFragment boxFragment;
     private TypeinFragment typeinFragment;
-    private RankFragment rankFragment;
-    private GroupFragment groupFragment;
+    private MineFragment groupFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,14 +43,6 @@ public class MainActivity extends AppCompatActivity {
                         ft.show(homeFragment);
                     }
                     break;
-                case R.id.navigation_box:
-                    if (boxFragment == null) {
-                        boxFragment = new BoxFragment();
-                        ft.add(R.id.frame_layout, boxFragment, "home");
-                    } else {
-                        ft.show(boxFragment);
-                    }
-                    break;
                 case R.id.navigation_typein:
                     if (typeinFragment == null) {
                         typeinFragment = new TypeinFragment();
@@ -66,17 +51,9 @@ public class MainActivity extends AppCompatActivity {
                         ft.show(typeinFragment);
                     }
                     break;
-                case R.id.navigation_rank:
-                    if (rankFragment == null) {
-                        rankFragment = new RankFragment();
-                        ft.add(R.id.frame_layout, rankFragment, "rank");
-                    } else {
-                        ft.show(rankFragment);
-                    }
-                    break;
-                case R.id.navigation_group:
+                case R.id.navigation_mine:
                     if (groupFragment == null) {
-                        groupFragment = new GroupFragment();
+                        groupFragment = new MineFragment();
                         ft.add(R.id.frame_layout, groupFragment, "group");
                     } else {
                         ft.show(groupFragment);
@@ -94,14 +71,8 @@ public class MainActivity extends AppCompatActivity {
         if (homeFragment != null) {
             ft.hide(homeFragment);
         }
-        if (boxFragment != null) {
-            ft.hide(boxFragment);
-        }
         if (typeinFragment != null) {
             ft.hide(typeinFragment);
-        }
-        if (rankFragment != null) {
-            ft.hide(rankFragment);
         }
         if (groupFragment != null) {
             ft.hide(groupFragment);
