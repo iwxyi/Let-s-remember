@@ -63,7 +63,7 @@ public class ChapterManager {
         StringBuilder all = new StringBuilder();
         for (String c :
                 chapter_list) {
-            all.append(c);
+            all.append("<chapter>").append(c).append("</chapter>");
         }
 
         FileUtil.writeTextVals("material/index/index.txt", all.toString());
