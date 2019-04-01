@@ -85,6 +85,18 @@ public class ChapterBean extends StringUtil {
         return toXml(all, "chapter");
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ArrayList<PlaceBean> getPlaces() {
+        return places;
+    }
+
     /**
      * 添加隐藏区域(可能重复)
      * @param start
@@ -200,16 +212,22 @@ public class ChapterBean extends StringUtil {
         }
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public ArrayList<PlaceBean> getPlaces() {
-        return places;
+    /**
+     * 添加阅读时间，10位时间戳格式
+     * 默认应该都是从小到大排序的吧
+     * @param timestamp
+     */
+    public void addRememberTimestamp(int timestamp) {
+        int size = reads.size();
+        if (size == 0) {
+            reads.add(timestamp);
+            return ;
+        }
+        int prev = reads.get(size-1);
+        if (prev <= timestamp && prev + 60 > timestamp) { // 一分钟以内，删除上一次的
+            reads.remove(size-1);
+        }
+        reads.add(timestamp);
     }
 
     /**

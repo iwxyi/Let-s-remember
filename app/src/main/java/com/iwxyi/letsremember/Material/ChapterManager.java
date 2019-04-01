@@ -57,8 +57,7 @@ public class ChapterManager {
         return chapter.getPlaces();
     }
 
-    public void increaseHide(int start, int end) {
-        chapter.increaseHide(start, end);
+    private void saveModify() {
         chapter_list.set(index, chapter.toString());
 
         StringBuilder all = new StringBuilder();
@@ -68,24 +67,26 @@ public class ChapterManager {
         }
 
         FileUtil.writeTextVals("material/index/index.txt", all.toString());
+    }
+
+    public void increaseHide(int start, int end) {
+        chapter.increaseHide(start, end);
+        saveModify();
     }
 
     public void decreaseHide(int start, int end) {
         chapter.decreaseHide(start, end);
-        chapter_list.set(index, chapter.toString());
-
-        StringBuilder all = new StringBuilder();
-        for (String c :
-                chapter_list) {
-            all.append(c);
-        }
-
-        FileUtil.writeTextVals("material/index/index.txt", all.toString());
+        saveModify();
     }
 
+    /**
+     * 记住这个词了，修改记住时间
+     * 如果和上次背诵时间差距小于1分钟（避免来回切换），则保存
+     */
     public void addRememberTimestamp() {
         int timestamp = App.getTimestamp();
-
+        chapter.addRememberTimestamp(timestamp);
+        saveModify();
     }
 
     /**
