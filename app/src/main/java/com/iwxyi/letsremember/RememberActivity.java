@@ -172,6 +172,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
                 initShowed();
                 break;
             case R.id.btn_next:// TODO 19/03/31
+                chapter_manager.addRememberTimestamp();
                 chapter_manager.moveChapter(1);
                 initShowed();
                 break;
