@@ -49,7 +49,8 @@ public class ChapterBean extends StringUtil {
         String[] reads_list_str = reads_str.split(",");
         size = reads_list_str.length;
         for (int i = 0; i < size; i++) {
-            reads.add(Integer.parseInt(reads_list_str[i]));
+            if (!reads_list_str[i].isEmpty())
+                reads.add(Integer.parseInt(reads_list_str[i]));
         }
     }
 
@@ -143,14 +144,15 @@ public class ChapterBean extends StringUtil {
                 places.add(new PlaceBean(start, end));
             } else {
                 for (i = 0; i < size; i++) {
-                    if ((i == 0 || places.get(i).start < start) && (i == size-1 || places.get(i + 1).start > start)) {
-                        if (i == size-1) {
-                            places.add(new PlaceBean(start, end));
-                        } else if (i == 0) {
-                            places.add(0, new PlaceBean(start, end));
-                        } else {
-                            places.add(i + 1, new PlaceBean(start, end));
-                        }
+                    if (i == 0 && places.get(i).start > start) { // 插入到开头
+                        Log.i("====increaseHide", "Add to first");
+                        places.add(0, new PlaceBean(start, end));
+                    } else if (i == size - 1) {
+                        Log.i("====increaseHide", "Add to last");
+                        places.add(new PlaceBean(start, end));
+                    } else if (places.get(i).start < start && places.get(i + 1).start > start) {
+                        Log.i("====increaseHide", "Add to "+i);
+                        places.add(i + 1, new PlaceBean(start, end));
                     }
                 }
             }
