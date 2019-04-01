@@ -8,6 +8,7 @@ public class User {
     public static String mobile;     // 手机号
     public static String email;      // 邮箱
     public static int integral;      // 积分
+    public static int recite;        // 背诵数量
 
     public static boolean isLogin() {
         return user_id != 0;
@@ -15,5 +16,13 @@ public class User {
 
     public static String id() {
         return ""+user_id;
+    }
+
+    /**
+     * 新背诵了一篇
+     */
+    public static void addRecite() {
+        recite++;
+        App.setVal("recite", recite);
     }
 }

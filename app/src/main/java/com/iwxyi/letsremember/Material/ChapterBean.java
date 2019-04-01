@@ -3,6 +3,7 @@ package com.iwxyi.letsremember.Material;
 
 import android.util.Log;
 
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
 import java.util.ArrayList;
@@ -223,6 +224,7 @@ public class ChapterBean extends StringUtil {
         int size = reads.size();
         if (size == 0) {
             reads.add(timestamp);
+            User.addRecite(); // 添加用户背诵的数量
             return ;
         }
         int prev = reads.get(size-1);
