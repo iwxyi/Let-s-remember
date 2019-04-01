@@ -14,6 +14,6 @@
     <item
         android:id="@+id/navigation_mine"
         android:icon="@drawable/nav_mine"
-        android:title="圈子" />
+        android:title="我的" />
 
 </menu>

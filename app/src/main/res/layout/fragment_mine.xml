@@ -21,7 +21,7 @@
             android:minHeight="50dp"/>
 
         <TextView
-            android:text="好友分享一"
+            android:text="好友排行榜"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
             android:background="@drawable/textview_border"
@@ -31,7 +31,7 @@
             android:minHeight="50dp"/>
 
         <TextView
-            android:text="好友分享二"
+            android:text="总排行榜"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
             android:background="@drawable/textview_border"
@@ -41,7 +41,7 @@
             android:minHeight="50dp"/>
 
         <TextView
-            android:text="好友分享三"
+            android:text="周边"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
             android:background="@drawable/textview_border"
