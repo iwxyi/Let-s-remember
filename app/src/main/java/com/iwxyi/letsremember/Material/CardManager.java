@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class CardManager {
     private String pack_name = "";
-    private String file_name = "";
+    private String chpt_name = "";
     private String full_text;
     public ArrayList<String> card_list;
     private int index;
@@ -28,15 +28,15 @@ public class CardManager {
         initList(pack, file);
     }
 
-    public void initList(String pack, String file) {
+    public void initList(String pack, String chpt) {
         pack_name = pack;
-        file_name = file;
-        String file_path = Paths.getLocalPath("material/"+pack+"/"+file+".txt");
+        chpt_name = chpt;
+        String file_path = Paths.getLocalPath("material/"+pack+"/"+chpt+".txt");
         full_text = FileUtil.readTextVals(file_path);
         card_list = StringUtil.getXmls(full_text, "card");
-        index = App.getInt("card:"+pack_name+"/"+file_name);
+        index = App.getInt("card:"+pack_name+"/"+ chpt_name);
         if (card_list.size() == 0) {
-            App.toast("找不到内容："+pack_name+"/"+ file_name);
+            App.toast("找不到内容："+pack_name+"/"+ chpt_name);
             return ;
         }
         if (index >= card_list.size()) {
@@ -120,6 +120,6 @@ public class CardManager {
         Log.i("====章节位置", ""+index+"/"+card_list.size());
 
         card = new CardBean(card_list.get(index));
-        App.setVal("card:"+pack_name+"/"+file_name, index);
+        App.setVal("card:"+pack_name+"/"+ chpt_name, index);
     }
 }
