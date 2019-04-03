@@ -16,14 +16,14 @@ import java.util.List;
  * @date   2019/3/27 20 49
  * @email  wxy19980615@gmail.com
  */
-public class ChapterBean extends StringUtil {
+public class CardBean extends StringUtil {
     String content;
     String description;
     String label;
     ArrayList<PlaceBean>places = new ArrayList<>();
     ArrayList<Integer>reads = new ArrayList<>();
 
-    public ChapterBean(String str) {
+    public CardBean(String str) {
         initFromStr(str);
     }
 
@@ -56,7 +56,7 @@ public class ChapterBean extends StringUtil {
     }
 
     /**
-     * 转化成一个带chapter标签的字符串
+     * 转化成一个带card标签的字符串
      * @return
      */
     public String toString() {
@@ -84,7 +84,7 @@ public class ChapterBean extends StringUtil {
                         + toXml(places_build.toString(), "hides")
                         + toXml(reads_build.toString(), "reads");
 
-        return toXml(all, "chapter");
+        return toXml(all, "card");
     }
 
     public String getContent() {

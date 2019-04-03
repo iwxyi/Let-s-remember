@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
         FileUtil.ensureFolder("material");
         FileUtil.ensureFolder("material/index");
         FileUtil.ensureFile("material/index/index.txt");
-        FileUtil.writeTextVals("material/index/index.txt", "<chapter>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</chapter>"+
-        "<chapter>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</chapter>"+
-        "<chapter>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</chapter>");
+        FileUtil.writeTextVals("material/index/index.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+        "<card>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+        "<card>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
     }
 }

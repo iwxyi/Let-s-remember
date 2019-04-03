@@ -16,15 +16,15 @@ import java.util.ArrayList;
  * @date   2019/3/30 18 43
  * @email  wxy19980615@gmail.com
  */
-public class ChapterManager {
+public class CardManager {
     private String pack_name = "";
     private String file_name = "";
     private String full_text;
-    public ArrayList<String> chapter_list;
+    public ArrayList<String> card_list;
     private int index;
-    private ChapterBean chapter;
+    private CardBean card;
 
-    public ChapterManager(String pack, String file) {
+    public CardManager(String pack, String file) {
         initList(pack, file);
     }
 
@@ -33,49 +33,49 @@ public class ChapterManager {
         file_name = file;
         String file_path = Paths.getLocalPath("material/"+pack+"/"+file+".txt");
         full_text = FileUtil.readTextVals(file_path);
-        chapter_list = StringUtil.getXmls(full_text, "chapter");
-        index = App.getInt("chapter:"+pack_name+"/"+file_name);
-        if (chapter_list.size() == 0) {
+        card_list = StringUtil.getXmls(full_text, "card");
+        index = App.getInt("card:"+pack_name+"/"+file_name);
+        if (card_list.size() == 0) {
             App.toast("找不到内容："+pack_name+"/"+ file_name);
             return ;
         }
-        if (index >= chapter_list.size()) {
+        if (index >= card_list.size()) {
             index = 0;
         }
-        chapter = new ChapterBean(chapter_list.get(index));
+        card = new CardBean(card_list.get(index));
     }
 
     public String getContent() {
-        return chapter.getContent();
+        return card.getContent();
     }
 
     public String getDescription() {
-        return chapter.getDescription();
+        return card.getDescription();
     }
 
-    public ArrayList<ChapterBean.PlaceBean> getPlaces() {
-        return chapter.getPlaces();
+    public ArrayList<CardBean.PlaceBean> getPlaces() {
+        return card.getPlaces();
     }
 
     private void saveModify() {
-        chapter_list.set(index, chapter.toString());
+        card_list.set(index, card.toString());
 
         StringBuilder all = new StringBuilder();
         for (String c :
-                chapter_list) {
-            all.append("<chapter>").append(c).append("</chapter>");
+                card_list) {
+            all.append("<card>").append(c).append("</card>");
         }
 
         FileUtil.writeTextVals("material/index/index.txt", all.toString());
     }
 
     public void increaseHide(int start, int end) {
-        chapter.increaseHide(start, end);
+        card.increaseHide(start, end);
         saveModify();
     }
 
     public void decreaseHide(int start, int end) {
-        chapter.decreaseHide(start, end);
+        card.decreaseHide(start, end);
         saveModify();
     }
 
@@ -85,7 +85,7 @@ public class ChapterManager {
      */
     public void addRememberTimestamp() {
         int timestamp = App.getTimestamp();
-        chapter.addRememberTimestamp(timestamp);
+        card.addRememberTimestamp(timestamp);
         saveModify();
     }
 
@@ -94,14 +94,14 @@ public class ChapterManager {
      * @param x
      */
     public void moveChapter(int x) {
-        if (chapter_list.size() == 0 || x == 0) {
+        if (card_list.size() == 0 || x == 0) {
             return ;
         }
         int index = this.index + x;
         if (index < 0) {
             index = 0;
-        } else if (index >= chapter_list.size()) {
-            index = chapter_list.size()-1;
+        } else if (index >= card_list.size()) {
+            index = card_list.size()-1;
         }
         jumpChapter(index);
     }
@@ -114,12 +114,12 @@ public class ChapterManager {
         index = x;
         if (index < 0) {
             index = 0;
-        } else if (index >= chapter_list.size()) {
-            index = chapter_list.size()-1;
+        } else if (index >= card_list.size()) {
+            index = card_list.size()-1;
         }
-        Log.i("====章节位置", ""+index+"/"+chapter_list.size());
+        Log.i("====章节位置", ""+index+"/"+card_list.size());
 
-        chapter = new ChapterBean(chapter_list.get(index));
-        App.setVal("chapter:"+pack_name+"/"+file_name, index);
+        card = new CardBean(card_list.get(index));
+        App.setVal("card:"+pack_name+"/"+file_name, index);
     }
 }

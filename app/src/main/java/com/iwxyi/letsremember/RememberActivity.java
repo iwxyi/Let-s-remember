@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iwxyi.letsremember.Material.ChapterBean;
-import com.iwxyi.letsremember.Material.ChapterManager;
+import com.iwxyi.letsremember.Material.CardBean;
+import com.iwxyi.letsremember.Material.CardManager;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     private TextView mReverseTv;
 //    private TextView mDescribeTv;
 
-    ChapterManager chapter_manager;
+    CardManager chapter_manager;
     boolean positive = true;
     private Button mPrevBtn;
     private Button mNextBtn;
@@ -112,7 +112,7 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initData() {
-        chapter_manager = new ChapterManager("index", "index");
+        chapter_manager = new CardManager("index", "index");
         initShowed();
     }
 
@@ -125,11 +125,11 @@ public class RememberActivity extends AppCompatActivity implements View.OnClickL
 //        mDescribeTv.setText(chapter_manager.getDescription());
     }
 
-    private CharSequence htmlToString(String text, ArrayList<ChapterBean.PlaceBean> places) {
+    private CharSequence htmlToString(String text, ArrayList<CardBean.PlaceBean> places) {
         String html = text, left_tag = "<font color='#FFFFFF'>", right_tag = "</font>";
         int offset = 0, left_length = left_tag.length(), right_length = right_tag.length();
         for (int i = 0; i < places.size(); i++) {
-            ChapterBean.PlaceBean place = places.get(i);
+            CardBean.PlaceBean place = places.get(i);
             int start = place.start, end = place.end;
             if (start >= 0 && start <= html.length() - offset) {
                 html = html.substring(0, start + offset) + left_tag + html.substring(start + offset, html.length());
