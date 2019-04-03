@@ -15,4 +15,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="round_border_radius">3dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>
