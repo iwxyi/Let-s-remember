@@ -18,9 +18,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.iwxyi.letsremember.Material.dummy.PackagesContent;
 import com.iwxyi.letsremember.R;
 
-public class MaterialSelectActivity extends AppCompatActivity {
+public class MaterialSelectActivity extends AppCompatActivity implements PackagesFragment.OnPackagesFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -65,6 +66,11 @@ public class MaterialSelectActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPackageClicked(PackagesContent.PackageItem item) {
+
+    }
+
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
@@ -98,6 +104,10 @@ public class MaterialSelectActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return PackagesFragment.newInstance();
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
