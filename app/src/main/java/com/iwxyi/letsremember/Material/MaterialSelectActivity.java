@@ -1,5 +1,6 @@
 package com.iwxyi.letsremember.Material;
 
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,8 @@ import com.iwxyi.letsremember.R;
 
 public class MaterialSelectActivity extends AppCompatActivity implements
         PackagesFragment.OnPackagesFragmentInteractionListener,
-        SectionsFragment.OnSectionsFragmentInteractionListener {
+        SectionsFragment.OnSectionsFragmentInteractionListener,
+        RememberFragment.OnFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -94,6 +96,11 @@ public class MaterialSelectActivity extends AppCompatActivity implements
         App.setVal("selected_section", section_name);
 
         mViewPager.setCurrentItem(2);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     public static class PlaceholderFragment extends Fragment {
