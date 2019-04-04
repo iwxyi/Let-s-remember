@@ -1,7 +1,5 @@
 package com.iwxyi.letsremember.Material.dummy;
 
-import android.widget.Toast;
-
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.Utils.FileUtil;
@@ -22,9 +20,6 @@ public class SectionsContent {
     static {
         String package_name = App.getVal("selected_package");
         refreshSections(package_name);
-        /*for (int i = 1; i <= COUNT; i++) {
-            addItem(createSectionItem(i));
-        }*/
     }
 
     private static void addItem(SectionItem item) {

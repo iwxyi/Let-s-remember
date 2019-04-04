@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.iwxyi.letsremember.R;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class RememberFragment extends Fragment implements View.OnClickListener {
 
@@ -31,7 +30,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
     private String package_name;
     private String section_name;
 
-    private OnFragmentInteractionListener mListener;
+    private OnRememberFragmentInteractionListener mListener;
 
     private TextView mContentTv;
     private TextView mPositiveTv;
@@ -210,18 +209,18 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onRememberFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnRememberFragmentInteractionListener) {
+            mListener = (OnRememberFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnRememberFragmentInteractionListener");
         }
     }
 
@@ -231,7 +230,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+    public interface OnRememberFragmentInteractionListener {
+        void onRememberFragmentInteraction(Uri uri);
     }
 }

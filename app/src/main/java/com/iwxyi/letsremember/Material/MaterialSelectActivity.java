@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Material.dummy.PackagesContent;
@@ -28,7 +27,7 @@ import com.iwxyi.letsremember.R;
 public class MaterialSelectActivity extends AppCompatActivity implements
         PackagesFragment.OnPackagesFragmentInteractionListener,
         SectionsFragment.OnSectionsFragmentInteractionListener,
-        RememberFragment.OnFragmentInteractionListener {
+        RememberFragment.OnRememberFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -99,7 +98,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onRememberFragmentInteraction(Uri uri) {
 
     }
 
