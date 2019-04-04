@@ -38,7 +38,7 @@ public class SectionsContent {
         if (package_name.equals("")) {
             return ;
         }
-        String package_path = Paths.getLocalPath(package_name+"/");
+        String package_path = Paths.getLocalPath("material/"+package_name+"/");
         File package_file = new File(package_path);
         if (!package_file.exists()) {
             App.toast("记忆包"+package_name+"不存在！");

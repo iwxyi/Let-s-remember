@@ -19,7 +19,7 @@ public class PackagesContent {
     static {
         String last_package = App.getVal("last_package");
         // 遍历文件
-        File file = new File(Paths.getLocalPath(""));
+        File file = new File(Paths.getLocalPath("material"));
         File[] packages = file.listFiles();
         for (int i = 0; i < packages .length; i++) {
             String package_name = packages[i].getName(); // 记忆包的文件夹名称
