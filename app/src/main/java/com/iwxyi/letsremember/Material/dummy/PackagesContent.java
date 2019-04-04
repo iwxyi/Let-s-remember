@@ -23,9 +23,9 @@ public class PackagesContent {
         File[] packages = file.listFiles();
         for (int i = 0; i < packages .length; i++) {
             String package_name = packages[i].getName(); // 记忆包的文件夹名称
-            String detail = "";
+            String detail = "("+getSectinoCount(package_name)+")";
             if (package_name.equals(last_package))
-                detail = "(上次记忆)";
+                detail += "    上次记忆";
             addItem(createPackageItem(i, package_name, detail));
         }
     }
@@ -37,6 +37,17 @@ public class PackagesContent {
 
     private static PackageItem createPackageItem(int position, String package_name, String detail) {
         return new PackageItem(String.valueOf(position), package_name, detail);
+    }
+
+    /**
+     * 获取一个记忆包中章节的数量
+     * @param package_name 记忆包名称
+     */
+    public static int getSectinoCount(String package_name) {
+        String path = Paths.getLocalPath("material/"+package_name);
+        File file = new File(path);
+        File[] sections = file.listFiles();
+        return sections.length;
     }
 
     public static class PackageItem {

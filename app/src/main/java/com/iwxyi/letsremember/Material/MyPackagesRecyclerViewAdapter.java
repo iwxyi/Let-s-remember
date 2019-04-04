@@ -12,11 +12,6 @@ import com.iwxyi.letsremember.R;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PackageItem} and makes a call to the
- * specified {@link PackagesFragment.OnPackagesFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyPackagesRecyclerViewAdapter extends RecyclerView.Adapter<MyPackagesRecyclerViewAdapter.ViewHolder> {
 
     private final List<PackageItem> mValues;
@@ -39,6 +34,7 @@ public class MyPackagesRecyclerViewAdapter extends RecyclerView.Adapter<MyPackag
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
+        holder.mDetailView.setText(mValues.get(position).details);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +57,7 @@ public class MyPackagesRecyclerViewAdapter extends RecyclerView.Adapter<MyPackag
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mDetailView;
         public PackageItem mItem;
 
         public ViewHolder(View view) {
@@ -68,6 +65,7 @@ public class MyPackagesRecyclerViewAdapter extends RecyclerView.Adapter<MyPackag
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mDetailView = (TextView) view.findViewById(R.id.detail);
         }
 
         @Override
