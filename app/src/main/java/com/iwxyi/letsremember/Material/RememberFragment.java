@@ -139,12 +139,12 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
     }
 
     public void initData() {
-        if (mContentTv == null) {
-            return ;
-        }
         chapter_manager = new CardManager(
                 App.getVal("last_package", "index"),
                 App.getVal("last_section", "index"));
+        if (mContentTv == null) {
+            return ;
+        }
         initShowed();
     }
 

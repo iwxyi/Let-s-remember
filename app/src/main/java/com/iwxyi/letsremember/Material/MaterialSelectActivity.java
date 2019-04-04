@@ -1,23 +1,22 @@
 package com.iwxyi.letsremember.Material;
 
+import android.app.ActionBar;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
@@ -33,6 +32,8 @@ public class MaterialSelectActivity extends AppCompatActivity implements
     private PackagesFragment packagesFragment;
     private SectionsFragment sectionsFragment;
     private RememberFragment rememberFragment;
+    private FloatingActionButton fab;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +47,18 @@ public class MaterialSelectActivity extends AppCompatActivity implements
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                mViewPager.setCurrentItem(2);
             }
         });
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("选择记忆包");
     }
 
     @Override
@@ -163,4 +167,51 @@ public class MaterialSelectActivity extends AppCompatActivity implements
             return 3;
         }
     }
+
+    public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+
+            switch (i) {
+                case 0:
+                    if (toolbar == null) {
+                        toolbar = (Toolbar) findViewById(R.id.toolbar);
+                    }
+                    if (toolbar != null) {
+                        toolbar.setTitle("选择记忆包");
+                    }
+                    break;
+                case 1:
+                    fab.show();
+                    if (toolbar == null) {
+                        toolbar = (Toolbar) findViewById(R.id.toolbar);
+                    }
+                    if (toolbar != null) {
+                        toolbar.setTitle(App.getVal("selected_package"));
+                    }
+                    break;
+                case 2:
+                    fab.hide();
+                    if (toolbar == null) {
+                        toolbar = (Toolbar) findViewById(R.id.toolbar);
+                    }
+                    if (toolbar != null) {
+                        toolbar.setTitle(App.getVal("last_section"));
+                    }
+                    break;
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
+        }
+    }
+
 }
