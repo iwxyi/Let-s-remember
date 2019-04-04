@@ -38,6 +38,9 @@ public class SectionsContent {
         if (package_name.equals("")) {
             return ;
         }
+
+        ITEMS.clear();
+        ITEM_MAP.clear();
         String package_path = Paths.getLocalPath("material/"+package_name+"/");
         File package_file = new File(package_path);
         if (!package_file.exists()) {

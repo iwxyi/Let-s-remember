@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
@@ -69,15 +70,14 @@ public class SectionsFragment extends Fragment {
 
     public void refreshSections(String package_name) {
         SectionsContent.refreshSections(package_name);
+        if (global_view instanceof RecyclerView) {
+            RecyclerView recyclerView = (RecyclerView) global_view;
+            recyclerView.setAdapter(new MySectionsRecyclerViewAdapter(SectionsContent.ITEMS, mListener));
+        }
     }
 
     public void refreshSections() {
         refreshSections(App.getVal("selected_package"));
-        if (global_view instanceof RecyclerView) {
-            Context context = global_view.getContext();
-            RecyclerView recyclerView = (RecyclerView) global_view;
-            recyclerView.setAdapter(new MySectionsRecyclerViewAdapter(SectionsContent.ITEMS, mListener));
-        }
     }
 
     @Override

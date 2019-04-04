@@ -30,6 +30,8 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
+    private SectionsFragment sectionsFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,12 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
     public void onPackageClicked(PackagesContent.PackageItem item) {
         String package_name = item.content;
         App.setVal("selected_package", package_name);
+
+        // 刷新 sectionFragment 显示的列表
+        if (sectionsFragment != null) {
+            sectionsFragment.refreshSections(package_name);
+        }
+
         mViewPager.setCurrentItem(1);
     }
 
@@ -119,7 +127,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
                 case 0:
                     return PackagesFragment.newInstance();
                 case 1:
-                    return SectionsFragment.newInstance();
+                    return sectionsFragment = SectionsFragment.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
