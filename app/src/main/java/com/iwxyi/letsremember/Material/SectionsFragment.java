@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Material.dummy.SectionsContent;
 import com.iwxyi.letsremember.Material.dummy.SectionsContent.SectionItem;
@@ -18,7 +19,8 @@ public class SectionsFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnSectionsFragmentInteractionListener mListener;
+    private View global_view;
 
     public SectionsFragment() {
     }
@@ -60,18 +62,32 @@ public class SectionsFragment extends Fragment {
             }
             recyclerView.setAdapter(new MySectionsRecyclerViewAdapter(SectionsContent.ITEMS, mListener));
         }
+
+        global_view = view;
         return view;
     }
 
+    public void refreshSections(String package_name) {
+        SectionsContent.refreshSections(package_name);
+    }
+
+    public void refreshSections() {
+        refreshSections(App.getVal("selected_package"));
+        if (global_view instanceof RecyclerView) {
+            Context context = global_view.getContext();
+            RecyclerView recyclerView = (RecyclerView) global_view;
+            recyclerView.setAdapter(new MySectionsRecyclerViewAdapter(SectionsContent.ITEMS, mListener));
+        }
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnSectionsFragmentInteractionListener) {
+            mListener = (OnSectionsFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnSectionsFragmentInteractionListener");
         }
     }
 
@@ -81,7 +97,7 @@ public class SectionsFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(SectionItem item);
+    public interface OnSectionsFragmentInteractionListener {
+        void onSectionClicked(SectionItem item);
     }
 }

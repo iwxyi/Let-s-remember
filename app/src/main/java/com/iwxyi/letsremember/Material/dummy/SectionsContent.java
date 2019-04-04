@@ -1,5 +1,11 @@
 package com.iwxyi.letsremember.Material.dummy;
 
+import android.widget.Toast;
+
+import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Paths;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +18,11 @@ public class SectionsContent {
     private static final int COUNT = 25;
 
     static {
-        for (int i = 1; i <= COUNT; i++) {
+        String package_name = App.getVal("selected_package");
+        refreshSections(package_name);
+        /*for (int i = 1; i <= COUNT; i++) {
             addItem(createSectionItem(i));
-        }
+        }*/
     }
 
     private static void addItem(SectionItem item) {
@@ -22,17 +30,25 @@ public class SectionsContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static SectionItem createSectionItem(int position) {
-        return new SectionItem(String.valueOf(position), "Item " + position, makeDetails(position));
+    private static SectionItem createSectionItem(int position, String section_name, String detail) {
+        return new SectionItem(String.valueOf(position), section_name, detail);
     }
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
+    public static void refreshSections(String package_name) {
+        if (package_name.equals("")) {
+            return ;
         }
-        return builder.toString();
+        String package_path = Paths.getLocalPath(package_name+"/");
+        File package_file = new File(package_path);
+        if (!package_file.exists()) {
+            App.toast("记忆包"+package_name+"不存在！");
+            return ;
+        }
+        File[] sections = package_file.listFiles();
+        for (int i = 0; i < sections .length; i++) {
+            String section = sections[i].getName();
+            addItem(createSectionItem(i, section, ""));
+        }
     }
 
     public static class SectionItem {

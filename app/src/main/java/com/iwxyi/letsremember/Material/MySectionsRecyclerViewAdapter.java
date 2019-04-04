@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.iwxyi.letsremember.Material.SectionsFragment.OnListFragmentInteractionListener;
+import com.iwxyi.letsremember.Material.SectionsFragment.OnSectionsFragmentInteractionListener;
 import com.iwxyi.letsremember.Material.dummy.SectionsContent.SectionItem;
 import com.iwxyi.letsremember.R;
 
@@ -15,9 +15,9 @@ import java.util.List;
 public class MySectionsRecyclerViewAdapter extends RecyclerView.Adapter<MySectionsRecyclerViewAdapter.ViewHolder> {
 
     private final List<SectionItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final SectionsFragment.OnSectionsFragmentInteractionListener mListener;
 
-    public MySectionsRecyclerViewAdapter(List<SectionItem> items, OnListFragmentInteractionListener listener) {
+    public MySectionsRecyclerViewAdapter(List<SectionItem> items, OnSectionsFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -39,7 +39,7 @@ public class MySectionsRecyclerViewAdapter extends RecyclerView.Adapter<MySectio
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onSectionClicked(holder.mItem);
                 }
             }
         });

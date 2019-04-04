@@ -21,9 +21,11 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Material.dummy.PackagesContent;
+import com.iwxyi.letsremember.Material.dummy.SectionsContent;
 import com.iwxyi.letsremember.R;
 
-public class MaterialSelectActivity extends AppCompatActivity implements PackagesFragment.OnPackagesFragmentInteractionListener {
+public class MaterialSelectActivity extends AppCompatActivity implements PackagesFragment.OnPackagesFragmentInteractionListener,
+        SectionsFragment.OnSectionsFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -75,6 +77,11 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
         mViewPager.setCurrentItem(1);
     }
 
+    @Override
+    public void onSectionClicked(SectionsContent.SectionItem item) {
+
+    }
+
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
@@ -110,8 +117,9 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    Toast.makeText(MaterialSelectActivity.this, "创建页面1", Toast.LENGTH_SHORT).show();
                     return PackagesFragment.newInstance();
+                case 1:
+                    return SectionsFragment.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
