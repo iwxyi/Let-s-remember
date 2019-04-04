@@ -84,8 +84,20 @@ public class SettingsUtil {
         return sp.getString(key, "");
     }
 
+    public static String getVal(Context ct, String key, String def) {
+        if (ct == null) {
+            return def;
+        }
+        SharedPreferences sp = ct.getSharedPreferences("config", 0);
+        return sp.getString(key, def);
+    }
+
     public static String getStr(Context ct, String key) {
         return getVal(ct, key);
+    }
+
+    public static String getStr(Context ct, String key, String  def) {
+        return getVal(ct, key, def);
     }
 
     /**
@@ -102,6 +114,14 @@ public class SettingsUtil {
         return sp.getInt(key, 0);
     }
 
+    public static int getInt(Context ct, String key, int def) {
+        if (ct == null) {
+            return def;
+        }
+        SharedPreferences sp = ct.getSharedPreferences("config", 0);
+        return sp.getInt(key, def);
+    }
+
     /**
      * 读取设置
      * @param ct 上下文
@@ -114,6 +134,14 @@ public class SettingsUtil {
         }
         SharedPreferences sp = ct.getSharedPreferences("config", 0);
         return sp.getLong(key, 0);
+    }
+
+    public static long getLong(Context ct, String key, long def) {
+        if (ct == null) {
+            return 0;
+        }
+        SharedPreferences sp = ct.getSharedPreferences("config", 0);
+        return sp.getLong(key, def);
     }
 
     /**
@@ -130,6 +158,14 @@ public class SettingsUtil {
         return sp.getFloat(key, 0);
     }
 
+    public static float getFloat(Context ct, String key, float def) {
+        if (ct == null) {
+            return 0;
+        }
+        SharedPreferences sp = ct.getSharedPreferences("config", 0);
+        return sp.getFloat(key, def);
+    }
+
     /**
      * 读取设置
      * @param ct 上下文
@@ -142,6 +178,14 @@ public class SettingsUtil {
         }
         SharedPreferences sp = ct.getSharedPreferences("config", 0);
         return sp.getBoolean(key, false);
+    }
+
+    public static boolean getBoolean(Context ct, String key, boolean def) {
+        if (ct == null) {
+            return false;
+        }
+        SharedPreferences sp = ct.getSharedPreferences("config", 0);
+        return sp.getBoolean(key, def);
     }
 
 }

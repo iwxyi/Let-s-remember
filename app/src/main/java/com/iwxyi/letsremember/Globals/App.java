@@ -54,6 +54,10 @@ public class App extends Application {
         return SettingsUtil.getVal(context, key);
     }
 
+    public static String getVal(String key, String def) {
+        return SettingsUtil.getVal(context, key, def);
+    }
+
     public static void setVal(String key, String val) {
         SettingsUtil.setVal(context, key, val);
     }
@@ -78,15 +82,31 @@ public class App extends Application {
         return SettingsUtil.getInt(context, key);
     }
 
+    public static int getInt(String key, int def) {
+        return SettingsUtil.getInt(context, key, def);
+    }
+
     public static long getLong(String key) {
         return SettingsUtil.getLong(context, key);
+    }
+
+    public static long getLong(String key, long def) {
+        return SettingsUtil.getLong(context, key, def);
     }
 
     public static float getFloat(String key) {
         return SettingsUtil.getFloat(context, key);
     }
 
+    public static float getFloat(String key, float def) {
+        return SettingsUtil.getFloat(context, key, def);
+    }
+
     public static boolean getBoolean(String key) {
         return SettingsUtil.getBoolean(context, key);
+    }
+
+    public static boolean getBoolean(String key, boolean def) {
+        return SettingsUtil.getBoolean(context, key, def);
     }
 }
