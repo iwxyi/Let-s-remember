@@ -53,7 +53,7 @@ public class SectionsContent {
             }
             String detail = "(" + getCardCount(package_name, section) + ")";
             if (section.equals(last_section)) {
-                detail += "    上次使用";
+                detail += "    上次记忆";
             }
             addItem(createSectionItem(i+1, section, detail));
         }

@@ -76,6 +76,10 @@ public class MaterialSelectActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * 选择记忆包
+     * @param item
+     */
     @Override
     public void onPackageClicked(PackagesContent.PackageItem item) {
         String package_name = item.content;
@@ -89,10 +93,19 @@ public class MaterialSelectActivity extends AppCompatActivity implements
         mViewPager.setCurrentItem(1);
     }
 
+    /**
+     * 选择记忆包中的某个章节
+     * @param item
+     */
     @Override
     public void onSectionClicked(SectionsContent.SectionItem item) {
         String section_name = item.content;
         App.setVal("selected_section", section_name);
+
+        App.setVal("last_package", App.getVal("selected_package"));
+        App.setVal("last_section", section_name);
+
+        rememberFragment.initData();
 
         mViewPager.setCurrentItem(2);
     }

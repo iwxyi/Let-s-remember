@@ -37,23 +37,33 @@ public class CardManager {
         index = App.getInt("card:"+pack_name+"/"+ sect_name);
         if (card_list.size() == 0) {
             App.toast("找不到内容："+pack_name+"/"+ sect_name);
+            card = new CardBean("");
             return ;
         }
-        if (index >= card_list.size()) {
+        if (index < 0 || index >= card_list.size()) {
             index = 0;
         }
         card = new CardBean(card_list.get(index));
     }
 
     public String getContent() {
+        if (card == null) {
+            return "";
+        }
         return card.getContent();
     }
 
     public String getDescription() {
+        if (card == null) {
+            return "";
+        }
         return card.getDescription();
     }
 
     public ArrayList<CardBean.PlaceBean> getPlaces() {
+        if (card == null) {
+            return new ArrayList<CardBean.PlaceBean>();
+        }
         return card.getPlaces();
     }
 
@@ -84,6 +94,9 @@ public class CardManager {
      * 如果和上次背诵时间差距小于1分钟（避免来回切换），则保存
      */
     public void addRememberTimestamp() {
+        if (card_list.size() == 0) {
+            return ;
+        }
         int timestamp = App.getTimestamp();
         card.addRememberTimestamp(timestamp);
         saveModify();

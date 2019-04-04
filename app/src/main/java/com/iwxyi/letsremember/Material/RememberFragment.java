@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
 
 import java.util.ArrayList;
@@ -137,8 +138,13 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-    private void initData() {
-        chapter_manager = new CardManager("index", "index");
+    public void initData() {
+        if (mContentTv == null) {
+            return ;
+        }
+        chapter_manager = new CardManager(
+                App.getVal("last_package", "index"),
+                App.getVal("last_section", "index"));
         initShowed();
     }
 
