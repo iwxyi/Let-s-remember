@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Material.dummy.PackagesContent;
 import com.iwxyi.letsremember.R;
 
@@ -68,7 +69,9 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
 
     @Override
     public void onPackageClicked(PackagesContent.PackageItem item) {
-
+        String package_name = item.content;
+        App.setVal("selected_package", package_name);
+        mViewPager.setCurrentItem(1);
     }
 
     public static class PlaceholderFragment extends Fragment {
