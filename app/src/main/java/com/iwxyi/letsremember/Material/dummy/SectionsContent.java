@@ -4,6 +4,8 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Utils.FileUtil;
+import com.iwxyi.letsremember.Utils.StringUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,6 +43,7 @@ public class SectionsContent {
 
         ITEMS.clear();
         ITEM_MAP.clear();
+        String last_section = App.getVal("last_section");
         String package_path = Paths.getLocalPath("material/"+package_name+"/");
         File package_file = new File(package_path);
         if (!package_file.exists()) {
@@ -53,8 +56,19 @@ public class SectionsContent {
             if (section.endsWith(".txt")) {
                 section = section.substring(0, section.length()-4);
             }
-            addItem(createSectionItem(i, section, ""));
+            String detail = "(" + getCardCount(package_name, section) + ")";
+            if (section.equals(last_section)) {
+                detail += "    上次使用";
+            }
+            addItem(createSectionItem(i, section, detail));
         }
+    }
+
+    public static int getCardCount(String package_name, String section_name) {
+        String path = Paths.getLocalPath("material/" + package_name + "/" + section_name + ".txt");
+        String content = FileUtil.readTextVals(path);
+        ArrayList<String> cards = StringUtil.getXmls(content, "card");
+        return cards.size();
     }
 
     public static class SectionItem {

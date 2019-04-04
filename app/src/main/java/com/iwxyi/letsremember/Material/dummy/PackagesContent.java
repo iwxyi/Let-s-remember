@@ -14,8 +14,6 @@ public class PackagesContent {
     public static final List<PackageItem> ITEMS = new ArrayList<PackageItem>();
     public static final Map<String, PackageItem> ITEM_MAP = new HashMap<String, PackageItem>();
 
-    private static final int COUNT = 25;
-
     static {
         String last_package = App.getVal("last_package");
         // 遍历文件
