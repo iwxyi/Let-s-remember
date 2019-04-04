@@ -1,16 +1,14 @@
 package com.iwxyi.letsremember.Material.dummy;
 
+import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Paths;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
- */
 public class PackagesContent {
 
     public static final List<PackageItem> ITEMS = new ArrayList<PackageItem>();
@@ -19,8 +17,16 @@ public class PackagesContent {
     private static final int COUNT = 25;
 
     static {
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
+        String last_package = App.getVal("last_package");
+        // 遍历文件
+        File file = new File(Paths.getLocalPath(""));
+        File[] packages = file.listFiles();
+        for (int i = 0; i < packages .length; i++) {
+            String package_name = packages[i].getName(); // 记忆包的文件夹名称
+            String detail = "";
+            if (package_name.equals(last_package))
+                detail = "(上次记忆)";
+            addItem(createDummyItem(i, package_name, detail));
         }
     }
 
@@ -29,17 +35,8 @@ public class PackagesContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static PackageItem createDummyItem(int position) {
-        return new PackageItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+    private static PackageItem createDummyItem(int position, String package_name, String detail) {
+        return new PackageItem(String.valueOf(position), package_name, detail);
     }
 
     public static class PackageItem {
