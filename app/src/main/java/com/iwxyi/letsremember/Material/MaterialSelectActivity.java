@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Material.dummy.PackagesContent;
@@ -109,6 +110,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
+                    Toast.makeText(MaterialSelectActivity.this, "创建页面1", Toast.LENGTH_SHORT).show();
                     return PackagesFragment.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);

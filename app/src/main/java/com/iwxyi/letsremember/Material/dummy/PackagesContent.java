@@ -26,7 +26,7 @@ public class PackagesContent {
             String detail = "";
             if (package_name.equals(last_package))
                 detail = "(上次记忆)";
-            addItem(createDummyItem(i, package_name, detail));
+            addItem(createPackageItem(i, package_name, detail));
         }
     }
 
@@ -35,7 +35,7 @@ public class PackagesContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static PackageItem createDummyItem(int position, String package_name, String detail) {
+    private static PackageItem createPackageItem(int position, String package_name, String detail) {
         return new PackageItem(String.valueOf(position), package_name, detail);
     }
 
