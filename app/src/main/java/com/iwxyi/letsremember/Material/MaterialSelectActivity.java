@@ -24,13 +24,16 @@ import com.iwxyi.letsremember.Material.dummy.PackagesContent;
 import com.iwxyi.letsremember.Material.dummy.SectionsContent;
 import com.iwxyi.letsremember.R;
 
-public class MaterialSelectActivity extends AppCompatActivity implements PackagesFragment.OnPackagesFragmentInteractionListener,
+public class MaterialSelectActivity extends AppCompatActivity implements
+        PackagesFragment.OnPackagesFragmentInteractionListener,
         SectionsFragment.OnSectionsFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
+    private PackagesFragment packagesFragment;
     private SectionsFragment sectionsFragment;
+    private RememberFragment rememberFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +90,10 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
 
     @Override
     public void onSectionClicked(SectionsContent.SectionItem item) {
+        String section_name = item.content;
+        App.setVal("selected_section", section_name);
 
+        mViewPager.setCurrentItem(2);
     }
 
     public static class PlaceholderFragment extends Fragment {
@@ -125,9 +131,12 @@ public class MaterialSelectActivity extends AppCompatActivity implements Package
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return PackagesFragment.newInstance();
+                    return packagesFragment = PackagesFragment.newInstance();
                 case 1:
                     return sectionsFragment = SectionsFragment.newInstance();
+                case 2:
+                    return rememberFragment = RememberFragment.newInstance(
+                            App.getVal("selected_package"), App.getVal("selected_section"));
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
