@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.Material.dummy.PackagesContent;
-import com.iwxyi.letsremember.Material.dummy.PackagesContent.PackageItem;
+import com.iwxyi.letsremember.Material.PackagesContent.PackageItem;
 
 public class PackagesFragment extends Fragment {
 

@@ -9,12 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.Material.dummy.SectionsContent;
-import com.iwxyi.letsremember.Material.dummy.SectionsContent.SectionItem;
+import com.iwxyi.letsremember.Material.SectionsContent.SectionItem;
 
 public class SectionsFragment extends Fragment {
 

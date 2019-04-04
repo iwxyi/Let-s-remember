@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.Material.PackagesFragment.OnPackagesFragmentInteractionListener;
-import com.iwxyi.letsremember.Material.dummy.PackagesContent.PackageItem;
+import com.iwxyi.letsremember.Material.PackagesContent.PackageItem;
 import com.iwxyi.letsremember.R;
 
 import java.util.List;

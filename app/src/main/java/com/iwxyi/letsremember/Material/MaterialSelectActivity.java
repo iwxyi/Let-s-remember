@@ -20,8 +20,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.Globals.App;
-import com.iwxyi.letsremember.Material.dummy.PackagesContent;
-import com.iwxyi.letsremember.Material.dummy.SectionsContent;
 import com.iwxyi.letsremember.R;
 
 public class MaterialSelectActivity extends AppCompatActivity implements

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.Material.SectionsFragment.OnSectionsFragmentInteractionListener;
-import com.iwxyi.letsremember.Material.dummy.SectionsContent.SectionItem;
+import com.iwxyi.letsremember.Material.SectionsContent.SectionItem;
 import com.iwxyi.letsremember.R;
 
 import java.util.List;

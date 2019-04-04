@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.Material.dummy;
+package com.iwxyi.letsremember.Material;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
