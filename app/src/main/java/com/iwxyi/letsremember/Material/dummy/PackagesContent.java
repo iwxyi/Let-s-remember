@@ -24,7 +24,7 @@ public class PackagesContent {
             String detail = "("+getSectinoCount(package_name)+")";
             if (package_name.equals(last_package))
                 detail += "    上次记忆";
-            addItem(createPackageItem(i, package_name, detail));
+            addItem(createPackageItem(i+1, package_name, detail));
         }
     }
 

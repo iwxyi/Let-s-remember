@@ -60,7 +60,7 @@ public class SectionsContent {
             if (section.equals(last_section)) {
                 detail += "    上次使用";
             }
-            addItem(createSectionItem(i, section, detail));
+            addItem(createSectionItem(i+1, section, detail));
         }
     }
 
