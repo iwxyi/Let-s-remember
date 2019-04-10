@@ -13,20 +13,12 @@ import java.util.Map;
  */
 public class WorldRankContent {
 
-    /**
-     * An array of sample (dummy) items.
-     */
     public static final List<WorldRankItem> ITEMS = new ArrayList<WorldRankItem>();
-
-    /**
-     * A map of sample (dummy) items, by ID.
-     */
     public static final Map<String, WorldRankItem> ITEM_MAP = new HashMap<String, WorldRankItem>();
 
     private static final int COUNT = 25;
 
     static {
-        // Add some sample items.
         for (int i = 1; i <= COUNT; i++) {
             addItem(createDummyItem(i));
         }
@@ -50,9 +42,6 @@ public class WorldRankContent {
         return builder.toString();
     }
 
-    /**
-     * A dummy item representing a piece of username.
-     */
     public static class WorldRankItem {
         public String id = "";
         public int rank = 0;

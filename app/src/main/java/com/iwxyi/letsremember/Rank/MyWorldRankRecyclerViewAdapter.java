@@ -6,16 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.WorldRankFragment.OnListFragmentInteractionListener;
 import com.iwxyi.letsremember.Rank.dummy.WorldRankContent.WorldRankItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link WorldRankItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorldRankRecyclerViewAdapter.ViewHolder> {
 
     private final List<WorldRankItem> mValues;

@@ -85,7 +85,7 @@ public class RankActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_rank2, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            textView.setText("此功能暂未开放，敬请期待");
             return rootView;
         }
     }
@@ -98,12 +98,16 @@ public class RankActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return WorldRankFragment.newInstance(1);
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 }

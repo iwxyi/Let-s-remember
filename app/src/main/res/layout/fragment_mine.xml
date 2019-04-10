@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <Button
             android:text="好友圈"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"/>
 
-        <TextView
+        <Button
             android:text="好友排行"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"/>
 
-        <TextView
+        <Button
+            android:id="@+id/btn_world_rank"
             android:text="世界排行"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"/>
 
-        <TextView
+        <Button
             android:text="周边商城"
             android:gravity="center"
             android:textSize="@dimen/square_fontSize"
