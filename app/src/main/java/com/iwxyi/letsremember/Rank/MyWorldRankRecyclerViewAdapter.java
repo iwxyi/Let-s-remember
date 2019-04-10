@@ -33,6 +33,7 @@ public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorld
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).username);
+        holder.mDetailView.setText(mValues.get(position).details);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +56,7 @@ public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorld
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mDetailView;
         public WorldRankItem mItem;
 
         public ViewHolder(View view) {
@@ -62,6 +64,7 @@ public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorld
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mDetailView = view.findViewById(R.id.detail);
         }
 
         @Override
