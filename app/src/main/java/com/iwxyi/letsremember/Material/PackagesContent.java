@@ -15,6 +15,13 @@ public class PackagesContent {
     public static final Map<String, PackageItem> ITEM_MAP = new HashMap<String, PackageItem>();
 
     static {
+        refreshPackages();
+    }
+
+    public static void refreshPackages() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
+
         String last_package = App.getVal("last_package");
         // 遍历文件
         File file = new File(Paths.getLocalPath("material"));
