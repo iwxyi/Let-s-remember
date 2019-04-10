@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.Rank.WorldRankFragment.OnListFragmentInteractionListener;
 import com.iwxyi.letsremember.Rank.dummy.WorldRankContent.WorldRankItem;
 
 import java.util.List;
@@ -15,9 +14,9 @@ import java.util.List;
 public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorldRankRecyclerViewAdapter.ViewHolder> {
 
     private final List<WorldRankItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final WorldRankFragment.OnWorldRankInteractionListener mListener;
 
-    public MyWorldRankRecyclerViewAdapter(List<WorldRankItem> items, OnListFragmentInteractionListener listener) {
+    public MyWorldRankRecyclerViewAdapter(List<WorldRankItem> items, WorldRankFragment.OnWorldRankInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -41,7 +40,7 @@ public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorld
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onWorldRankInteraction(holder.mItem);
                 }
             }
         });

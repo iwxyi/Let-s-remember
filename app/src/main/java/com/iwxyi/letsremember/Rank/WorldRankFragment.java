@@ -13,11 +13,11 @@ import android.view.ViewGroup;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.dummy.WorldRankContent.WorldRankItem;
 
-public class WorldRankFragment extends Fragment {
+public class WorldRankFragment extends Fragment  {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnWorldRankInteractionListener mListener;
 
     public WorldRankFragment() {
     }
@@ -62,11 +62,11 @@ public class WorldRankFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnWorldRankInteractionListener) {
+            mListener = (OnWorldRankInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnWorldRankInteractionListener");
         }
     }
 
@@ -76,7 +76,7 @@ public class WorldRankFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(WorldRankItem item);
+    public interface OnWorldRankInteractionListener {
+        void onWorldRankInteraction(WorldRankItem item);
     }
 }

@@ -19,8 +19,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.R;
+import com.iwxyi.letsremember.Rank.dummy.WorldRankContent;
 
-public class RankActivity extends AppCompatActivity {
+public class RankActivity extends AppCompatActivity implements WorldRankFragment.OnWorldRankInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -64,6 +65,11 @@ public class RankActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onWorldRankInteraction(WorldRankContent.WorldRankItem item) {
+
     }
 
     public static class PlaceholderFragment extends Fragment {
