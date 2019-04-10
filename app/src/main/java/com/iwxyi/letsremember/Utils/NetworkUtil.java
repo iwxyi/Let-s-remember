@@ -55,7 +55,7 @@ public class NetworkUtil {
             if (code == 200) {
                 InputStream in = urlConnection.getInputStream();
                 String content = StreamUtil.readStream(in);
-                Log.i("====content", content);
+                Log.i("====username", content);
                 return content;
             }
         } catch (IOException e) {

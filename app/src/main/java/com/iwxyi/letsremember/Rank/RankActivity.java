@@ -1,4 +1,4 @@
-package com.iwxyi.letsremember.Users;
+package com.iwxyi.letsremember.Rank;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;

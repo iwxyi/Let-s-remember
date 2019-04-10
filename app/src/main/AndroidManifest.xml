@@ -40,7 +40,7 @@
             android:label="@string/title_activity_material_select"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Users.RankActivity"
+            android:name=".Rank.RankActivity"
             android:label="@string/title_activity_rank"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
