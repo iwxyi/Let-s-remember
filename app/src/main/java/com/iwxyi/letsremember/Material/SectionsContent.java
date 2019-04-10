@@ -33,7 +33,9 @@ public class SectionsContent {
 
     public static void refreshSections(String package_name) {
         if (package_name.equals("")) {
-            return ;
+            package_name = App.getVal("last_package");
+            if (package_name.isEmpty())
+                return ;
         }
 
         ITEMS.clear();

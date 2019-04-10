@@ -19,14 +19,22 @@
             android:orientation="horizontal">
 
             <Spinner
+                android:id="@+id/sp_package"
                 android:tooltipText="记忆包"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_height="wrap_content" />
 
             <Spinner
+                android:id="@+id/sp_section"
                 android:tooltipText="章节"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/sp_card"
+                android:tooltipText="卡片"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
