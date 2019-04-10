@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.iwxyi.letsremember.R;
 
-public class TypeinFragment extends Fragment {
+public class NavTypeinFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

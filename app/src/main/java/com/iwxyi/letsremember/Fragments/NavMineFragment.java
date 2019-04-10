@@ -12,12 +12,12 @@ import android.widget.Button;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.RankActivity;
 
-public class MineFragment extends Fragment implements View.OnClickListener {
+public class NavMineFragment extends Fragment implements View.OnClickListener {
 
     private Button mWorldRankBtn;
 
-    public static MineFragment newInstance(String param1, String param2) {
-        MineFragment fragment = new MineFragment();
+    public static NavMineFragment newInstance(String param1, String param2) {
+        NavMineFragment fragment = new NavMineFragment();
         return fragment;
     }
 

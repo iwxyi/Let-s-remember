@@ -10,9 +10,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.iwxyi.letsremember.Fragments.MineFragment;
-import com.iwxyi.letsremember.Fragments.HomeFragment;
-import com.iwxyi.letsremember.Fragments.TypeinFragment;
+import com.iwxyi.letsremember.Fragments.NavMineFragment;
+import com.iwxyi.letsremember.Fragments.NavHomeFragment;
+import com.iwxyi.letsremember.Fragments.NavTypeinFragment;
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
@@ -22,9 +22,9 @@ import com.iwxyi.letsremember.Utils.FileUtil;
 
 public class MainActivity extends AppCompatActivity {
 
-    private HomeFragment homeFragment;
-    private TypeinFragment typeinFragment;
-    private MineFragment groupFragment;
+    private NavHomeFragment homeFragment;
+    private NavTypeinFragment typeinFragment;
+    private NavMineFragment groupFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     if (homeFragment == null) {
-                        homeFragment = new HomeFragment();
+                        homeFragment = new NavHomeFragment();
                         ft.add(R.id.frame_layout, homeFragment, "home");
                     } else {
                         ft.show(homeFragment);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_typein:
                     if (typeinFragment == null) {
-                        typeinFragment = new TypeinFragment();
+                        typeinFragment = new NavTypeinFragment();
                         ft.add(R.id.frame_layout, typeinFragment, "typein");
                     } else {
                         ft.show(typeinFragment);
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_mine:
                     if (groupFragment == null) {
-                        groupFragment = new MineFragment();
+                        groupFragment = new NavMineFragment();
                         ft.add(R.id.frame_layout, groupFragment, "group");
                     } else {
                         ft.show(groupFragment);
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        homeFragment = new HomeFragment();
+        homeFragment = new NavHomeFragment();
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.frame_layout, homeFragment, "home").commit();
     }

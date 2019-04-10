@@ -22,7 +22,7 @@ import com.iwxyi.letsremember.Utils.InputDialog;
 import com.iwxyi.letsremember.Utils.StringCallback;
 import com.iwxyi.letsremember.Views.RoundImageView;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class NavHomeFragment extends Fragment implements View.OnClickListener {
 
     private Button mStartRememberBtn;
     private Button mMyTypeinBtn;
