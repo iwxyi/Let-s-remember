@@ -25,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RememberActivity" />
         <activity android:name=".TypeinActivity" />
         <activity android:name=".Users.LoginActivity" />
         <activity
@@ -39,6 +38,10 @@
         <activity
             android:name=".Material.MaterialSelectActivity"
             android:label="@string/title_activity_material_select"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Users.RankActivity"
+            android:label="@string/title_activity_rank"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

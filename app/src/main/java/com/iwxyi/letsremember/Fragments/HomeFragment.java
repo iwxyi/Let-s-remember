@@ -15,7 +15,6 @@ import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Material.MaterialSelectActivity;
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.RememberActivity;
 import com.iwxyi.letsremember.TypeinActivity;
 import com.iwxyi.letsremember.Users.LoginActivity;
 import com.iwxyi.letsremember.Users.PersonActivity;
@@ -80,7 +79,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.btn_start_remember:
-//                startActivity(new Intent(getContext(), RememberActivity.class));
                 startActivity(new Intent(getContext(), MaterialSelectActivity.class));
                 break;
             case R.id.btn_my_typein:
