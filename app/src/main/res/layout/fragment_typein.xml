@@ -10,6 +10,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--记忆包和章节-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/border_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:tooltipText="记忆包"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+
+            <Spinner
+                android:tooltipText="章节"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout>
+
         <!--录入框-->
         <EditText
             android:id="@+id/et_typein"
@@ -31,6 +51,7 @@
             <Button
                 android:id="@+id/btn_my_typein"
                 android:text="我的录入帖"
+                android:background="@drawable/textview_border"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:minHeight="90dp"
@@ -41,6 +62,7 @@
             <Button
                 android:id="@+id/btn_integral"
                 android:text="积分：0"
+                android:background="@drawable/textview_border"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:minHeight="90dp"
@@ -58,6 +80,7 @@
             <Button
                 android:id="@+id/btn_balance"
                 android:text="余额"
+                android:background="@drawable/textview_border"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:minHeight="90dp"
@@ -68,6 +91,7 @@
             <Button
                 android:id="@+id/btn_withdrawal"
                 android:text="提现"
+                android:background="@drawable/textview_border"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:minHeight="90dp"

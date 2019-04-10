@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.iwxyi.letsremember.R;
 
+import java.util.ArrayList;
+
 public class NavTypeinFragment extends Fragment {
 
     @Override
