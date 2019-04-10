@@ -36,11 +36,12 @@ public class CardManager {
         card_list = StringUtil.getXmls(full_text, "card");
         index = App.getInt("card:"+pack_name+"/"+ sect_name);
         if (card_list.size() == 0) {
-            App.toast("找不到内容："+pack_name+"/"+ sect_name);
+            App.err("找不到内容："+pack_name+"/"+ sect_name);
             card = new CardBean("");
             return ;
         }
         if (index < 0 || index >= card_list.size()) {
+            App.err("记忆卡片索引出错" + index);
             index = 0;
         }
         card = new CardBean(card_list.get(index));

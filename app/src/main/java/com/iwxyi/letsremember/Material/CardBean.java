@@ -35,7 +35,7 @@ public class CardBean extends StringUtil {
         places.clear();
         reads.clear();
 
-        content = getXml(str, "username").trim();
+        content = getXml(str, "content").trim();
         description = getXml(str, "description").trim();
         label = getXml(str, "label").trim();
 
@@ -78,7 +78,7 @@ public class CardBean extends StringUtil {
         if (reads_build.length() > 0)
             reads_build = new StringBuilder(reads_build.substring(0, reads_build.length()-1));
 
-        all += toXml(content, "username")
+        all += toXml(content, "content")
                         + toXml(description, "description")
                         + toXml(label, "label")
                         + toXml(places_build.toString(), "hides")

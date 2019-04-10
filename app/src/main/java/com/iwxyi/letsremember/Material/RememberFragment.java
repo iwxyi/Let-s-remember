@@ -149,6 +149,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initShowed() {
+        App.deb("initShowed():"+chapter_manager.getContent());
         if (positive) {
             mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
         } else {
