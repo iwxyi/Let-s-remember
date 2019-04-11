@@ -48,6 +48,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
     private boolean cards_changed = false; // 当前章节是否已经进行了改变
     private String cards_left;  // 当前章节左边的文本
     private String cards_right; // 当前章节右边的文本
+    private ArrayAdapter<String> card_adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -151,6 +152,14 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
                 String path = "material/"+current_package+"/"+current_section+".txt";
                 FileUtil.writeTextVals(path, full);
                 cards_changed = true;
+
+                // 保存下拉列表框的内容（不是很必要，会损失性能）
+                String old_title = card_names.get(current_card_index);
+                String new_title = ""+(current_card_index+1)+". "+getContentTitle(card_content);
+                if (!old_title.equals(new_title)) {
+                    card_names.set(current_card_index, new_title);
+                    card_adapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -266,7 +275,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
             title = getContentTitle(title);
             card_names.add("" + (i + 1) + ". " + title);
         }
-        ArrayAdapter<String> card_adapter = new ArrayAdapter<>
+        card_adapter = new ArrayAdapter<>
                 (getContext(), android.R.layout.simple_spinner_item, card_names);
         mCardSp.setAdapter(card_adapter);
 
