@@ -68,7 +68,7 @@ public class SectionsFragment extends Fragment {
 
     public void refreshSections(String package_name) {
         SectionsContent.refreshSections(package_name);
-        if (global_view instanceof RecyclerView) {
+        if (global_view != null && global_view instanceof RecyclerView) {
             RecyclerView recyclerView = (RecyclerView) global_view;
             recyclerView.setAdapter(new MySectionsRecyclerViewAdapter(SectionsContent.ITEMS, mListener));
         }

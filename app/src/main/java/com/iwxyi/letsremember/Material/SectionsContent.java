@@ -40,6 +40,7 @@ public class SectionsContent {
 
         ITEMS.clear();
         ITEM_MAP.clear();
+
         String last_section = App.getVal("last_section");
         String package_path = Paths.getLocalPath("material/"+package_name+"/");
         File package_file = new File(package_path);

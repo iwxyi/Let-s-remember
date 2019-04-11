@@ -19,6 +19,7 @@ public class CardsFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnCardsFragmentInteractionListener mListener;
+    private View global_view;
 
     public CardsFragment() {
     }
@@ -60,11 +61,16 @@ public class CardsFragment extends Fragment {
             }
             recyclerView.setAdapter(new MyCardsRecyclerViewAdapter(CardsContent.ITEMS, mListener));
         }
+        global_view = view;
         return view;
     }
 
     public void refreshCards(String pack, String sect) {
         CardsContent.refreshCards(pack, sect);
+        if (global_view != null && global_view instanceof RecyclerView) {
+            RecyclerView recyclerView = (RecyclerView) global_view;
+            recyclerView.setAdapter(new MyCardsRecyclerViewAdapter(CardsContent.ITEMS, mListener));
+        }
     }
 
     public void refreshCards() {

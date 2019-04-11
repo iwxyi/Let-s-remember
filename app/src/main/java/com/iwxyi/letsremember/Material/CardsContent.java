@@ -1,6 +1,9 @@
 package com.iwxyi.letsremember.Material;
 
 import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Utils.FileUtil;
+import com.iwxyi.letsremember.Utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,13 +14,12 @@ public class CardsContent {
 
     public static final List<CardItem> ITEMS = new ArrayList<CardItem>();
     public static final Map<String, CardItem> ITEM_MAP = new HashMap<String, CardItem>();
+    public static int index = 0; // 当前卡片的位置索引
 
     private static final int COUNT = 25;
 
     static {
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
-        }
+
     }
 
     public static void refreshCards() {
@@ -30,7 +32,49 @@ public class CardsContent {
     }
 
     public static void refreshCards(String pack, String sect) {
+        if (pack.isEmpty()) {
+            pack = App.getVal("last_pack");
+            if (pack.isEmpty()) {
+                return ;
+            }
+        }
+        if (sect.isEmpty()) {
+            sect = App.getVal("last_sect");
+            if (sect.isEmpty()) {
+                return ;
+            }
+        }
 
+        ITEMS.clear();
+        ITEM_MAP.clear();
+
+        String last_card = App.getVal("last_card");
+        String path = Paths.getLocalPath("material/"+pack+"/"+sect+".txt");
+        String text = FileUtil.readTextVals(path);
+        ArrayList<String> cards_str = StringUtil.getXmls(text, "card");
+        for (int i = 0; i < cards_str .size(); i++) {
+            String name = StringUtil.getXml(cards_str.get(i), "name");
+            String detail = "";
+            if (i == index)
+                detail = "    当前";
+            addItem(createCardItem(i, detail, detail));
+        }
+    }
+
+    /**
+     * 刷新位置列表，cards的下标索引
+     * @param x
+     */
+    public static void setIndex(int x) {
+        if (index > 0 && index < ITEMS.size()) {
+            CardItem item = ITEMS.get(index);
+            item.details = "";
+        }
+        index = x;
+        if (index > 0 && index < ITEMS.size()) {
+            CardItem item = ITEMS.get(index);
+            item.details = "    当前";
+        }
     }
 
     private static void addItem(CardItem item) {
@@ -38,23 +82,14 @@ public class CardsContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static CardItem createDummyItem(int position) {
-        return new CardItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+    private static CardItem createCardItem(int position, String card_name, String detail) {
+        return new CardItem(String.valueOf(position), card_name, detail);
     }
 
     public static class CardItem {
         public final String id;
         public final String content;
-        public final String details;
+        public String details;
 
         public CardItem(String id, String content, String details) {
             this.id = id;
