@@ -213,7 +213,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
                 case 1:
                     fab.show();
                     if (toolbar != null) {
-                        toolbar.setTitle(App.getVal("selected_package"));
+                        toolbar.setTitle("记忆包："+App.getVal("selected_package"));
                     }
                     break;
                 case 2:
@@ -225,7 +225,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
                 case 3:
                     fab.hide();
                     if (toolbar != null) {
-                        toolbar.setTitle(App.getVal("selected_section"));
+                        toolbar.setTitle("章节："+App.getVal("selected_section"));
                     }
                     if (cardsFragment != null) {
                         cardsFragment.refreshCards(); // 切换时刷新列表
