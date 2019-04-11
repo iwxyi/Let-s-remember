@@ -1,5 +1,12 @@
 package com.iwxyi.letsremember.Globals;
 
+/**
+ * @Author 命燃芯乂
+ * @Update 2019.4.10
+ * @更新内容
+ * - 添加 err() 方法
+ */
+
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;

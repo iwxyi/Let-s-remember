@@ -1,6 +1,5 @@
 package com.iwxyi.letsremember.Material;
 
-import android.app.ActionBar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
@@ -24,7 +22,8 @@ import com.iwxyi.letsremember.R;
 public class MaterialSelectActivity extends AppCompatActivity implements
         PackagesFragment.OnPackagesFragmentInteractionListener,
         SectionsFragment.OnSectionsFragmentInteractionListener,
-        RememberFragment.OnRememberFragmentInteractionListener {
+        RememberFragment.OnRememberFragmentInteractionListener,
+        CardsFragment.OnCardsFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -32,6 +31,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
     private PackagesFragment packagesFragment;
     private SectionsFragment sectionsFragment;
     private RememberFragment rememberFragment;
+    private CardsFragment cardsFragment;
     private FloatingActionButton fab;
     private Toolbar toolbar;
 
@@ -108,12 +108,18 @@ public class MaterialSelectActivity extends AppCompatActivity implements
         App.setVal("last_section", section_name);
 
         rememberFragment.initData();
+        cardsFragment.refreshCards(App.getVal("selected_package"), section_name);
 
         mViewPager.setCurrentItem(2);
     }
 
     @Override
     public void onRememberFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onCardClicked(CardsContent.CardItem item) {
 
     }
 
@@ -158,13 +164,15 @@ public class MaterialSelectActivity extends AppCompatActivity implements
                 case 2:
                     return rememberFragment = RememberFragment.newInstance(
                             App.getVal("selected_package"), App.getVal("selected_section"));
+                case 3:
+                    return cardsFragment = CardsFragment.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
     }
 
@@ -175,36 +183,39 @@ public class MaterialSelectActivity extends AppCompatActivity implements
 
         }
 
+        /**
+         * 切换页面时，修改Activity的标题
+         * @param i 页面索引，从0开始
+         */
         @Override
         public void onPageSelected(int i) {
-
+            if (toolbar == null) {
+                toolbar = (Toolbar) findViewById(R.id.toolbar);
+            }
             switch (i) {
                 case 0:
-                    if (toolbar == null) {
-                        toolbar = (Toolbar) findViewById(R.id.toolbar);
-                    }
+
                     if (toolbar != null) {
                         toolbar.setTitle("选择记忆包");
                     }
                     break;
                 case 1:
                     fab.show();
-                    if (toolbar == null) {
-                        toolbar = (Toolbar) findViewById(R.id.toolbar);
-                    }
                     if (toolbar != null) {
                         toolbar.setTitle(App.getVal("selected_package"));
                     }
                     break;
                 case 2:
                     fab.hide();
-                    if (toolbar == null) {
-                        toolbar = (Toolbar) findViewById(R.id.toolbar);
-                    }
                     if (toolbar != null) {
                         toolbar.setTitle(App.getVal("last_section"));
                     }
                     break;
+                case 3:
+                    fab.hide();
+                    if (toolbar != null) {
+                        toolbar.setTitle(App.getVal("selected_section"));
+                    }
             }
         }
 

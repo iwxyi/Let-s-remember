@@ -1,5 +1,12 @@
 package com.iwxyi.letsremember.Utils;
 
+/**
+ * @Author 命燃芯乂
+ * @Update 2019.4.4
+ * @更新内容
+ * - 重载带参数值getVal方法（调用SP缺省）
+ */
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
