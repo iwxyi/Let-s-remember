@@ -3,6 +3,8 @@ package com.iwxyi.letsremember.Fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,8 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
     private String current_section; // 当前章节名
     private int current_card;       // 当前卡片名
 
+    private String cards_mid;   // 当前章节的默认内容，如果没有改变就不保存
+    private boolean cards_changed = false; // 当前章节是否已经进行了改变
     private String cards_left;  // 当前章节左边的文本
     private String cards_right; // 当前章节右边的文本
 
@@ -106,6 +110,35 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mTypeinEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (current_package.isEmpty() || current_section.isEmpty() || current_card == -1) {
+                    return ;
+                }
+                if (s.toString().equals(cards_mid) && !cards_changed) {
+                    App.deb("没有改变");
+                    return ;
+                }
+                String card = s.toString();
+                card = "<card><content>"+card+"</content></card>";
+                String full = cards_left + card + cards_right;
+                String path = "material/"+current_package+"/"+current_section+".txt";
+                FileUtil.writeTextVals(path, full);
+                cards_changed = true;
+                App.deb("text change:"+s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
@@ -201,7 +234,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
 
     public void refreshCardSpinner() {
         if (current_section.isEmpty()) {
-            current_card = 0;
+            current_card = -1;
             return;
         }
 
@@ -215,7 +248,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         }
         ArrayList<String> cards = StringUtil.getXmls(content, "card");
         for (int i = 0; i < cards.size(); i++) {
-            String title = StringUtil.getXml(cards.get(i), "content");
+            String title = StringUtil.getXml(cards.get(i), "content").trim();
             title = getContentTitle(title);
             card_names.add("" + (i + 1) + ". " + title);
         }
@@ -268,8 +301,9 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         }
 
         // 设置当前索引
-        String card = cards.get(current_card);
+        String card = cards.get(current_card).trim();
         String con = StringUtil.getXml(card, "content");
+        setTypeinDef(con);
         mTypeinEt.setText(con);
 
         // 设置保存的前后文本(增强性能)
@@ -280,6 +314,11 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         for (int i = current_card+1; i < cards .size(); i++) {
             cards_right += cards.get(i);
         }
+    }
+
+    private void setTypeinDef(String def) {
+        cards_mid = def;
+        cards_changed = false;
     }
 
     @Override

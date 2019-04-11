@@ -126,26 +126,26 @@ public class MainActivity extends AppCompatActivity {
         FileUtil.ensureFolder("material");
         FileUtil.ensureFolder("material/index");
         FileUtil.ensureFile("material/index/index.txt");
-        FileUtil.writeTextVals("material/index/index.txt", "<card>\n\t<username>\n\t\t内容1内容1内容1内容1\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-        "<card>\n\t<username>\n\t\t内容2内容2内容2内容2\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-        "<card>\n\t<username>\n\t\t内容3内容3内容3内容3\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
+        FileUtil.writeTextVals("material/index/index.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+        "<card>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+        "<card>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
         FileUtil.ensureFile("material/index/index2.txt");
-        FileUtil.writeTextVals("material/index/index2.txt", "<card>\n\t<username>\n\t\t内容1内容1内容1内容1\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容2内容2内容2内容2\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容3内容3内容3内容3\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
+        FileUtil.writeTextVals("material/index/index2.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
         FileUtil.ensureFile("material/index/index3.txt");
-        FileUtil.writeTextVals("material/index/index3.txt", "<card>\n\t<username>\n\t\t内容1内容1内容1内容1\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容2内容2内容2内容2\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容3内容3内容3内容3\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
+        FileUtil.writeTextVals("material/index/index3.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
 
         FileUtil.ensureFolder("material/index2");
         FileUtil.ensureFile("material/index2/index.txt");
-        FileUtil.writeTextVals("material/index2/index.txt", "<card>\n\t<username>\n\t\t内容1内容1内容1内容1\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容2内容2内容2内容2\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容3内容3内容3内容3\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
+        FileUtil.writeTextVals("material/index2/index.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
         FileUtil.ensureFile("material/index2/index2.txt");
-        FileUtil.writeTextVals("material2/index2/index2.txt", "<card>\n\t<username>\n\t\t内容1内容1内容1内容1\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容2内容2内容2内容2\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
-                "<card>\n\t<username>\n\t\t内容3内容3内容3内容3\n\t</username>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
+        FileUtil.writeTextVals("material2/index2/index2.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容2内容2内容2内容2\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
+                "<card>\n\t<content>\n\t\t内容3内容3内容3内容3\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>");
     }
 }
