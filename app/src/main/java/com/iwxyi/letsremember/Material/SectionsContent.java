@@ -15,7 +15,6 @@ public class SectionsContent {
 
     public static final List<SectionItem> ITEMS = new ArrayList<SectionItem>();
     public static final Map<String, SectionItem> ITEM_MAP = new HashMap<String, SectionItem>();
-    private static final int COUNT = 25;
 
     static {
         String package_name = App.getVal("selected_package");

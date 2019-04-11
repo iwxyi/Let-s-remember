@@ -238,5 +238,6 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
 
     public interface OnRememberFragmentInteractionListener {
         void onRememberFragmentInteraction(Uri uri);
+        void onCardRemember(int index);
     }
 }

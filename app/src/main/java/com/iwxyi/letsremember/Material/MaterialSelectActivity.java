@@ -123,6 +123,13 @@ public class MaterialSelectActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onCardRemember(int index) {
+        if (cardsFragment != null) {
+            cardsFragment.refreshOneCard(index);
+        }
+    }
+
+    @Override
     public void onCardClicked(CardsContent.CardItem item) {
 
     }

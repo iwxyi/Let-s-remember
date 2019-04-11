@@ -77,6 +77,11 @@ public class CardsFragment extends Fragment {
         refreshCards(App.getVal("last_package"), App.getVal("last_section"));
     }
 
+    public void refreshOneCard(int index) {
+        refreshCards();
+        CardsContent.setIndex(index);
+    }
+
 
     @Override
     public void onAttach(Context context) {

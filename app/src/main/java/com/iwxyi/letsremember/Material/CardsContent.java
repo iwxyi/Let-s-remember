@@ -16,12 +16,6 @@ public class CardsContent {
     public static final Map<String, CardItem> ITEM_MAP = new HashMap<String, CardItem>();
     public static int index = 0; // 当前卡片的位置索引
 
-    private static final int COUNT = 25;
-
-    static {
-
-    }
-
     public static void refreshCards() {
         String pack = App.getVal("last_package");
         String sect = App.getVal("last_section");
@@ -48,16 +42,13 @@ public class CardsContent {
         ITEMS.clear();
         ITEM_MAP.clear();
 
-        String last_card = App.getVal("last_card");
         String path = Paths.getLocalPath("material/"+pack+"/"+sect+".txt");
         String text = FileUtil.readTextVals(path);
         ArrayList<String> cards_str = StringUtil.getXmls(text, "card");
         for (int i = 0; i < cards_str .size(); i++) {
             String content = StringUtil.getXml(cards_str.get(i), "content").trim();
             content = getContentTitle(content);
-            String detail = getRecentRemember(StringUtil.getXml(cards_str.get(i), "read").trim());
-            if (i == index)
-                detail += "    (当前记忆)";
+            String detail = getRecentRemember(StringUtil.getXml(cards_str.get(i), "reads").trim());
             addItem(createCardItem(i, content, detail));
         }
     }
@@ -116,15 +107,15 @@ public class CardsContent {
      * @param x
      */
     public static void setIndex(int x) {
-        if (index > 0 && index < ITEMS.size()) {
+        /*if (index > 0 && index < ITEMS.size()) {
             CardItem item = ITEMS.get(index);
             item.details = "";
-        }
+        }*/
         index = x;
-        if (index > 0 && index < ITEMS.size()) {
+        /*if (index > 0 && index < ITEMS.size()) {
             CardItem item = ITEMS.get(index);
             item.details = "    当前";
-        }
+        }*/
     }
 
     private static void addItem(CardItem item) {

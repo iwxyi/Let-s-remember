@@ -34,6 +34,7 @@ public class MyCardsRecyclerViewAdapter extends RecyclerView.Adapter<MyCardsRecy
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
+        holder.mDetailView.setText(mValues.get(position).details);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,7 @@ public class MyCardsRecyclerViewAdapter extends RecyclerView.Adapter<MyCardsRecy
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mDetailView;
         public CardItem mItem;
 
         public ViewHolder(View view) {
@@ -63,6 +65,7 @@ public class MyCardsRecyclerViewAdapter extends RecyclerView.Adapter<MyCardsRecy
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mDetailView = (TextView) view.findViewById(R.id.detail);
         }
 
         @Override
