@@ -8,14 +8,10 @@ import android.widget.TextView;
 
 import com.iwxyi.letsremember.Material.CardsFragment.OnCardsFragmentInteractionListener;
 import com.iwxyi.letsremember.Material.CardsContent.CardItem;
+import com.iwxyi.letsremember.R;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link CardItem} and makes a call to the
- * specified {@link CardsFragment.OnCardsFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyCardsRecyclerViewAdapter extends RecyclerView.Adapter<MyCardsRecyclerViewAdapter.ViewHolder> {
 
     private final List<CardItem> mValues;

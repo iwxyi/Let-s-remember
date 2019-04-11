@@ -107,8 +107,12 @@ public class MaterialSelectActivity extends AppCompatActivity implements
         App.setVal("last_package", App.getVal("selected_package"));
         App.setVal("last_section", section_name);
 
-        rememberFragment.initData();
-        cardsFragment.refreshCards(App.getVal("selected_package"), section_name);
+        if (rememberFragment != null) {
+            rememberFragment.initData();
+        }
+        if (cardsFragment != null) {
+            cardsFragment.refreshCards(App.getVal("selected_package"), section_name);
+        }
 
         mViewPager.setCurrentItem(2);
     }

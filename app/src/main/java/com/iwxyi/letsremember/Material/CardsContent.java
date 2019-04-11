@@ -53,12 +53,24 @@ public class CardsContent {
         String text = FileUtil.readTextVals(path);
         ArrayList<String> cards_str = StringUtil.getXmls(text, "card");
         for (int i = 0; i < cards_str .size(); i++) {
-            String name = StringUtil.getXml(cards_str.get(i), "name");
+            String content = StringUtil.getXml(cards_str.get(i), "content");
+
             String detail = "";
             if (i == index)
                 detail = "    当前";
-            addItem(createCardItem(i, detail, detail));
+            addItem(createCardItem(i, content, detail));
         }
+    }
+
+    private String getContentTitle(String c) {
+        String ans = c;
+        int pos = c.indexOf("\n");
+        if (pos > -1) {
+            ans = c.substring(0, pos);
+        }
+        if (ans.length() > 20)
+            ans = ans.substring(0, 20);
+        return ans;
     }
 
     /**
