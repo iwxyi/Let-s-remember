@@ -10,13 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
-import com.iwxyi.letsremember.Material.CardsContent;
-import com.iwxyi.letsremember.Material.PackagesContent;
-import com.iwxyi.letsremember.Material.SectionsContent;
 import com.iwxyi.letsremember.R;
 
 import java.io.File;
@@ -50,7 +47,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         return view;
     }
 
-    public void refreshSpinner() {
+    public void refreshAllSpinner() {
         /*if (PackagesContent.ITEMS.size() == 0) {
             PackagesContent.refreshPackages();
         }
@@ -62,7 +59,17 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         }*/
 
         // 刷新 Package
-        String editing_package = App.getVal("editing_package");
+        refreshPackageSpinner();
+
+        // 刷新 Section
+        refreshSectionSpinner();
+
+        // 刷新 Cards
+        refreshCardSpinner();
+    }
+
+    public void refreshPackageSpinner() {
+        // 设置列表
         ArrayList<String> package_names = new ArrayList<>();
         File package_dir = new File(Paths.getLocalPath("material"));
         File[] package_files = package_dir.listFiles();
@@ -73,8 +80,30 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
                 (getContext(), android.R.layout.simple_spinner_item, package_names);
         mPackageSp.setAdapter(package_adapter);
 
-        // 刷新 Section
-        String editing_section = App.getVal("editing_section");
+        // 设置当前默认值
+        String editing_package = App.getVal("editing_package");
+        if (!editing_package.isEmpty() && package_names.contains(editing_package)) {
+            for (int i = 0; i < package_names .size(); i++) {
+                if (editing_package.equals(package_names.get(i))) {
+                    mPackageSp.setSelection(i);
+                    break;
+                }
+            }
+            current_pacage = editing_package;
+        } else if (package_names.size() > 0) {
+            current_pacage = package_names.get(0);
+        } else {
+            Toast.makeText(getContext(), "请手动创建记忆包", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void refreshSectionSpinner() {
+        if (current_pacage.isEmpty()) {
+            current_section = "";
+            return ;
+        }
+
+        // 设置列表
         ArrayList<String> section_names = new ArrayList<>();
         File section_dir = new File(Paths.getLocalPath("material/"+current_pacage));
         File[] section_files = section_dir.listFiles();
@@ -85,7 +114,16 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
                 (getContext(), android.R.layout.simple_spinner_item, section_names);
         mSectionSp.setAdapter(section_adapter);
 
-        // 刷新 Cards
+        // 设置默认值
+        String editing_section = App.getVal("editing_section");
+
+    }
+
+    public void refreshCardSpinner() {
+        if (current_section.isEmpty()) {
+            current_card = "";
+            return ;
+        }
 
     }
 
@@ -103,7 +141,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mWithdrawalBtn = (Button) itemView.findViewById(R.id.btn_withdrawal);
         mWithdrawalBtn.setOnClickListener(this);
 
-        refreshSpinner();
+        refreshAllSpinner();
     }
 
     @Override
