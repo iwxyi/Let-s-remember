@@ -87,6 +87,10 @@ public class CardBean extends StringUtil {
         return toXml(all, "card");
     }
 
+    public void setContent(String c) {
+        this.content = c;
+    }
+
     public String getContent() {
         return content;
     }

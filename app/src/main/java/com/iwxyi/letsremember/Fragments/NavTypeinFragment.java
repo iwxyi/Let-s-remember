@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Material.CardBean;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Utils.FileUtil;
 import com.iwxyi.letsremember.Utils.StringUtil;
@@ -40,8 +41,9 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
     private ArrayList<String> card_names;
     private String current_package; // 当前记忆包名
     private String current_section; // 当前章节名
-    private int current_card;       // 当前卡片名
+    private int current_card_index; // 当前卡片名
 
+    private CardBean current_card_bean; // 当前卡片JavaBean(用来存放其他数据)
     private String cards_mid;   // 当前章节的默认内容，如果没有改变就不保存
     private boolean cards_changed = false; // 当前章节是否已经进行了改变
     private String cards_left;  // 当前章节左边的文本
@@ -74,9 +76,14 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mWithdrawalBtn = (Button) itemView.findViewById(R.id.btn_withdrawal);
         mWithdrawalBtn.setOnClickListener(this);
 
+        refreshSpinner(3);
+
         mPackageSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (current_package.equals(package_names.get(position))) {
+                    return ;
+                }
                 current_package = package_names.get(position);
                 App.setVal("editing_package", current_package);
                 refreshSpinner(2);
@@ -90,6 +97,9 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mSectionSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (current_section.equals(section_names.get(position))) {
+                    return ;
+                }
                 current_section = section_names.get(position);
                 App.setVal("editing_section", current_section);
                 refreshSpinner(1);
@@ -103,8 +113,11 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mCardSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                current_card = position;
-                App.setVal("editing_card", current_card);
+                if (current_card_index == position) {
+                    return ;
+                }
+                current_card_index = position;
+                App.setVal("editing_card", current_card_index);
                 refreshSpinner(0);
             }
 
@@ -119,22 +132,25 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
 
             }
 
+            /**
+             * 录入框文本改变事件
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (current_package.isEmpty() || current_section.isEmpty() || current_card == -1) {
+                if (current_package.isEmpty() || current_section.isEmpty() || current_card_index == -1) {
                     return ;
                 }
                 if (s.toString().equals(cards_mid) && !cards_changed) {
-                    App.deb("没有改变");
                     return ;
                 }
-                String card = s.toString();
-                card = "<card><content>"+card+"</content></card>";
-                String full = cards_left + card + cards_right;
+
+                // 保存到文件
+                String card_content = s.toString();
+                current_card_bean.setContent(card_content);
+                String full = cards_left + current_card_bean.toString() + cards_right;
                 String path = "material/"+current_package+"/"+current_section+".txt";
                 FileUtil.writeTextVals(path, full);
                 cards_changed = true;
-                App.deb("text change:"+s.toString());
             }
 
             @Override
@@ -142,8 +158,6 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
 
             }
         });
-
-        refreshSpinner(3);
     }
 
     public void refreshSpinner(int level) {
@@ -234,7 +248,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
 
     public void refreshCardSpinner() {
         if (current_section.isEmpty()) {
-            current_card = -1;
+            current_card_index = -1;
             return;
         }
 
@@ -259,9 +273,9 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         // 设置默认值
         int editing_card = App.getInt("editing_card");
         if (editing_card > 0 && editing_card < card_names.size()) {
-            current_card = editing_card;
+            current_card_index = editing_card;
         } else {
-            current_card = 0;
+            current_card_index = 0;
         }
     }
 
@@ -289,30 +303,31 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         ArrayList<String> cards = StringUtil.getXmls(content, "card");
 
         // 判断索引
-        int old_index = current_card;
-        if (current_card < 0) {
-            current_card = 0;
+        int old_index = current_card_index;
+        if (current_card_index < 0) {
+            current_card_index = 0;
         }
-        if (current_card >= cards.size()) {
-            current_card = cards.size() - 1;
+        if (current_card_index >= cards.size()) {
+            current_card_index = cards.size() - 1;
         }
-        if (old_index != current_card) {
-            mCardSp.setSelection(current_card);
+        if (old_index != current_card_index) {
+            mCardSp.setSelection(current_card_index);
         }
 
         // 设置当前索引
-        String card = cards.get(current_card).trim();
-        String con = StringUtil.getXml(card, "content");
+        String card = cards.get(current_card_index).trim();
+        current_card_bean = new CardBean(card);
+        String con = current_card_bean.getContent();
         setTypeinDef(con);
         mTypeinEt.setText(con);
 
         // 设置保存的前后文本(增强性能)
         cards_left = cards_right = "";
-        for (int i = 0; i < current_card; i++) {
-            cards_left += cards.get(i);
+        for (int i = 0; i < current_card_index; i++) {
+            cards_left += "<card>"+cards.get(i)+"</card>";
         }
-        for (int i = current_card+1; i < cards .size(); i++) {
-            cards_right += cards.get(i);
+        for (int i = current_card_index +1; i < cards .size(); i++) {
+            cards_right += "<card>"+cards.get(i)+"</card>";
         }
     }
 
