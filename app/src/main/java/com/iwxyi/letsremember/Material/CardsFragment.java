@@ -50,6 +50,7 @@ public class CardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cards_list, container, false);
+        refreshCards();
 
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -81,7 +82,6 @@ public class CardsFragment extends Fragment {
         refreshCards();
         CardsContent.setIndex(index);
     }
-
 
     @Override
     public void onAttach(Context context) {

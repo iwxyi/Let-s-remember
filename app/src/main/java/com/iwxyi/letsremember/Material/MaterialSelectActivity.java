@@ -154,7 +154,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_material_select, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            textView.setText("hello");
             return rootView;
         }
     }
@@ -226,6 +226,9 @@ public class MaterialSelectActivity extends AppCompatActivity implements
                     fab.hide();
                     if (toolbar != null) {
                         toolbar.setTitle(App.getVal("selected_section"));
+                    }
+                    if (cardsFragment != null) {
+                        cardsFragment.refreshCards(); // 切换时刷新列表
                     }
             }
         }
