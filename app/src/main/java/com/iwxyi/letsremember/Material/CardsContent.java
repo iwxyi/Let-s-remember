@@ -53,16 +53,16 @@ public class CardsContent {
         String text = FileUtil.readTextVals(path);
         ArrayList<String> cards_str = StringUtil.getXmls(text, "card");
         for (int i = 0; i < cards_str .size(); i++) {
-            String content = StringUtil.getXml(cards_str.get(i), "content");
-
-            String detail = "";
+            String content = StringUtil.getXml(cards_str.get(i), "content").trim();
+            content = getContentTitle(content);
+            String detail = getRecentRemember(StringUtil.getXml(cards_str.get(i), "read").trim());
             if (i == index)
-                detail = "    当前";
+                detail += "    (当前记忆)";
             addItem(createCardItem(i, content, detail));
         }
     }
 
-    private String getContentTitle(String c) {
+    private static String getContentTitle(String c) {
         String ans = c;
         int pos = c.indexOf("\n");
         if (pos > -1) {
@@ -71,6 +71,44 @@ public class CardsContent {
         if (ans.length() > 20)
             ans = ans.substring(0, 20);
         return ans;
+    }
+
+    private static String getRecentRemember(String str) {
+        String[] places_slist = str .split(",");
+        if (places_slist.length > 0 && !places_slist[0].isEmpty()) {
+            int timestamp = Integer.parseInt(places_slist[places_slist.length-1]);
+            if (timestamp > 0) {
+                int now = App.getTimestamp();
+                int delta = now - timestamp;
+
+                int second = delta;
+                if (second < 120)
+                    return ""+second+"秒前";
+
+                int minute = second / 60;
+                if (minute < 120)
+                    return ""+minute+"分钟前";
+
+                int hour = minute / 60;
+                if (hour < 48)
+                    return ""+hour+"小时前";
+
+                int day = hour / 24;
+                if (day < 60)
+                    return ""+day+"天前";
+
+                int month = day / 30;
+                if (month < 24)
+                    return ""+month+"月前";
+
+                int year = month / 12;
+                if (year < 100)
+                    return ""+year+"年前";
+
+                return "很久很久以前";
+            }
+        }
+        return "";
     }
 
     /**
