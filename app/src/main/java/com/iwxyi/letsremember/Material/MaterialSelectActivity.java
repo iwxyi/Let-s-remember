@@ -225,7 +225,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
                 case 3:
                     fab.hide();
                     if (toolbar != null) {
-                        toolbar.setTitle("章节："+App.getVal("selected_section"));
+                        toolbar.setTitle(App.getVal("selected_section")+" 目录");
                     }
                     if (cardsFragment != null) {
                         cardsFragment.refreshCards(); // 切换时刷新列表

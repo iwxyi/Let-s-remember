@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,12 +33,15 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
     private Button mBalanceBtn;
     private Button mWithdrawalBtn;
 
+    private ArrayList<String> package_names;
+    private ArrayList<String> section_names;
+    private ArrayList<String> card_names;
     private String current_package; // 当前记忆包名
     private String current_section; // 当前章节名
     private int current_card;       // 当前卡片名
 
-    private String cards_left;
-    private String cards_right;
+    private String cards_left;  // 当前章节左边的文本
+    private String cards_right; // 当前章节右边的文本
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,33 +70,73 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mWithdrawalBtn = (Button) itemView.findViewById(R.id.btn_withdrawal);
         mWithdrawalBtn.setOnClickListener(this);
 
-        refreshAllSpinner();
+        mPackageSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                current_package = package_names.get(position);
+                App.setVal("editing_package", current_package);
+                refreshSpinner(2);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mSectionSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                current_section = section_names.get(position);
+                App.setVal("editing_section", current_section);
+                refreshSpinner(1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mCardSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                current_card = position;
+                App.setVal("editing_card", current_card);
+                refreshSpinner(0);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        refreshSpinner(3);
     }
 
-    public void refreshAllSpinner() {
-        /*if (PackagesContent.ITEMS.size() == 0) {
-            PackagesContent.refreshPackages();
+    public void refreshSpinner(int level) {
+        if (level >= 3) {
+            // 刷新 Package
+            refreshPackageSpinner();
         }
-        if (SectionsContent.ITEMS.size() == 0) {
-            SectionsContent.refreshSections(App.getVal("editing_package"));
+        if (level >= 2) {
+            // 刷新 Section
+            refreshSectionSpinner();
         }
-        if (CardsContent.ITEMS.size() == 0) {
-            CardsContent.refreshCards(App.getVal("editing_package"), App.getVal("editing_section"));
-        }*/
 
-        // 刷新 Package
-        refreshPackageSpinner();
+        if (level >= 1) {
+            // 刷新 Cards
+            refreshCardSpinner();
+        }
 
-        // 刷新 Section
-        refreshSectionSpinner();
-
-        // 刷新 Cards
-        refreshCardSpinner();
+        if (level >= 0) {
+            // 刷新录入框内容
+            refreshTypeinContent();
+        }
     }
 
     public void refreshPackageSpinner() {
         // 设置列表
-        ArrayList<String> package_names = new ArrayList<>();
+        package_names = new ArrayList<>();
         File package_dir = new File(Paths.getLocalPath("material"));
         File[] package_files = package_dir.listFiles();
         for (int i = 0; i < package_files.length; i++) {
@@ -126,7 +170,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         }
 
         // 设置列表
-        ArrayList<String> section_names = new ArrayList<>();
+        section_names = new ArrayList<>();
         File section_dir = new File(Paths.getLocalPath("material/" + current_package));
         File[] section_files = section_dir.listFiles();
         for (int i = 0; i < section_files.length; i++) {
@@ -162,8 +206,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         }
 
         // 设置列表
-        ArrayList<String> card_names = new ArrayList<>();
-
+        card_names = new ArrayList<>();
         String path = "material/" + current_package + "/" + current_section + ".txt";
         String content = FileUtil.readTextVals(path);
         if (content.isEmpty()) {
@@ -230,7 +273,13 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mTypeinEt.setText(con);
 
         // 设置保存的前后文本(增强性能)
-
+        cards_left = cards_right = "";
+        for (int i = 0; i < current_card; i++) {
+            cards_left += cards.get(i);
+        }
+        for (int i = current_card+1; i < cards .size(); i++) {
+            cards_right += cards.get(i);
+        }
     }
 
     @Override
