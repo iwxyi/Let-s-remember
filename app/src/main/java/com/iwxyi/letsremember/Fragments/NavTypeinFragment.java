@@ -1,17 +1,21 @@
 package com.iwxyi.letsremember.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +29,7 @@ import com.iwxyi.letsremember.Utils.StringUtil;
 import java.io.File;
 import java.util.ArrayList;
 
-public class NavTypeinFragment extends Fragment implements View.OnClickListener {
+public class NavTypeinFragment extends Fragment implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private Spinner mPackageSp;
     private Spinner mSectionSp;
@@ -49,6 +53,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
     private String cards_left;  // 当前章节左边的文本
     private String cards_right; // 当前章节右边的文本
     private ArrayAdapter<String> card_adapter;
+    private Button mMenuBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,8 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         mBalanceBtn.setOnClickListener(this);
         mWithdrawalBtn = (Button) itemView.findViewById(R.id.btn_withdrawal);
         mWithdrawalBtn.setOnClickListener(this);
+        mMenuBtn = (Button) itemView.findViewById(R.id.btn_menu);
+        mMenuBtn.setOnClickListener(this);
 
         refreshSpinner(3);
 
@@ -83,7 +90,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (current_package.equals(package_names.get(position))) {
-                    return ;
+                    return;
                 }
                 current_package = package_names.get(position);
                 App.setVal("editing_package", current_package);
@@ -99,7 +106,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (current_section.equals(section_names.get(position))) {
-                    return ;
+                    return;
                 }
                 current_section = section_names.get(position);
                 App.setVal("editing_section", current_section);
@@ -115,7 +122,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (current_card_index == position) {
-                    return ;
+                    return;
                 }
                 current_card_index = position;
                 App.setVal("editing_card", current_card_index);
@@ -139,23 +146,23 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (current_package.isEmpty() || current_section.isEmpty() || current_card_index == -1) {
-                    return ;
+                    return;
                 }
                 if (s.toString().equals(cards_mid) && !cards_changed) {
-                    return ;
+                    return;
                 }
 
                 // 保存到文件
                 String card_content = s.toString();
                 current_card_bean.setContent(card_content);
                 String full = cards_left + current_card_bean.toString() + cards_right;
-                String path = "material/"+current_package+"/"+current_section+".txt";
+                String path = "material/" + current_package + "/" + current_section + ".txt";
                 FileUtil.writeTextVals(path, full);
                 cards_changed = true;
 
                 // 保存下拉列表框的内容（不是很必要，会损失性能）
                 String old_title = card_names.get(current_card_index);
-                String new_title = ""+(current_card_index+1)+". "+getContentTitle(card_content);
+                String new_title = "" + (current_card_index + 1) + ". " + getContentTitle(card_content);
                 if (!old_title.equals(new_title)) {
                     card_names.set(current_card_index, new_title);
                     card_adapter.notifyDataSetChanged();
@@ -333,10 +340,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
         // 设置保存的前后文本(增强性能)
         cards_left = cards_right = "";
         for (int i = 0; i < current_card_index; i++) {
-            cards_left += "<card>"+cards.get(i)+"</card>";
+            cards_left += "<card>" + cards.get(i) + "</card>";
         }
-        for (int i = current_card_index +1; i < cards .size(); i++) {
-            cards_right += "<card>"+cards.get(i)+"</card>";
+        for (int i = current_card_index + 1; i < cards.size(); i++) {
+            cards_right += "<card>" + cards.get(i) + "</card>";
         }
     }
 
@@ -360,8 +367,28 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener 
             case R.id.btn_withdrawal:
                 // TODO 19/04/11
                 break;
+            case R.id.btn_menu:
+                PopupMenu popupMenu = new PopupMenu(getContext(), v);
+                MenuInflater inflater = popupMenu.getMenuInflater();
+                inflater.inflate(R.menu.menu_typein, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(this);
+                popupMenu.show();
+                break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_package:
+                App.deb("添加记忆包");
+                break;
+            default:
+                break;
+        }
+
+        return false;
     }
 }
