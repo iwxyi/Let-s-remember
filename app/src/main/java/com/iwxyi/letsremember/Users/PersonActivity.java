@@ -109,7 +109,7 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
                 AlertDialog dialog = new AlertDialog.Builder(PersonActivity.this)
                         .setTitle("提示")
                         .setMessage("是否确认退出登录？\n已有数据仍然存在，在下次登录时重新同步至云端")
-                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

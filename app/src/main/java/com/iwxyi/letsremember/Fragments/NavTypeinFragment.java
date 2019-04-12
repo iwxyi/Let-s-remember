@@ -1,9 +1,11 @@
 package com.iwxyi.letsremember.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -21,8 +23,10 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Material.CardBean;
 import com.iwxyi.letsremember.R;
+import com.iwxyi.letsremember.Users.PersonActivity;
 import com.iwxyi.letsremember.Utils.FileUtil;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
@@ -383,7 +387,44 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_package:
-                App.deb("添加记忆包");
+
+                break;
+            case R.id.add_section:
+
+                break;
+            case R.id.add_card:
+
+                break;
+            case R.id.delete_package:
+                if (current_package.isEmpty()) {
+                    App.err("删除失败没有选择记忆包");
+                    return false;
+                }
+                AlertDialog dialog = new AlertDialog.Builder(getContext())
+                        .setTitle("提示")
+                        .setMessage("是否确认删除？\n此操作将无法恢复，请慎重考虑")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
+                break;
+            case R.id.delete_section:
+                if (current_section.isEmpty()) {
+                    App.err("删除失败，没有选中章节");
+                    return false;
+                }
+                break;
+            case R.id.delete_card:
+                if (current_card_index == -1) {
+                    App.err("删除失败，没有选中记忆卡片");
+                    return false;
+                }
+
                 break;
             default:
                 break;
