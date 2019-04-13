@@ -75,7 +75,9 @@ public class FileUtil {
      * @return
      */
     public static boolean exist(String filename) {
-        File file = new File(getFolder() + "/" +filename);
+        if (!filename.startsWith("/") && !filename.startsWith(getFolder()))
+            filename = getFolder() + "/" + filename;
+        File file = new File(filename);
         return file.exists();
     }
 

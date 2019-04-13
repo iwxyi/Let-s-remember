@@ -28,6 +28,8 @@ import com.iwxyi.letsremember.Material.CardBean;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Users.PersonActivity;
 import com.iwxyi.letsremember.Utils.FileUtil;
+import com.iwxyi.letsremember.Utils.InputDialog;
+import com.iwxyi.letsremember.Utils.StringCallback;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
 import java.io.File;
@@ -211,6 +213,9 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     }
 
     public void refreshPackageSpinner() {
+        current_package = current_section = "";
+        current_card_index = -1;
+
         // 设置列表
         package_names = new ArrayList<>();
         File package_dir = new File(Paths.getLocalPath("material"));
@@ -240,8 +245,14 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     }
 
     public void refreshSectionSpinner() {
+        current_section = "";
+        current_card_index = -1;
         if (current_package.isEmpty()) {
-            current_section = "";
+            section_names = new ArrayList<>();
+            ArrayAdapter<String> section_adapter = new ArrayAdapter<>
+                    (getContext(), android.R.layout.simple_spinner_item, section_names);
+            mSectionSp.setAdapter(section_adapter);
+            mTypeinEt.setText("");
             return;
         }
 
@@ -276,8 +287,13 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     }
 
     public void refreshCardSpinner() {
+        current_card_index = -1;
         if (current_section.isEmpty()) {
-            current_card_index = -1;
+            card_names = new ArrayList<>();
+            card_adapter = new ArrayAdapter<>
+                    (getContext(), android.R.layout.simple_spinner_item, card_names);
+            mCardSp.setAdapter(card_adapter);
+            mTypeinEt.setText("");
             return;
         }
 
@@ -329,6 +345,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
      * 刷新录入框的内容
      */
     public void refreshTypeinContent() {
+        if (current_package.isEmpty() || current_section.isEmpty()) {
+            return ;
+        }
+
         String path = "material/" + current_package + "/" + current_section + ".txt";
         String content = FileUtil.readTextVals(path);
         if (content.isEmpty()) {
@@ -406,10 +426,34 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_package:
-
+                InputDialog.inputDialog(getContext(), "请输入记忆包名字", "", new StringCallback(){
+                    @Override
+                    public void onFinish(String content) {
+                        if (FileUtil.exist(Paths.getLocalPath("material/" + content))) {
+                            Toast.makeText(getContext(), "同名记忆包已存在", Toast.LENGTH_SHORT).show();
+                            return ;
+                        }
+                        FileUtil.ensureFolder("material/"+content);
+                        refreshPackageSpinner();
+                    }
+                });
                 break;
             case R.id.add_section:
-
+                if (current_package.isEmpty()) {
+                    App.err("请先添加一个记忆包");
+                    return false;
+                }
+                InputDialog.inputDialog(getContext(), "请输入记忆章节名字", "", new StringCallback(){
+                    @Override
+                    public void onFinish(String content) {
+                        if (FileUtil.exist(Paths.getLocalPath("material/" + current_package + "/" + content + ".txt"))) {
+                            Toast.makeText(getContext(), "同名记忆章节已存在", Toast.LENGTH_SHORT).show();
+                            return ;
+                        }
+                        FileUtil.ensureFile("material/" + current_package + "/" + content + ".txt");
+                        refreshSectionSpinner();
+                    }
+                });
                 break;
             case R.id.add_card:
 
