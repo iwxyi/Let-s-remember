@@ -51,6 +51,17 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"/>
 
+        <Button
+            android:id="@+id/btn_settings"
+            android:text="设置"
+            android:gravity="center"
+            android:textSize="@dimen/square_fontSize"
+            android:background="@drawable/textview_border"
+            android:layout_margin="@dimen/border_margin_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"/>
+
     </LinearLayout>
 
 </FrameLayout>

@@ -11,10 +11,12 @@ import android.widget.Button;
 
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.RankActivity;
+import com.iwxyi.letsremember.Users.SettingsActivity;
 
 public class NavMineFragment extends Fragment implements View.OnClickListener {
 
     private Button mWorldRankBtn;
+    private Button mSettingsBtn;
 
     public static NavMineFragment newInstance(String param1, String param2) {
         NavMineFragment fragment = new NavMineFragment();
@@ -24,6 +26,8 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
     private void initView(@NonNull final View itemView) {
         mWorldRankBtn = (Button) itemView.findViewById(R.id.btn_world_rank);
         mWorldRankBtn.setOnClickListener(this);
+        mSettingsBtn = (Button) itemView.findViewById(R.id.btn_settings);
+        mSettingsBtn.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +48,9 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_world_rank:
                 startActivity(new Intent(getContext(), RankActivity.class));
+                break;
+            case R.id.btn_settings:
+                startActivity(new Intent(getContext(), SettingsActivity.class));
                 break;
             default:
                 break;
