@@ -170,7 +170,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 cards_changed = true;
 
                 // 保存下拉列表框的内容（不是很必要，会损失性能）
-                if (current_card_index == -1 || current_card_index >= card_names.size()) {
+                if (current_card_index < 0 || current_card_index >= card_names.size()) {
                     App.err("记忆卡片索引出错");
                     return ;
                 }
@@ -300,11 +300,18 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
 
         // 设置默认值
         int editing_card = App.getInt("editing_card");
-        if (editing_card > 0 && editing_card < card_names.size()) {
+        if (editing_card >= 0 && editing_card < card_names.size()) {
             current_card_index = editing_card;
-        } else {
+        } else if (editing_card >= card_names.size()) {
+            current_card_index = card_names.size()-1;
+        } else if (card_names.size() > 0) {
             current_card_index = 0;
+        } else { // 如果没有索引
+            current_card_index = -1;
+            return ;
         }
+        if (current_card_index > 0) // ==0 不需要手动设置了
+            mCardSp.setSelection(current_card_index);
     }
 
     private static String getContentTitle(String c) {
@@ -337,6 +344,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         }
         if (current_card_index >= cards.size()) {
             current_card_index = cards.size() - 1;
+        }
+        if (current_card_index < 0) {
+            mTypeinEt.setText("");
+            return ;
         }
         if (old_index != current_card_index) {
             mCardSp.setSelection(current_card_index);
