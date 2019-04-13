@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/add_package"
-        android:title="插入记忆包" />
+        android:title="新增记忆包" />
     <item
         android:id="@+id/add_section"
-        android:title="插入章节" />
+        android:title="新增章节" />
     <item
         android:id="@+id/add_card"
-        android:title="插入卡片" />
+        android:title="新增卡片" />
     <item
         android:id="@+id/rename_package"
         android:title="重命名记忆包" />
@@ -24,6 +24,12 @@
     <item
         android:id="@+id/move_down_card"
         android:title="下移卡片" />
+    <item
+        android:id="@+id/move_top_card"
+        android:title="置顶卡片" />
+    <item
+        android:id="@+id/move_bottom_card"
+        android:title="置底卡片" />
     <item
         android:id="@+id/delete_package"
         android:title="删除记忆包" />

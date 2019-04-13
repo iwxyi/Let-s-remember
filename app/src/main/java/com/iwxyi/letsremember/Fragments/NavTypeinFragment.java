@@ -301,9 +301,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         card_names = new ArrayList<>();
         String path = "material/" + current_package + "/" + current_section + ".txt";
         String content = FileUtil.readTextVals(path);
-        if (content.isEmpty()) {
-            App.err("无法读取文件：" + path);
-        }
+
         ArrayList<String> cards = StringUtil.getXmls(content, "card");
         for (int i = 0; i < cards.size(); i++) {
             String title = StringUtil.getXml(cards.get(i), "content").trim();
@@ -351,10 +349,6 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
 
         String path = "material/" + current_package + "/" + current_section + ".txt";
         String content = FileUtil.readTextVals(path);
-        if (content.isEmpty()) {
-            App.err("无法读取文件：" + path);
-            return;
-        }
         ArrayList<String> cards = StringUtil.getXmls(content, "card");
 
         // 判断索引
@@ -393,6 +387,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     private void setTypeinDef(String def) {
         cards_mid = def;
         cards_changed = false;
+    }
+
+    private void saveTypein() {
+
     }
 
     @Override
@@ -456,11 +454,24 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 });
                 break;
             case R.id.add_card:
-
+                if (current_package.isEmpty() || current_section.isEmpty()) {
+                    App.err("删除失败，没有选择记忆包或章节");
+                    return false;
+                }
+                current_card_index++;
+                App.setVal("editing_card", current_card_index);
+                if (current_card_bean != null) {
+                    cards_left += current_card_bean.toString();
+                }
+                current_card_bean = new CardBean("");
+                String full = cards_left + current_card_bean.toString() + cards_right;
+                String path = "material/" + current_package + "/" + current_section + ".txt";
+                FileUtil.writeTextVals(path, full);
+                refreshCardSpinner();
                 break;
             case R.id.delete_package:
                 if (current_package.isEmpty()) {
-                    App.err("删除失败没有选择记忆包");
+                    App.err("删除失败，没有选择记忆包");
                     return false;
                 }
                 new AlertDialog.Builder(getContext())
