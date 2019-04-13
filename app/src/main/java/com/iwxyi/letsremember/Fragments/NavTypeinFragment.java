@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Material.CardBean;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Utils.FileUtil;
@@ -43,8 +44,8 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     private Spinner mSectionSp;
     private Spinner mCardSp;
     private EditText mTypeinEt;
-    private Button mMyTypeinBtn;
-    private Button mIntegralBtn;
+    private Button mHistoryBtn;
+    private Button mCountBtn;
     private Button mBalanceBtn;
     private Button mWithdrawalBtn;
     private Button mMenuBtn;
@@ -81,10 +82,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         mSectionSp = (Spinner) itemView.findViewById(R.id.sp_section);
         mCardSp = (Spinner) itemView.findViewById(R.id.sp_card);
         mTypeinEt = (EditText) itemView.findViewById(R.id.et_typein);
-        mMyTypeinBtn = (Button) itemView.findViewById(R.id.btn_typein_history);
-        mMyTypeinBtn.setOnClickListener(this);
-        mIntegralBtn = (Button) itemView.findViewById(R.id.btn_type_count);
-        mIntegralBtn.setOnClickListener(this);
+        mHistoryBtn = (Button) itemView.findViewById(R.id.btn_typein_history);
+        mHistoryBtn.setOnClickListener(this);
+        mCountBtn = (Button) itemView.findViewById(R.id.btn_type_count);
+        mCountBtn.setOnClickListener(this);
         mMenuBtn = (Button) itemView.findViewById(R.id.btn_menu);
         mMenuBtn.setOnClickListener(this);
 
@@ -442,7 +443,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 break;
             case R.id.add_card:
                 if (current_package.isEmpty() || current_section.isEmpty()) {
-                    App.err("删除失败，没有选择记忆包或章节");
+                    App.err("请选择记忆包和章节");
                     return false;
                 }
                 current_card_index++;
@@ -455,6 +456,8 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 String path = "material/" + current_package + "/" + current_section + ".txt";
                 FileUtil.writeTextVals(path, full);
                 refreshCardSpinner();
+                User.addTypeinCount();
+                mCountBtn.setText("数量：" + User.typeinCount);
                 break;
             case R.id.delete_package:
                 if (current_package.isEmpty()) {

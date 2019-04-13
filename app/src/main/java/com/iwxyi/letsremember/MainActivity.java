@@ -106,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
         if (App.getInt("firstOpen") == 0) {
             App.setVal("firstOpen", DateTimeUtil.getTimestamp());
         }
+
+        User.integral = App.getInt("integral");
+        User.reciteShort = App.getInt("reciteShort");
+        User.reciteMiddle = App.getInt("reciteMiddle");
+        User.reciteLong = App.getInt("reciteLong");
+        User.typeinCount = App.getInt("typeinCount");
     }
 
     private void initFragment() {

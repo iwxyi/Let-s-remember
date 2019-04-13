@@ -16,11 +16,7 @@ public class User {
     public static int typeinCount;   // 录入
 
     static {
-        integral = App.getInt("integral");
-        reciteShort = App.getInt("reciteShort");
-        reciteMiddle = App.getInt("reciteMiddle");
-        reciteLong = App.getInt("reciteLong");
-        typeinCount = App.getInt("typeinCount");
+
     }
 
     public static boolean isLogin() {
@@ -40,7 +36,7 @@ public class User {
             String c = str.substring(i, i+1);
             if (StringUtil.canMatch(c, "\\d"))
                 eng++;
-            if (StringUtil.canMatch(c, "[^\\u00-\\uff]"))
+            if (StringUtil.canMatch(c, "[^x00-xff]"))
                 chi++;
         }
         if (eng == 0 && str.length() > 40 && chi > str.length() * 0.8) {
@@ -57,5 +53,6 @@ public class User {
 
     public static void addTypeinCount() {
         typeinCount++;
+        App.setVal("typeinCount", typeinCount);
     }
 }
