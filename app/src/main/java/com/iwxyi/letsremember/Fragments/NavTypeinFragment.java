@@ -170,6 +170,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 cards_changed = true;
 
                 // 保存下拉列表框的内容（不是很必要，会损失性能）
+                if (current_card_index == -1 || current_card_index >= card_names.size()) {
+                    App.err("记忆卡片索引出错");
+                    return ;
+                }
                 String old_title = card_names.get(current_card_index);
                 String new_title = "" + (current_card_index + 1) + ". " + getContentTitle(card_content);
                 if (!old_title.equals(new_title)) {
@@ -283,7 +287,6 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         String content = FileUtil.readTextVals(path);
         if (content.isEmpty()) {
             App.err("无法读取文件：" + path);
-            return;
         }
         ArrayList<String> cards = StringUtil.getXmls(content, "card");
         for (int i = 0; i < cards.size(); i++) {
