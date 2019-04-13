@@ -1,5 +1,13 @@
 package com.iwxyi.letsremember.Utils;
 
+/**
+ * FileUtil:文件操作工具类
+ * @Author:命燃芯乂
+ * @Time:2019.4.13
+ * @Update:
+ *      - 增加 delete 方法
+ */
+
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
@@ -88,6 +96,39 @@ public class FileUtil {
         if (!folder_name.startsWith(getFolder()) && !folder_name.startsWith("/"))
             folder_name = getFolder()+"/"+folder_name;
         return createFolder(folder_name);
+    }
+
+    public static void delete(String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            return ;
+        }
+        if (file.isDirectory()) {
+            deleteDirectory(path);
+        } else {
+            deleteFile(path);
+        }
+    }
+
+    private static void deleteDirectory(String path) {
+        File file = new File(path);
+        App.log("====delete dir", file.getPath());
+        File[] files = file.listFiles();
+        for (File f :
+                files) {
+            if (f.isDirectory()) {
+                deleteDirectory(f.getPath());
+            } else {
+                deleteFile(f.getPath());
+            }
+        }
+        file.delete();
+    }
+
+    private static void deleteFile(String path) {
+        File file = new File(path);
+        App.log("====delete file", file.getPath());
+        file.delete();
     }
 
     /**

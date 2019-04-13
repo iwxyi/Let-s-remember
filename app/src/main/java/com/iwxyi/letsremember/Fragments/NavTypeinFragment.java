@@ -35,6 +35,11 @@ import java.util.ArrayList;
 
 public class NavTypeinFragment extends Fragment implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
+    private static final int LEVEL_PACKAGE = 3;
+    private static final int LEVEL_SECTION = 2;
+    private static final int LEVEL_CARD = 1;
+    private static final int LEVEL_TYPEIN = 0;
+
     private Spinner mPackageSp;
     private Spinner mSectionSp;
     private Spinner mCardSp;
@@ -43,21 +48,21 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     private Button mIntegralBtn;
     private Button mBalanceBtn;
     private Button mWithdrawalBtn;
+    private Button mMenuBtn;
 
     private ArrayList<String> package_names;
     private ArrayList<String> section_names;
     private ArrayList<String> card_names;
-    private String current_package; // 当前记忆包名
-    private String current_section; // 当前章节名
+    private String current_package;    // 当前记忆包名
+    private String current_section;    // 当前章节名
     private int current_card_index; // 当前卡片名
 
-    private CardBean current_card_bean; // 当前卡片JavaBean(用来存放其他数据)
-    private String cards_mid;   // 当前章节的默认内容，如果没有改变就不保存
+    private CardBean current_card_bean;         // 当前卡片JavaBean(用来存放其他数据)
+    private String cards_mid;                 // 当前章节的默认内容，如果没有改变就不保存
     private boolean cards_changed = false; // 当前章节是否已经进行了改变
-    private String cards_left;  // 当前章节左边的文本
-    private String cards_right; // 当前章节右边的文本
+    private String cards_left;                // 当前章节左边的文本
+    private String cards_right;               // 当前章节右边的文本
     private ArrayAdapter<String> card_adapter;
-    private Button mMenuBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -400,14 +405,15 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                     App.err("删除失败没有选择记忆包");
                     return false;
                 }
-                AlertDialog dialog = new AlertDialog.Builder(getContext())
+                new AlertDialog.Builder(getContext())
                         .setTitle("提示")
-                        .setMessage("是否确认删除？\n此操作将无法恢复，请慎重考虑")
+                        .setMessage("是否删除当前记忆包？\n此操作将无法恢复，请慎重考虑")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                FileUtil.delete(Paths.getLocalPath("material/" + current_package));
+                                refreshSpinner(LEVEL_PACKAGE);
                             }
                         })
                         .setNegativeButton("取消", null)
@@ -418,13 +424,48 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                     App.err("删除失败，没有选中章节");
                     return false;
                 }
+                new AlertDialog.Builder(getContext())
+                        .setTitle("提示")
+                        .setMessage("是否删除当前章节？\n此操作将无法恢复，请慎重考虑")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                FileUtil.delete(Paths.getLocalPath("material/" + current_package + "/" + current_section + ".txt"));
+                                refreshSpinner(LEVEL_SECTION);
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
                 break;
             case R.id.delete_card:
                 if (current_card_index == -1) {
                     App.err("删除失败，没有选中记忆卡片");
                     return false;
                 }
+                new AlertDialog.Builder(getContext())
+                        .setTitle("提示")
+                        .setMessage("是否删除当前记忆卡片？\n此操作将无法恢复，请慎重考虑")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 保存到文件
+                                String full = cards_left + cards_right;
+                                String path = "material/" + current_package + "/" + current_section + ".txt";
+                                FileUtil.writeTextVals(path, full);
 
+                                // 保存下拉列表框的内容（不是很必要，会损失性能）
+                                card_names.remove(current_card_index);
+                                if (current_card_index >= card_names.size())
+                                    current_card_index--;
+                                App.setVal("editing_card", current_card_index);
+                                card_adapter.notifyDataSetChanged();
+                                refreshSpinner(LEVEL_CARD);
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
                 break;
             default:
                 break;
