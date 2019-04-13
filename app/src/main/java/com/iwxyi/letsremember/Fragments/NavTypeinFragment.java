@@ -1,6 +1,5 @@
 package com.iwxyi.letsremember.Fragments;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,10 +22,8 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Paths;
-import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Material.CardBean;
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.Users.PersonActivity;
 import com.iwxyi.letsremember.Utils.FileUtil;
 import com.iwxyi.letsremember.Utils.InputDialog;
 import com.iwxyi.letsremember.Utils.StringCallback;
@@ -84,14 +81,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         mSectionSp = (Spinner) itemView.findViewById(R.id.sp_section);
         mCardSp = (Spinner) itemView.findViewById(R.id.sp_card);
         mTypeinEt = (EditText) itemView.findViewById(R.id.et_typein);
-        mMyTypeinBtn = (Button) itemView.findViewById(R.id.btn_my_typein);
+        mMyTypeinBtn = (Button) itemView.findViewById(R.id.btn_typein_history);
         mMyTypeinBtn.setOnClickListener(this);
-        mIntegralBtn = (Button) itemView.findViewById(R.id.btn_integral);
+        mIntegralBtn = (Button) itemView.findViewById(R.id.btn_type_count);
         mIntegralBtn.setOnClickListener(this);
-        mBalanceBtn = (Button) itemView.findViewById(R.id.btn_balance);
-        mBalanceBtn.setOnClickListener(this);
-        mWithdrawalBtn = (Button) itemView.findViewById(R.id.btn_withdrawal);
-        mWithdrawalBtn.setOnClickListener(this);
         mMenuBtn = (Button) itemView.findViewById(R.id.btn_menu);
         mMenuBtn.setOnClickListener(this);
 
@@ -396,16 +389,10 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_my_typein:
+            case R.id.btn_typein_history:
                 // TODO 19/04/11
                 break;
-            case R.id.btn_integral:
-                // TODO 19/04/11
-                break;
-            case R.id.btn_balance:
-                // TODO 19/04/11
-                break;
-            case R.id.btn_withdrawal:
+            case R.id.btn_type_count:
                 // TODO 19/04/11
                 break;
             case R.id.btn_menu:

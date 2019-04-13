@@ -69,8 +69,8 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_my_typein"
-                android:text="我的录入帖"
+                android:id="@+id/btn_typein_history"
+                android:text="录入历史"
                 android:background="@drawable/textview_border"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -80,43 +80,14 @@
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/btn_integral"
-                android:text="积分：0"
+                android:id="@+id/btn_type_count"
+                android:text="数量：0"
                 android:background="@drawable/textview_border"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:minHeight="90dp"
                 android:layout_marginLeft="@dimen/border_margin_big"
                 android:layout_marginVertical="@dimen/border_margin_big"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_balance"
-                android:text="余额"
-                android:background="@drawable/textview_border"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:minHeight="90dp"
-                android:layout_marginRight="@dimen/border_margin_big"
-                android:layout_marginVertical="@dimen/border_margin"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btn_withdrawal"
-                android:text="提现"
-                android:background="@drawable/textview_border"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:minHeight="90dp"
-                android:layout_marginLeft="@dimen/border_margin_big"
-                android:layout_marginVertical="@dimen/border_margin"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>

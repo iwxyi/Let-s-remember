@@ -169,14 +169,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btn_my_typein"
-            android:text="我的录入吧"
-            android:textColor="@color/fontBlack"
-            android:background="@drawable/textview_border"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
 
 </FrameLayout>

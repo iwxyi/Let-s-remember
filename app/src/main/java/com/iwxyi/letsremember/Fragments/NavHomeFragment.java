@@ -25,7 +25,6 @@ import com.iwxyi.letsremember.Views.RoundImageView;
 public class NavHomeFragment extends Fragment implements View.OnClickListener {
 
     private Button mStartRememberBtn;
-    private Button mMyTypeinBtn;
     private RoundImageView mHeadIm;
     private TextView mInspirationTv;
     private TextView mMemoryPlanTv;
@@ -49,8 +48,6 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
     private void initView(@NonNull final View itemView) {
         mStartRememberBtn = (Button) itemView.findViewById(R.id.btn_start_remember);
         mStartRememberBtn.setOnClickListener(this);
-        mMyTypeinBtn = (Button) itemView.findViewById(R.id.btn_my_typein);
-        mMyTypeinBtn.setOnClickListener(this);
         mHeadIm = (RoundImageView) itemView.findViewById(R.id.im_head);
         mHeadIm.setOnClickListener(this);
         mInspirationTv = (TextView) itemView.findViewById(R.id.tv_inspiration);
@@ -81,7 +78,7 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_start_remember:
                 startActivity(new Intent(getContext(), MaterialSelectActivity.class));
                 break;
-            case R.id.btn_my_typein:
+            case R.id.btn_typein_history:
                 startActivity(new Intent(getContext(), TypeinActivity.class));
                 break;
             case R.id.btn_change_plan:// TODO 19/03/17
