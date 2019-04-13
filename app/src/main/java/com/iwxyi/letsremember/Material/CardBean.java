@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * File Description
+ * 记忆卡片 JavaBean
  *
  * @author MRXY001
  * @date   2019/3/27 20 49
@@ -228,7 +228,7 @@ public class CardBean extends StringUtil {
         int size = reads.size();
         if (size == 0) {
             reads.add(timestamp);
-            User.addRecite(); // 添加用户背诵的数量
+            User.addRecite(getContent()); // 添加用户背诵的数量
             return ;
         }
         int prev = reads.get(size-1);

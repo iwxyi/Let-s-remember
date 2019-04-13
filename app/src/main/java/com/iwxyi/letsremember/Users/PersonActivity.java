@@ -83,7 +83,7 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
         String usedDay = String.format("%d天%d小时%d分钟", day, hour, minute);
         mTermsTv.setText(usedDay);
 
-        int num = App.getInt("recite");
+        int num = App.getInt("reciteShort") + App.getInt("reciteMiddle") + App.getInt("reciteLong");
         mCountTv.setText("共背诵" + num + "篇");
     }
 
