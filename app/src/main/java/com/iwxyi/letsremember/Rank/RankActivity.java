@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.Rank.dummy.WorldRankContent;
+import com.iwxyi.letsremember.Rank.WorldRankContent;
 
 public class RankActivity extends AppCompatActivity implements WorldRankFragment.OnWorldRankInteractionListener {
 

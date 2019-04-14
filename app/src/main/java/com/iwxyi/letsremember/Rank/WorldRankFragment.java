@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.iwxyi.letsremember.R;
-import com.iwxyi.letsremember.Rank.dummy.WorldRankContent.WorldRankItem;
+import com.iwxyi.letsremember.Rank.WorldRankContent.WorldRankItem;
 
 public class WorldRankFragment extends Fragment  {
 
@@ -53,7 +53,7 @@ public class WorldRankFragment extends Fragment  {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyWorldRankRecyclerViewAdapter(com.iwxyi.letsremember.Rank.dummy.WorldRankContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyWorldRankRecyclerViewAdapter(com.iwxyi.letsremember.Rank.WorldRankContent.ITEMS, mListener));
         }
         return view;
     }
@@ -77,6 +77,6 @@ public class WorldRankFragment extends Fragment  {
     }
 
     public interface OnWorldRankInteractionListener {
-        void onWorldRankInteraction(WorldRankItem item);
+        void onWorldRankInteraction(WorldRankContent.WorldRankItem item);
     }
 }

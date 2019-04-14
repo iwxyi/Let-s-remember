@@ -1,22 +1,17 @@
-package com.iwxyi.letsremember.Rank.dummy;
+package com.iwxyi.letsremember.Rank;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Helper class for providing sample username for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
- */
 public class WorldRankContent {
 
     public static final List<WorldRankItem> ITEMS = new ArrayList<WorldRankItem>();
     public static final Map<String, WorldRankItem> ITEM_MAP = new HashMap<String, WorldRankItem>();
 
     private static final int COUNT = 25;
+
 
     static {
         for (int i = 1; i <= COUNT; i++) {
@@ -27,6 +22,10 @@ public class WorldRankContent {
     private static void addItem(WorldRankItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
+    }
+
+    private static WorldRankItem createItem(int rank, String name, int recite, int typein) {
+        return new WorldRankItem(""+rank, name, "背诵："+recite+"  录入："+typein);
     }
 
     private static WorldRankItem createDummyItem(int position) {
