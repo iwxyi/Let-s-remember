@@ -48,7 +48,7 @@ public class WorldRankContent {
     }
 
     private static WorldRankItem createItem(int rank, String name, int recite, int typein) {
-        return new WorldRankItem(""+rank, name, "背诵："+recite+"  录入："+typein);
+        return new WorldRankItem(""+rank, name, "背诵:"+recite+"  录入:"+typein);
     }
 
     private static WorldRankItem createDummyItem(int position) {

@@ -19,10 +19,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/text_margin"
+            android:layout_marginLeft="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <ImageView
-            android:layout_width="50dp"
+            android:layout_width="30dp"
             android:layout_height="50dp"
             android:src="@drawable/default_head"
             android:minHeight="3dp"
