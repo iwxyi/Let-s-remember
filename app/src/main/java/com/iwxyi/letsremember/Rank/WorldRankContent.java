@@ -36,7 +36,7 @@ public class WorldRankContent {
 
     static {
         for (int i = 0; i < COUNT; i++) {
-            addItem(createItem(i, rank_name[i], recite_count[i],typein_count[i]));
+            addItem(createItem(i+1, rank_name[i], recite_count[i],typein_count[i]));
 //            addItem(createItem(i, rank_name[i], 0,0));
 //            addItem(createDummyItem(i));
         }
