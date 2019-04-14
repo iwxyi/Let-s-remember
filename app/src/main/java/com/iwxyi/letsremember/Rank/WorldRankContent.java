@@ -13,11 +13,11 @@ public class WorldRankContent {
     private static final int COUNT = 25;
 
     static String[] rank_name = {
-            "","","","","",
-            "","","","","",
-            "","","","","",
-            "","","","","",
-            "","","","",""
+            "校长！借个火","甜心少女","倦容","我一直在等你","遇见",
+            "世人皆醉我獨醒","小孤独","繁花入梦","多想留在你身边","哆啦只是个梦",
+            "离挽i","别凶我","妄想徒手摘星","想把你藏起来","青鸾",
+            "听闻爱情十有九悲","柠檬少女","情花罂粟","向暖","佐堓蓅哖",
+            "孤影人","承蒙厚爱","清欢渡","清雾扰山河","傲性小仙女^ω^"
     };
     static int[] recite_count = {
             7823,6323,6209,6188,6043,
@@ -35,7 +35,7 @@ public class WorldRankContent {
     };
 
     static {
-        for (int i = 1; i < COUNT; i++) {
+        for (int i = 0; i < COUNT; i++) {
             addItem(createItem(i, rank_name[i], recite_count[i],typein_count[i]));
 //            addItem(createItem(i, rank_name[i], 0,0));
 //            addItem(createDummyItem(i));
@@ -48,7 +48,7 @@ public class WorldRankContent {
     }
 
     private static WorldRankItem createItem(int rank, String name, int recite, int typein) {
-        return new WorldRankItem(""+rank, name, "背诵:"+recite+"  录入:"+typein);
+        return new WorldRankItem(""+rank, name, "记:"+recite+"  录:"+typein);
     }
 
     private static WorldRankItem createDummyItem(int position) {
