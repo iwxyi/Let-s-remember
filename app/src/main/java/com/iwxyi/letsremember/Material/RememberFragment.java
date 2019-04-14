@@ -150,11 +150,10 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
 
     private void initShowed() {
         if (positive) {
-            mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
+            mContentTv.setText(htmlToString(chapter_manager.getContent().replace("\n", "<br />"), chapter_manager.getPlaces()));
         } else {
             mContentTv.setText(chapter_manager.getContent());
         }
-//        mDescribeTv.setText(chapter_manager.getDescription());
     }
 
     private CharSequence htmlToString(String text, ArrayList<CardBean.PlaceBean> places) {
