@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:background="@color/backgroundGray"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    android:layout_margin="@dimen/border_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,31 +15,39 @@
 
         <TextView
             android:id="@+id/item_number"
-            android:layout_width="wrap_content"
+            android:layout_weight="2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
+            android:layout_marginVertical="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/default_head"
-            android:minHeight="5dp"
-            android:minWidth="5dp"
+            android:minHeight="3dp"
+            android:minWidth="3dp"
+            android:maxWidth="80dp"
+            android:maxHeight="80dp"
+            android:paddingVertical="5dp"
+            android:scaleType="fitCenter"
             android:contentDescription="header" />
 
         <TextView
             android:id="@+id/content"
-            android:layout_width="wrap_content"
+            android:textColor="@color/fontBlack"
+            android:layout_weight="2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
+            android:layout_marginVertical="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
             android:id="@+id/detail"
-            android:layout_width="wrap_content"
+            android:layout_weight="10"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
+            android:layout_marginVertical="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/fontGray" />
 

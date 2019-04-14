@@ -12,10 +12,33 @@ public class WorldRankContent {
 
     private static final int COUNT = 25;
 
+    static String[] rank_name = {
+            "","","","","",
+            "","","","","",
+            "","","","","",
+            "","","","","",
+            "","","","",""
+    };
+    static int[] recite_count = {
+            7823,6323,6209,6188,6043,
+            5873,5623,5321,4903,4003,
+            3765,3715,3612,3121,2941,
+            2927,2923,2812,2604,2588,
+            2445,2312,2298,2275,2265,
+    };
+    static int[] typein_count = {
+            519,310,410,79,1,
+            0,178,0,43,8,
+            0,0,0,238,98,
+            19,84,0,0,3,
+            32,0,572,0,8
+    };
 
     static {
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
+        for (int i = 1; i < COUNT; i++) {
+            addItem(createItem(i, rank_name[i], recite_count[i],typein_count[i]));
+//            addItem(createItem(i, rank_name[i], 0,0));
+//            addItem(createDummyItem(i));
         }
     }
 
