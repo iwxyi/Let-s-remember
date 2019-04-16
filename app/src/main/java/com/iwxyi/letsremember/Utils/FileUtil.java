@@ -3,9 +3,13 @@ package com.iwxyi.letsremember.Utils;
 /**
  * FileUtil:文件操作工具类
  * @Author:命燃芯乂
- * @Time:2019.4.13
- * @Update:
- *      - 增加 delete 方法
+ * @Time:2019
+ *
+ * @Update:2019.4.16
+ *  - 增加 readAssert() 方法
+ *
+ * @Update:2019.4.13
+ *  - 增加 delete 方法
  */
 
 import android.os.Environment;
@@ -19,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FileUtil {
@@ -142,6 +147,26 @@ public class FileUtil {
         if (!fileName.startsWith(getFolder()) && !fileName.startsWith("/"))
             fileName = getFolder()+"/"+fileName;
         return createFile(fileName);
+    }
+
+    /**
+     * 从 Assert 中读取文本文件，可能只有txt文件可以用
+     * @param fileName
+     * @return
+     */
+    public static String readAssert(String fileName) {
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(App.getContext().getResources().getAssets().open(fileName));
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line = "", result = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line;
+            }
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     private static boolean writeTextFile(String filePath, String text) {
