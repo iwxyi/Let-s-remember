@@ -150,7 +150,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
 
     private void initShowed() {
         if (positive) {
-            mContentTv.setText(htmlToString(chapter_manager.getContent().replace("\n", "<br />"), chapter_manager.getPlaces()));
+            mContentTv.setText(htmlToString(chapter_manager.getContent(), chapter_manager.getPlaces()));
         } else {
             mContentTv.setText(chapter_manager.getContent());
         }
@@ -172,6 +172,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
             }
         }
         Log.i("====章节富文本", html);
+        html = html.replace("\n", "<br />");
         CharSequence charSequence = Html.fromHtml(html);
         return charSequence;
     }

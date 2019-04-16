@@ -10,10 +10,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <TextView
             android:id="@+id/tv_content"
             android:text="remember"
+            android:singleLine="false"
             android:textSize="20sp"
             android:gravity="center"
             android:background="@drawable/textview_border"

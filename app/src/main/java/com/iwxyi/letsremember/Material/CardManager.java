@@ -77,7 +77,7 @@ public class CardManager {
             all.append("<card>").append(c).append("</card>");
         }
 
-        Log.i("====saveModify", "material/"+pack_name+"/"+sect_name+".txt\n" + all.toString());
+//        Log.i("====saveModify", "material/"+pack_name+"/"+sect_name+".txt\n" + all.toString());
 
         FileUtil.writeTextVals("material/"+pack_name+"/"+sect_name+".txt", all.toString());
     }

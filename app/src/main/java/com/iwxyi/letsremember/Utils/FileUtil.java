@@ -160,7 +160,7 @@ public class FileUtil {
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line = "", result = "";
             while ((line = bufferedReader.readLine()) != null) {
-                result += line;
+                result += line+"\n";
             }
             inputStreamReader.close();
             return result;
