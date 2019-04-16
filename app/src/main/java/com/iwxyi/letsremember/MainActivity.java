@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.iwxyi.letsremember.Fragments.NavMineFragment;
@@ -127,13 +128,20 @@ public class MainActivity extends AppCompatActivity {
             App.deb("初始化数据失败");
             return;
         }
+        /*{
+            String gushi70 = FileUtil.readAssert("70.txt");
+            Log.i("====gushi70", gushi70);
+            FileUtil.writeTextVals("material/默认/必备古诗七十首.txt", gushi70);
+        }*/
         if (FileUtil.exist(("material"))) // 已经初始化过了
             return ;
         FileUtil.ensureFolder("material");
 
         FileUtil.ensureFolder("material/默认");
         FileUtil.ensureFile("material/默认/必备古诗七十首.txt");
-        FileUtil.writeTextVals("material/默认/必备古诗七十首.txt", FileUtil.readAssert("70.txt"));
+        String gushi70 = FileUtil.readAssert("70.txt");
+        Log.i("====gushi70", gushi70);
+        FileUtil.writeTextVals("material/默认/必备古诗七十首.txt", gushi70);
 
         FileUtil.ensureFolder("material/index");
         FileUtil.ensureFile("material/index/index.txt");
