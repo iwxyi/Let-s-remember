@@ -162,6 +162,7 @@ public class FileUtil {
             while ((line = bufferedReader.readLine()) != null) {
                 result += line;
             }
+            inputStreamReader.close();
             return result;
         } catch (Exception e) {
             e.printStackTrace();

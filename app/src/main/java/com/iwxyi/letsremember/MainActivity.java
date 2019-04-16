@@ -130,6 +130,11 @@ public class MainActivity extends AppCompatActivity {
         if (FileUtil.exist(("material"))) // 已经初始化过了
             return ;
         FileUtil.ensureFolder("material");
+
+        FileUtil.ensureFolder("material/默认");
+        FileUtil.ensureFile("material/默认/必备古诗七十首.txt");
+        FileUtil.writeTextVals("material/默认/必备古诗七十首.txt", FileUtil.readAssert("70.txt"));
+
         FileUtil.ensureFolder("material/index");
         FileUtil.ensureFile("material/index/index.txt");
         FileUtil.writeTextVals("material/index/index.txt", "<card>\n\t<content>\n\t\t内容1内容1内容1内容1\n\t</content>\n\t<description>\n\t\t描述\n\t</description>\n\t<hides>\n\t\n\t</hides>\n\t<reads>\n\t\n\t</reads>\n</card>"+
