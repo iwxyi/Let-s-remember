@@ -152,12 +152,38 @@ public class CardBean extends StringUtil {
                     if (i == 0 && places.get(i).start > start) { // 插入到开头
                         Log.i("====increaseHide", "Add to first");
                         places.add(0, new PlaceBean(start, end));
+
+                        ++size;
+                        while (++i < size && places.get(i).start <= end) {
+                            int end2 = places.get(i).end;
+                            end = end > end2 ? end : end2;
+                            places.get(0).end = end;
+                            Log.i("====increaseHide", "合并：" + i + " : " + places.get(i).start + ", " + places.get(i).end);
+                            places.remove(i);
+                            i--;
+                            size--;
+                        }
+                        break;
                     } else if (i == size - 1) {
                         Log.i("====increaseHide", "Add to last");
                         places.add(new PlaceBean(start, end));
+                        break;
                     } else if (places.get(i).start < start && places.get(i + 1).start > start) {
-                        Log.i("====increaseHide", "Add to "+i);
-                        places.add(i + 1, new PlaceBean(start, end));
+                        Log.i("====increaseHide", "Add to "+ (++i));
+                        places.add(i, new PlaceBean(start, end));
+                        int index = i;
+
+                        ++size;
+                        while (++i < size && places.get(i).start <= end) {
+                            int end2 = places.get(i).end;
+                            end = end > end2 ? end : end2;
+                            places.get(index).end = end;
+                            Log.i("====increaseHide", "合并：" + i + " : " + places.get(i).start + ", " + places.get(i).end);
+                            places.remove(i);
+                            i--;
+                            size--;
+                        }
+                        break;
                     }
                 }
             }
