@@ -1,5 +1,7 @@
 package com.iwxyi.letsremember.Rank;
 
+import com.iwxyi.letsremember.Globals.User;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +42,7 @@ public class WorldRankContent {
 //            addItem(createItem(i, rank_name[i], 0,0));
 //            addItem(createDummyItem(i));
         }
+        addItem(createItem(182, "=="+User.getName()+"==", User.reciteShort+User.reciteMiddle+User.reciteLong, User.typeinCount));
     }
 
     private static void addItem(WorldRankItem item) {

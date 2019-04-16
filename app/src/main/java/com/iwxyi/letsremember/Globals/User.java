@@ -27,6 +27,16 @@ public class User {
         return ""+user_id;
     }
 
+    public static String getName() {
+        if (!isLogin())
+            return "未登录";
+        if (!User.nickname.isEmpty())
+            return User.nickname;
+        if (!User.username.isEmpty())
+            return User.username;
+        return "==您==";
+    }
+
     /**
      * 新背诵了一篇
      */

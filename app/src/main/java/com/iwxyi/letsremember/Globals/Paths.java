@@ -8,7 +8,7 @@ public class Paths {
 
     public static final String NET_PATH = "http://iwxyi.com/letsremember/public/index.php/index/index/"; // 网络路径
     public static final String DATA_PATH = "/letsremember/";
-    public static final String PC_IP = "192.168.43.135"; // 本机电脑IP，调试用 // 192.168.103.2 不知道为啥这个IP也可以诶？
+    public static final String PC_IP = "192.168.103.2"; // 本机电脑IP，调试用 // 192.168.43.135 不知道为啥这个IP也可以诶？
     public static final String NET_PATHD = "http://"+PC_IP+"/letsremember/public/index.php/index/index/"; // 调试
     public static String SDDir = "";
 
