@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,9 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
     boolean positive = true;
     private Button mPrevBtn;
     private Button mNextBtn;
+    private ImageView mCopperIv;
+    private ImageView mWoodIv;
+    private ImageView mIceIv;
 
     public RememberFragment() {
 
@@ -136,6 +140,12 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
 
             }
         });
+        mCopperIv = (ImageView) view.findViewById(R.id.iv_copper);
+        mCopperIv.setOnClickListener(this);
+        mWoodIv = (ImageView) view.findViewById(R.id.iv_wood);
+        mWoodIv.setOnClickListener(this);
+        mIceIv = (ImageView) view.findViewById(R.id.iv_ice);
+        mIceIv.setOnClickListener(this);
     }
 
     public void initData() {
@@ -143,7 +153,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                 App.getVal("last_package", "index"),
                 App.getVal("last_section", "index"));
         if (mContentTv == null) {
-            return ;
+            return;
         }
         initShowed();
     }
@@ -208,6 +218,15 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                 chapter_manager.moveChapter(1);
                 initShowed();
                 break;
+            case R.id.iv_copper:// TODO 19/04/16
+                Toast.makeText(getContext(), "已放入铁盒子中，将长期记忆", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_wood:// TODO 19/04/16
+                Toast.makeText(getContext(), "已放入木盒子中，建议一段时间后复习", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_ice:// TODO 19/04/16
+                Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
@@ -238,6 +257,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
 
     public interface OnRememberFragmentInteractionListener {
         void onRememberFragmentInteraction(Uri uri);
+
         void onCardRemember(int index);
     }
 }
