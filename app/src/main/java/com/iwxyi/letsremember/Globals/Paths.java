@@ -13,7 +13,7 @@ public class Paths {
     public static String SDDir = "";
 
     public static String getNetPath(String action) {
-        return NET_PATHD + action;
+        return NET_PATH + action;
     }
 
     public static String getLocalPath(String fileName) {

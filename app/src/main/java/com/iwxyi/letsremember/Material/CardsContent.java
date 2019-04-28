@@ -49,7 +49,7 @@ public class CardsContent {
             String content = StringUtil.getXml(cards_str.get(i), "content").trim();
             content = getContentTitle(content);
             String detail = getRecentRemember(StringUtil.getXml(cards_str.get(i), "reads").trim());
-            addItem(createCardItem(i, content, detail));
+            addItem(createCardItem(i+1, content, detail));
         }
     }
 
