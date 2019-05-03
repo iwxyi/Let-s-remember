@@ -1,5 +1,6 @@
 package com.iwxyi.letsremember.Material;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.R;
+import com.iwxyi.letsremember.Users.SettingsActivity;
 
 public class MaterialSelectActivity extends AppCompatActivity implements
         PackagesFragment.OnPackagesFragmentInteractionListener,
@@ -72,6 +74,7 @@ public class MaterialSelectActivity extends AppCompatActivity implements
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MaterialSelectActivity.this, SettingsActivity.class));
             return true;
         }
 
