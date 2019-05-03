@@ -455,7 +455,8 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 String full = cards_left + current_card_bean.toString() + cards_right;
                 String path = "material/" + current_package + "/" + current_section + ".txt";
                 FileUtil.writeTextVals(path, full);
-                refreshCardSpinner();
+//                refreshCardSpinner();
+                refreshSpinner(1);
                 User.addTypeinCount();
                 mCountBtn.setText("数量：" + User.typeinCount);
                 break;
