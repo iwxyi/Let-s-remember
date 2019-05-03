@@ -457,6 +457,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
                 FileUtil.writeTextVals(path, full);
 //                refreshCardSpinner();
                 refreshSpinner(1);
+                mTypeinEt.requestFocus();
                 User.addTypeinCount();
                 mCountBtn.setText("数量：" + User.typeinCount);
                 break;
