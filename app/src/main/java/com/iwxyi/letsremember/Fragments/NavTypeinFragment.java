@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -48,7 +49,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     private Button mCountBtn;
     private Button mBalanceBtn;
     private Button mWithdrawalBtn;
-    private Button mMenuBtn;
+    private ImageButton mMenuBtn;
 
     private ArrayList<String> package_names;
     private ArrayList<String> section_names;
@@ -86,7 +87,7 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         mHistoryBtn.setOnClickListener(this);
         mCountBtn = (Button) itemView.findViewById(R.id.btn_type_count);
         mCountBtn.setOnClickListener(this);
-        mMenuBtn = (Button) itemView.findViewById(R.id.btn_menu);
+        mMenuBtn = (ImageButton) itemView.findViewById(R.id.btn_menu);
         mMenuBtn.setOnClickListener(this);
 
         refreshSpinner(3);

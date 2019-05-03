@@ -39,11 +39,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_menu"
-                android:text="选项"
+                android:text=""
+                android:background="@drawable/icon_menu"
+                android:scaleType="center"
                 android:tooltipText="菜单"
                 android:minWidth="5dp"
+                android:maxWidth="10dp"
+                android:maxHeight="10dp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
