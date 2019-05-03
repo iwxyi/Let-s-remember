@@ -41,16 +41,11 @@
 
             <ImageButton
                 android:id="@+id/btn_menu"
-                android:text=""
                 android:background="@drawable/icon_menu"
-                android:scaleType="center"
+                android:scaleType="fitCenter"
                 android:tooltipText="菜单"
-                android:minWidth="5dp"
-                android:maxWidth="10dp"
-                android:maxHeight="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
         </LinearLayout>
 
