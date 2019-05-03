@@ -90,6 +90,8 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
         mMenuBtn = (ImageButton) itemView.findViewById(R.id.btn_menu);
         mMenuBtn.setOnClickListener(this);
 
+        mCountBtn.setText("数量："+User.typeinCount);
+
         refreshSpinner(3);
 
         mPackageSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
