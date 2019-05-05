@@ -1,5 +1,7 @@
 package com.iwxyi.letsremember.Globals;
 
+import com.iwxyi.letsremember.Utils.ConnectUtil;
+import com.iwxyi.letsremember.Utils.StringCallback;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
 public class User {
@@ -52,12 +54,18 @@ public class User {
         if (eng == 0 && str.length() > 40 && chi > str.length() * 0.8) {
             reciteMiddle++;
             App.setVal("reciteMiddle", reciteMiddle);
+            String[] params = {"user_id", ""+user_id, "recite_middle", ""+reciteMiddle};
+            ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
         } else if (str.length() > 200) {
             reciteLong++;
             App.setVal("reciteLong", reciteLong);
+            String[] params = {"user_id", ""+user_id, "recite_long", ""+reciteLong};
+            ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
         } else {
             reciteShort++;
             App.setVal("reciteShort", reciteShort);
+            String[] params = {"user_id", ""+user_id, "recite_short", ""+reciteShort};
+            ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
         }
     }
 

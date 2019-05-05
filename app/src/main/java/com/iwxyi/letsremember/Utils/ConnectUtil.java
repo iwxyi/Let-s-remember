@@ -3,13 +3,14 @@ package com.iwxyi.letsremember.Utils;
 /**
  * @author: mrxy001
  * @time: 2019.2.20
- * @Change: 2019.3.17
  * 宇宙超级无敌联网类
  * 一行搞定取网页源码问题
  * 注意需要联网权限(否则本类最后一个方法会报错，但是能通过编译)
  * <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
  * Android P 需要 android:usesCleartextTraffic="true"
+ * @Change: 2019.5.5
+ * - 添加无回调函数的重载
  */
 
 import android.annotation.SuppressLint;
