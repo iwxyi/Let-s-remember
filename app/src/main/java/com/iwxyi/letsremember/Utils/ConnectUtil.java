@@ -285,6 +285,37 @@ public class ConnectUtil implements Runnable {
 
 
     /******************************** inner Class ************************************/
+    static public void Get(String path) {
+        Thread thread = new Thread(new ConnectUtil(path, "", 0, new Handler()));
+        thread.start();
+    }
+
+    static public void Get(String path, String param) {
+        Thread thread = new Thread(new ConnectUtil(path, param, 0, new Handler()));
+        thread.start();
+    }
+
+    static public void Get(String path, String[] params) {
+        Thread thread = new Thread(new ConnectUtil(path, params, 0, new Handler()));
+        thread.start();
+    }
+
+    static public void Post(String path) {
+        Thread thread = new Thread(new ConnectUtil(path, "", 0, new Handler()).post());
+        thread.start();
+    }
+
+    static public void Post(String path, String param) {
+        Thread thread = new Thread(new ConnectUtil(path, param, 0, new Handler()).post());
+        thread.start();
+    }
+
+    static public void Post(String path, String[] params) {
+        Thread thread = new Thread(new ConnectUtil(path, params, 0, new Handler()).post());
+        thread.start();
+    }
+
+    /******************************** inner Class ************************************/
 
     String path, param;
     String method = "GET";
@@ -339,7 +370,7 @@ public class ConnectUtil implements Runnable {
         param = url.toString();
     }
 
-    public ConnectUtil(Handler handler, String path, String[] params) {
+    public ConnectUtil(String path, String[] params, Handler handler) {
         this(path, params, 0, handler);
     }
 
