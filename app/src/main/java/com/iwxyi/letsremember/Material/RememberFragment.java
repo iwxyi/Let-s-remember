@@ -169,6 +169,9 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
     private CharSequence htmlToString(String text, ArrayList<CardBean.PlaceBean> places) {
         String html = text, left_tag = "<font color='#FFFFFF'>", right_tag = "</font>";
         int offset = 0, left_length = left_tag.length(), right_length = right_tag.length();
+        Log.i("====len", ""+text.length());
+        Log.i("====text", text);
+        html = html.replace(" ", "\t"); // 空格替换成制表符
         for (int i = 0; i < places.size(); i++) {
             CardBean.PlaceBean place = places.get(i);
             int start = place.start, end = place.end;
@@ -183,6 +186,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         }
         Log.i("====章节富文本", html);
         html = html.replace("\n", "<br />");
+        html = html.replace("\t", "&nbsp;"); // 把原来的空格替换成HTML实体
         CharSequence charSequence = Html.fromHtml(html);
         return charSequence;
     }
