@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.R;
 
 import java.util.ArrayList;
@@ -213,23 +214,26 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                 positive = false;
                 initShowed();
                 break;
-            case R.id.btn_prev:// TODO 19/03/31
+            case R.id.btn_prev:
                 chapter_manager.moveChapter(-1);
                 initShowed();
                 break;
-            case R.id.btn_next:// TODO 19/03/31
+            case R.id.btn_next:
                 chapter_manager.addRememberTimestamp();
                 chapter_manager.moveChapter(1);
                 initShowed();
                 break;
-            case R.id.iv_copper:// TODO 19/04/16
+            case R.id.iv_copper:
                 Toast.makeText(getContext(), "已放入铁盒子中，将长期记忆", Toast.LENGTH_SHORT).show();
+                chapter_manager.setChapterBox(Def.COPPER_BOX);
                 break;
-            case R.id.iv_wood:// TODO 19/04/16
+            case R.id.iv_wood:
                 Toast.makeText(getContext(), "已放入木盒子中，建议一段时间后复习", Toast.LENGTH_SHORT).show();
+                chapter_manager.setChapterBox(Def.WOOD_BOX);
                 break;
-            case R.id.iv_ice:// TODO 19/04/16
+            case R.id.iv_ice:
                 Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
+                chapter_manager.setChapterBox(Def.ICE_BOX);
                 break;
             default:
                 break;

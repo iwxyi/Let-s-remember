@@ -12,4 +12,10 @@ public class Def {
     public static int code_register = 1;
     public static int code_login = 2;
     public static int code_person = 3;
+
+    /***** 记忆盒子 *****/
+    public static int NONE_BOX = 0;
+    public static int ICE_BOX = 1;
+    public static int WOOD_BOX = 2;
+    public static int COPPER_BOX = 3;
 }

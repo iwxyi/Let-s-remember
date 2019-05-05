@@ -20,6 +20,7 @@ public class CardBean extends StringUtil {
     String content;
     String description;
     String label;
+    int box = 0;
     ArrayList<PlaceBean>places = new ArrayList<>();
     ArrayList<Integer>reads = new ArrayList<>();
 
@@ -38,6 +39,7 @@ public class CardBean extends StringUtil {
         content = getXml(str, "content").trim();
         description = getXml(str, "description").trim();
         label = getXml(str, "label").trim();
+        box = getXmlInt(str, "box");
 
         String places_str = getXml(str, "hides").trim();
         String[] places_list_str = places_str.split(",");
@@ -82,7 +84,8 @@ public class CardBean extends StringUtil {
                         + toXml(description, "description")
                         + toXml(label, "label")
                         + toXml(places_build.toString(), "hides")
-                        + toXml(reads_build.toString(), "reads");
+                        + toXml(reads_build.toString(), "reads")
+                        + toXml(box, "box");
 
         return toXml(all, "card");
     }
@@ -262,6 +265,11 @@ public class CardBean extends StringUtil {
             reads.remove(size-1);
         }
         reads.add(timestamp);
+    }
+
+    public void setBox(int box) {
+        Log.i("====设置盒子", getContent()+box);
+        this.box = box;
     }
 
     /**

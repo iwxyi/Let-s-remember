@@ -105,6 +105,14 @@ public class CardManager {
         saveModify();
     }
 
+    public void setChapterBox(int x) {
+        if (card == null) {
+            return ;
+        }
+        card.setBox(x);
+        saveModify();
+    }
+
     /**
      * 移动章节，相对于当前位置的差异
      * @param x
