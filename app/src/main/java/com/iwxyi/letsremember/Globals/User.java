@@ -56,21 +56,32 @@ public class User {
             App.setVal("reciteMiddle", reciteMiddle);
             String[] params = {"user_id", ""+user_id, "recite_middle", ""+reciteMiddle};
             ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
+            addIntegral(1);
         } else if (str.length() > 200) {
             reciteLong++;
             App.setVal("reciteLong", reciteLong);
             String[] params = {"user_id", ""+user_id, "recite_long", ""+reciteLong};
             ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
+            addIntegral(3);
         } else {
             reciteShort++;
             App.setVal("reciteShort", reciteShort);
             String[] params = {"user_id", ""+user_id, "recite_short", ""+reciteShort};
             ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
+            addIntegral(10);
         }
     }
 
     public static void addTypeinCount() {
         typeinCount++;
         App.setVal("typeinCount", typeinCount);
+    }
+
+    public static void addIntegral(int x) {
+        integral += x;
+        App.setVal("integral", integral);
+
+        String[] params = {"user_id", ""+user_id, "integral", ""+integral};
+        ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
     }
 }
