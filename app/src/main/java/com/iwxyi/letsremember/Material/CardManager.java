@@ -113,6 +113,13 @@ public class CardManager {
         saveModify();
     }
 
+    public int getChapterBox() {
+        if (card == null) {
+            return 0;
+        }
+        return card.box;
+    }
+
     /**
      * 移动章节，相对于当前位置的差异
      * @param x

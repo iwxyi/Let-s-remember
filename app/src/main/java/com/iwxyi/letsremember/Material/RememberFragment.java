@@ -165,6 +165,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         } else {
             mContentTv.setText(chapter_manager.getContent());
         }
+        setBoxShowed(chapter_manager.getChapterBox());
     }
 
     private CharSequence htmlToString(String text, ArrayList<CardBean.PlaceBean> places) {
@@ -192,11 +193,23 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         return charSequence;
     }
 
+    private void setBoxShowed(int x) {
+        mCopperIv.setImageResource(R.drawable.box_copper);
+        mWoodIv.setImageResource(R.drawable.box_wood);
+        mIceIv.setImageResource(R.drawable.box_ice);
+
+        if (x == 1)
+            mIceIv.setImageResource(R.drawable.box_ice_selected);
+        if (x == 2)
+            mWoodIv.setImageResource(R.drawable.box_wood_selected);
+        if (x == 3)
+            mCopperIv.setImageResource(R.drawable.box_copper_selected);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_content:
-                // TODO 19/03/24
                 break;
             case R.id.tv_positive:
                 mPositiveTv.setTextColor(getResources().getColor(R.color.white));
@@ -226,14 +239,17 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
             case R.id.iv_copper:
                 Toast.makeText(getContext(), "已放入铁盒子中，将长期记忆", Toast.LENGTH_SHORT).show();
                 chapter_manager.setChapterBox(Def.COPPER_BOX);
+                setBoxShowed(Def.COPPER_BOX);
                 break;
             case R.id.iv_wood:
                 Toast.makeText(getContext(), "已放入木盒子中，建议一段时间后复习", Toast.LENGTH_SHORT).show();
                 chapter_manager.setChapterBox(Def.WOOD_BOX);
+                setBoxShowed(Def.WOOD_BOX);
                 break;
             case R.id.iv_ice:
                 Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
                 chapter_manager.setChapterBox(Def.ICE_BOX);
+                setBoxShowed(Def.ICE_BOX);
                 break;
             default:
                 break;
