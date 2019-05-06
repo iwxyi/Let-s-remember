@@ -198,11 +198,11 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         mWoodIv.setImageResource(R.drawable.box_wood);
         mIceIv.setImageResource(R.drawable.box_ice);
 
-        if (x == 1)
+        if (x == Def.ICE_BOX)
             mIceIv.setImageResource(R.drawable.box_ice_selected);
-        if (x == 2)
+        if (x == Def.WOOD_BOX)
             mWoodIv.setImageResource(R.drawable.box_wood_selected);
-        if (x == 3)
+        if (x == Def.COPPER_BOX)
             mCopperIv.setImageResource(R.drawable.box_copper_selected);
     }
 
@@ -237,19 +237,37 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                 initShowed();
                 break;
             case R.id.iv_copper:
-                Toast.makeText(getContext(), "已放入铁盒子中，将长期记忆", Toast.LENGTH_SHORT).show();
-                chapter_manager.setChapterBox(Def.COPPER_BOX);
-                setBoxShowed(Def.COPPER_BOX);
+                if (chapter_manager.getChapterBox() == Def.COPPER_BOX) {
+                    Toast.makeText(getContext(), "取消放入铁盒子", Toast.LENGTH_SHORT).show();
+                    chapter_manager.setChapterBox(Def.NONE_BOX);
+                    setBoxShowed(Def.NONE_BOX);
+                } else {
+                    Toast.makeText(getContext(), "已放入铁盒子中，将长期记忆", Toast.LENGTH_SHORT).show();
+                    chapter_manager.setChapterBox(Def.COPPER_BOX);
+                    setBoxShowed(Def.COPPER_BOX);
+                }
                 break;
             case R.id.iv_wood:
-                Toast.makeText(getContext(), "已放入木盒子中，建议一段时间后复习", Toast.LENGTH_SHORT).show();
-                chapter_manager.setChapterBox(Def.WOOD_BOX);
-                setBoxShowed(Def.WOOD_BOX);
+                if (chapter_manager.getChapterBox() == Def.WOOD_BOX) {
+                    Toast.makeText(getContext(), "取消放入木盒子", Toast.LENGTH_SHORT).show();
+                    chapter_manager.setChapterBox(Def.NONE_BOX);
+                    setBoxShowed(Def.NONE_BOX);
+                } else {
+                    Toast.makeText(getContext(), "已放入木盒子中，建议一段时间后复习", Toast.LENGTH_SHORT).show();
+                    chapter_manager.setChapterBox(Def.WOOD_BOX);
+                    setBoxShowed(Def.WOOD_BOX);
+                }
                 break;
             case R.id.iv_ice:
-                Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
-                chapter_manager.setChapterBox(Def.ICE_BOX);
-                setBoxShowed(Def.ICE_BOX);
+                if (chapter_manager.getChapterBox() == Def.ICE_BOX) {
+                    Toast.makeText(getContext(), "取消放入冰盒子", Toast.LENGTH_SHORT).show();
+                    chapter_manager.setChapterBox(Def.NONE_BOX);
+                    setBoxShowed(Def.NONE_BOX);
+                } else {
+                    Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
+                    chapter_manager.setChapterBox(Def.ICE_BOX);
+                    setBoxShowed(Def.ICE_BOX);
+                }
                 break;
             default:
                 break;
