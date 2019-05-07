@@ -21,7 +21,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:layout_margin="@dimen/border_margin_big"
+            android:layout_margin="@dimen/border_margin"
             android:padding="@dimen/border_margin">
 
             <LinearLayout
@@ -177,83 +177,128 @@
 
         </android.support.v7.widget.CardView>
 
-        <!--按钮集-->
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <!--按钮集-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="@dimen/border_margin"
+                android:padding="@dimen/border_margin">
 
-                <Button
-                    android:id="@+id/btn_friend_group"
-                    android:text="好友圈"
-                    android:gravity="center"
-                    android:textSize="@dimen/square_fontSize"
-                    android:background="@drawable/textview_border"
-                    android:layout_margin="@dimen/border_margin_big"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="50dp"/>
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btn_group_rank"
-                    android:text="好友排行"
-                    android:gravity="center"
-                    android:textSize="@dimen/square_fontSize"
-                    android:background="@drawable/textview_border"
-                    android:layout_margin="@dimen/border_margin_big"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/btn_world_rank"
-                    android:text="世界排行"
-                    android:gravity="center"
-                    android:textSize="@dimen/square_fontSize"
-                    android:background="@drawable/textview_border"
-                    android:layout_margin="@dimen/border_margin_big"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50dp"/>
+                        <Button
+                            android:id="@+id/btn_world_rank"
+                            android:text="世界排行"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
 
-                <Button
-                    android:text="周边商城"
-                    android:gravity="center"
-                    android:textSize="@dimen/square_fontSize"
-                    android:background="@drawable/textview_border"
-                    android:layout_margin="@dimen/border_margin_big"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50dp"/>
+                    </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_settings"
-                    android:text="设置"
-                    android:gravity="center"
-                    android:textSize="@dimen/square_fontSize"
-                    android:background="@drawable/textview_border"
-                    android:layout_margin="@dimen/border_margin_big"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorLightGray" />
 
-                <Button
-                    android:text="占位按钮"
-                    android:gravity="center"
-                    android:visibility="invisible"
-                    android:textSize="@dimen/square_fontSize"
-                    android:background="@drawable/textview_border"
-                    android:layout_margin="@dimen/border_margin_big"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            </LinearLayout>
+                        <Button
+                            android:id="@+id/btn_group_rank"
+                            android:text="好友排行"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorLightGray" />
+
+                        <Button
+                            android:id="@+id/btn_friend_group"
+                            android:text="好友圈"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorLightGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:text="周边商城"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorLightGray" />
+
+                        <Button
+                            android:id="@+id/btn_settings"
+                            android:text="设置"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
         </ScrollView>
 
