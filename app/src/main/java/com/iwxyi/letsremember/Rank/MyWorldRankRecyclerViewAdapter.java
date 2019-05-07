@@ -31,8 +31,8 @@ public class MyWorldRankRecyclerViewAdapter extends RecyclerView.Adapter<MyWorld
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).username);
+        holder.mIdView.setText(""+mValues.get(position).rank);
+        holder.mContentView.setText(mValues.get(position).nickname);
         holder.mDetailView.setText(mValues.get(position).details);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {

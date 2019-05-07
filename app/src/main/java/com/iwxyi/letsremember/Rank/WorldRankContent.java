@@ -1,5 +1,6 @@
 package com.iwxyi.letsremember.Rank;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Utils.StringUtil;
 import com.iwxyi.letsremember.Utils.XmlParser;
@@ -60,9 +61,11 @@ public class WorldRankContent {
         XmlParser xmlParser = new XmlParser(str);
         xmlParser.split("USER");
         for (int i = 0; i < xmlParser.size(); i++) {
-            xmlParser.setIndex(i);
-            addItem(createItem(i+1, xmlParser.get("NAME"),
-                    xmlParser.getInt("TYPEIN"), xmlParser.getInt("RECITE")));
+//            xmlParser.setIndex(i);
+//            addItem(createItem(i+1, xmlParser.get("NICKNAME"),
+//                    xmlParser.getInt("TYPEIN"), xmlParser.getInt("RECITE")));
+            App.deb("===="+xmlParser.getItem(i));
+            addItem(new WorldRankItem(i+1, xmlParser.getItem(i)));
         }
     }
 
@@ -71,7 +74,10 @@ public class WorldRankContent {
         public int rank = 0;
         public int user_id = 0;
         public String username;
+        public String nickname;
         public String details;
+        public int recite;
+        public int typein;
 
         public WorldRankItem(String id, String content, String details) {
             this.id = id;
@@ -84,6 +90,29 @@ public class WorldRankContent {
             this.user_id = user_id;
             this.username = username;
             this.details = detail;
+        }
+
+        public WorldRankItem(int rank, String str) {
+            this.rank = rank;
+            this.user_id = StringUtil.getXmlInt(str, "USER_ID");
+            this.username = StringUtil.getXml(str, "USERNAME");
+            this.nickname = StringUtil.getXml(str, "NICKNAME");
+            this.recite = StringUtil.getXmlInt(str, "RECITE");
+            this.typein = StringUtil.getXmlInt(str, "TYPEIN");
+
+            makeDetail();
+        }
+
+        private void makeDetail() {
+            this.details = "记:"+recite+"  录:"+typein;
+        }
+
+        public WorldRankItem(String str) {
+            this.user_id = StringUtil.getXmlInt(str, "USER_ID");
+            this.username = StringUtil.getXml(str, "USERNAME");
+            this.nickname = StringUtil.getXml(str, "NICKNAME");
+            this.recite = StringUtil.getXmlInt(str, "RECITE");
+            this.typein = StringUtil.getXmlInt(str, "TYPEIN");
         }
 
         @Override
