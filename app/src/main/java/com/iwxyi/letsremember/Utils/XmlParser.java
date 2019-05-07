@@ -12,6 +12,7 @@ import com.iwxyi.letsremember.Globals.App;
 public class XmlParser {
      private String full;
      private String[] list;
+     private int size = 0;
 
     public XmlParser(String text) {
         full = text;
@@ -49,6 +50,15 @@ public class XmlParser {
 
     public void split(String tag) {
         list = (String[])StringUtil.getXmls(full, tag).toArray();
+    }
+
+    public int size() {
+        if (size == 0) {
+            if (list.length == 0)
+                return 0;
+            return size = list.length;
+        }
+        return size;
     }
 
     public String getItem(int index) {
