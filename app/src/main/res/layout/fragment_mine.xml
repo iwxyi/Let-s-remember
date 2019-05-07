@@ -182,123 +182,196 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--按钮集-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="5dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_margin="@dimen/border_margin"
-                android:padding="@dimen/border_margin">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <!--三个盒子-->
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    app:cardCornerRadius="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_margin="@dimen/border_margin"
+                    android:padding="@dimen/border_margin">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btn_world_rank"
-                            android:text="世界排行"
+                            android:id="@+id/btn_ice_box"
+                            android:text="冰盒子"
                             android:gravity="center"
                             android:textSize="@dimen/square_fontSize"
                             android:background="@color/colorWhite"
                             android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorLightGray" />
+
+                        <Button
+                            android:id="@+id/btn_wood_box"
+                            android:text="木盒子"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorLightGray" />
+
+                        <Button
+                            android:id="@+id/btn_copper_box"
+                            android:text="铁盒子"
+                            android:gravity="center"
+                            android:textSize="@dimen/square_fontSize"
+                            android:background="@color/colorWhite"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--按钮集-->
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_margin="@dimen/border_margin"
+                    android:padding="@dimen/border_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:id="@+id/btn_world_rank"
+                                android:text="世界排行"
+                                android:gravity="center"
+                                android:textSize="@dimen/square_fontSize"
+                                android:background="@color/colorWhite"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLightGray" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="50dp"/>
+                            android:orientation="horizontal">
 
-                    </LinearLayout>
+                            <Button
+                                android:id="@+id/btn_group_rank"
+                                android:text="好友排行"
+                                android:gravity="center"
+                                android:textSize="@dimen/square_fontSize"
+                                android:background="@color/colorWhite"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp"/>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/colorLightGray" />
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorLightGray" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/btn_friend_group"
+                                android:text="好友圈"
+                                android:gravity="center"
+                                android:textSize="@dimen/square_fontSize"
+                                android:background="@color/colorWhite"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp"/>
 
-                        <Button
-                            android:id="@+id/btn_group_rank"
-                            android:text="好友排行"
-                            android:gravity="center"
-                            android:textSize="@dimen/square_fontSize"
-                            android:background="@color/colorWhite"
-                            android:foreground="?android:attr/selectableItemBackground"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:minHeight="50dp"/>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorLightGray" />
-
-                        <Button
-                            android:id="@+id/btn_friend_group"
-                            android:text="好友圈"
-                            android:gravity="center"
-                            android:textSize="@dimen/square_fontSize"
-                            android:background="@color/colorWhite"
-                            android:foreground="?android:attr/selectableItemBackground"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:minHeight="50dp"/>
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/colorLightGray" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:text="周边商城"
-                            android:gravity="center"
-                            android:textSize="@dimen/square_fontSize"
-                            android:background="@color/colorWhite"
-                            android:foreground="?android:attr/selectableItemBackground"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:minHeight="50dp"/>
+                        </LinearLayout>
 
                         <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
                             android:background="@color/colorLightGray" />
 
-                        <Button
-                            android:id="@+id/btn_settings"
-                            android:text="设置"
-                            android:gravity="center"
-                            android:textSize="@dimen/square_fontSize"
-                            android:background="@color/colorWhite"
-                            android:foreground="?android:attr/selectableItemBackground"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="50dp"/>
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:text="周边商城"
+                                android:gravity="center"
+                                android:textSize="@dimen/square_fontSize"
+                                android:background="@color/colorWhite"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorLightGray" />
+
+                            <Button
+                                android:id="@+id/btn_settings"
+                                android:text="设置"
+                                android:gravity="center"
+                                android:textSize="@dimen/square_fontSize"
+                                android:background="@color/colorWhite"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+            </LinearLayout>
 
         </ScrollView>
 
