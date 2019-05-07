@@ -36,53 +36,64 @@
                     android:orientation="horizontal"
                     android:layout_margin="@dimen/border_margin_big">
 
-                    <!--圆形头像-->
-                    <com.iwxyi.letsremember.Views.RoundImageView
-                        android:id="@+id/im_mine_head"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/default_head"
-                        loonggg:border_incolor="@color/colorPrimary"
-                        loonggg:border_outcolor="@color/transparent"
-                        loonggg:border_width="3dp"/>
-
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/border_margin_big"
-                        android:orientation="vertical">
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <!--圆形头像-->
+                        <com.iwxyi.letsremember.Views.RoundImageView
+                            android:id="@+id/im_mine_head"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/default_head"
+                            loonggg:border_incolor="@color/colorPrimary"
+                            loonggg:border_outcolor="@color/transparent"
+                            loonggg:border_width="3dp"/>
 
-                        <TextView
-                            android:id="@+id/tv_mine_name"
-                            android:text="请登录"
-                            android:textSize="@dimen/square_fontSize"
-                            android:textColor="@color/fontBlack"
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/border_margin_big"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_mine_name_desc"
-                            android:text="查看信息或编辑资料"
-                            android:textColor="@color/fontGray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            <TextView
+                                android:id="@+id/tv_mine_name"
+                                android:text="请登录"
+                                android:textSize="@dimen/square_fontSize"
+                                android:textColor="@color/fontBlack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
 
+                            <TextView
+                                android:id="@+id/tv_mine_name_desc"
+                                android:text="查看信息或编辑资料"
+                                android:textColor="@color/fontGray"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
                     </LinearLayout>
+
+                    <!--右边的箭头-->
+                    <ImageView
+                        android:src="@drawable/icon_right_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginVertical="@dimen/border_margin"
-                    android:background="#BBBBBB" />
+                    android:layout_marginHorizontal="@dimen/border_margin_big"
+                    android:background="@color/colorLightGray" />
 
                 <!--各项数值-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/border_margin_big"
+                    android:layout_marginVertical="@dimen/border_margin_big"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -106,6 +117,12 @@
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/border_margin"
+                        android:background="@color/colorLightGray"/>
+
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="0dp"
@@ -126,6 +143,12 @@
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/border_margin"
+                        android:background="@color/colorLightGray"/>
 
                     <LinearLayout
                         android:layout_weight="1"
@@ -154,59 +177,87 @@
 
         </android.support.v7.widget.CardView>
 
-        <Button
-            android:id="@+id/btn_friend_group"
-            android:text="好友圈"
-            android:gravity="center"
-            android:textSize="@dimen/square_fontSize"
-            android:background="@drawable/textview_border"
-            android:layout_margin="@dimen/border_margin_big"
+        <!--按钮集-->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"/>
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-        <Button
-            android:id="@+id/btn_group_rank"
-            android:text="好友排行"
-            android:gravity="center"
-            android:textSize="@dimen/square_fontSize"
-            android:background="@drawable/textview_border"
-            android:layout_margin="@dimen/border_margin_big"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_world_rank"
-            android:text="世界排行"
-            android:gravity="center"
-            android:textSize="@dimen/square_fontSize"
-            android:background="@drawable/textview_border"
-            android:layout_margin="@dimen/border_margin_big"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"/>
+                <Button
+                    android:id="@+id/btn_friend_group"
+                    android:text="好友圈"
+                    android:gravity="center"
+                    android:textSize="@dimen/square_fontSize"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/border_margin_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"/>
 
-        <Button
-            android:text="周边商城"
-            android:gravity="center"
-            android:textSize="@dimen/square_fontSize"
-            android:background="@drawable/textview_border"
-            android:layout_margin="@dimen/border_margin_big"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"/>
+                <Button
+                    android:id="@+id/btn_group_rank"
+                    android:text="好友排行"
+                    android:gravity="center"
+                    android:textSize="@dimen/square_fontSize"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/border_margin_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"/>
 
-        <Button
-            android:id="@+id/btn_settings"
-            android:text="设置"
-            android:gravity="center"
-            android:textSize="@dimen/square_fontSize"
-            android:background="@drawable/textview_border"
-            android:layout_margin="@dimen/border_margin_big"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"/>
+                <Button
+                    android:id="@+id/btn_world_rank"
+                    android:text="世界排行"
+                    android:gravity="center"
+                    android:textSize="@dimen/square_fontSize"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/border_margin_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"/>
+
+                <Button
+                    android:text="周边商城"
+                    android:gravity="center"
+                    android:textSize="@dimen/square_fontSize"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/border_margin_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"/>
+
+                <Button
+                    android:id="@+id/btn_settings"
+                    android:text="设置"
+                    android:gravity="center"
+                    android:textSize="@dimen/square_fontSize"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/border_margin_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"/>
+
+                <Button
+                    android:text="占位按钮"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/square_fontSize"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/border_margin_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
 
     </LinearLayout>
 
