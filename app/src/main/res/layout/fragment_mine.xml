@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:loonggg="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.NavMineFragment">
 
     <LinearLayout
@@ -11,125 +12,147 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- 个人信息 -->
-        <LinearLayout
+        <!-- 个人信息 卡片 -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/border_margin_big">
-
-            <!--圆形头像-->
-            <com.iwxyi.letsremember.Views.RoundImageView
-                android:id="@+id/im_mine_head"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/default_head"
-                loonggg:border_incolor="@color/colorPrimary"
-                loonggg:border_outcolor="@color/transparent"
-                loonggg:border_width="3dp"/>
-
+            app:cardCornerRadius="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_margin="@dimen/border_margin_big"
+            android:padding="@dimen/border_margin">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/border_margin_big"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_mine_name"
-                    android:text="请登录"
-                    android:textSize="@dimen/square_fontSize"
-                    android:textColor="@color/fontBlack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                <!--头像和信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/border_margin_big">
 
-                <TextView
-                    android:id="@+id/tv_mine_name_desc"
-                    android:text="查看信息或编辑资料"
-                    android:textColor="@color/fontGray"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    <!--圆形头像-->
+                    <com.iwxyi.letsremember.Views.RoundImageView
+                        android:id="@+id/im_mine_head"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/default_head"
+                        loonggg:border_incolor="@color/colorPrimary"
+                        loonggg:border_outcolor="@color/transparent"
+                        loonggg:border_width="3dp"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/border_margin_big"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_mine_name"
+                            android:text="请登录"
+                            android:textSize="@dimen/square_fontSize"
+                            android:textColor="@color/fontBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_mine_name_desc"
+                            android:text="查看信息或编辑资料"
+                            android:textColor="@color/fontGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="@dimen/border_margin"
+                    android:background="#BBBBBB" />
+
+                <!--各项数值-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/border_margin_big"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_mine_integral"
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="积分"
+                            android:textColor="@color/fontGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_mine_recite"
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="积分"
+                            android:textColor="@color/fontGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_mine_typein"
+                            android:text="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="积分"
+                            android:textColor="@color/fontGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginVertical="@dimen/border_margin"
-            android:background="#888888" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/border_margin_big"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tv_mine_integral"
-                    android:text="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="积分"
-                    android:textColor="@color/fontGray"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tv_mine_recite"
-                    android:text="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="积分"
-                    android:textColor="@color/fontGray"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tv_mine_typein"
-                    android:text="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="积分"
-                    android:textColor="@color/fontGray"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <Button
             android:id="@+id/btn_friend_group"

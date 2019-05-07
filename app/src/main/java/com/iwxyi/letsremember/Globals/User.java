@@ -39,6 +39,10 @@ public class User {
         return "==您==";
     }
 
+    public static int getRecite() {
+        return reciteShort+reciteMiddle+reciteLong;
+    }
+
     /**
      * 新背诵了一篇
      */
