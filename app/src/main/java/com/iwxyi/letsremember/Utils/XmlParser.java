@@ -1,5 +1,7 @@
 package com.iwxyi.letsremember.Utils;
 
+import android.util.Log;
+
 import com.iwxyi.letsremember.Globals.App;
 
 /*
@@ -13,6 +15,7 @@ public class XmlParser {
      private String full;
      private String[] list;
      private int size = 0;
+     private int current_index = -1;
 
     public XmlParser(String text) {
         full = text;
@@ -49,7 +52,7 @@ public class XmlParser {
     /***************** list **************/
 
     public void split(String tag) {
-        list = (String[])StringUtil.getXmls(full, tag).toArray();
+        list = StringUtil.getXmls(full, tag).toArray(new String[0]);
     }
 
     public int size() {
@@ -59,6 +62,15 @@ public class XmlParser {
             return size = list.length;
         }
         return size;
+    }
+
+    public void setIndex(int x) {
+        if (x < 0 || x >= list.length) {
+            Log.e("====XmlParser列表错误", "数组下标溢出");
+            return ;
+        }
+        full = list[x];
+        current_index = x;
     }
 
     public String getItem(int index) {
