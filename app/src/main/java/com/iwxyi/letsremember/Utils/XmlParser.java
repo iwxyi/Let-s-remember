@@ -10,6 +10,8 @@ import com.iwxyi.letsremember.Globals.App;
  * @author MRXY001
  * @date   2019/3/17 15 13
  * @email  wxy19980615@gmail.com
+ * @Update: 2019.5.7
+ * - 优化列表解析器，单方向从字符串转成列表，并且保留字符串方法
  */
 public class XmlParser {
      private String full;

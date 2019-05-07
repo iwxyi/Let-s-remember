@@ -1,6 +1,8 @@
 package com.iwxyi.letsremember.Rank;
 
 import com.iwxyi.letsremember.Globals.User;
+import com.iwxyi.letsremember.Utils.StringUtil;
+import com.iwxyi.letsremember.Utils.XmlParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,12 +39,10 @@ public class WorldRankContent {
     };
 
     static {
-        for (int i = 0; i < COUNT; i++) {
+        /*for (int i = 0; i < COUNT; i++) {
             addItem(createItem(i+1, rank_name[i], recite_count[i],typein_count[i]));
-//            addItem(createItem(i, rank_name[i], 0,0));
-//            addItem(createDummyItem(i));
         }
-        addItem(createItem(182, "=="+User.getName()+"==", User.reciteShort+User.reciteMiddle+User.reciteLong, User.typeinCount));
+        addItem(createItem(182, "=="+User.getName()+"==", User.reciteShort+User.reciteMiddle+User.reciteLong, User.typeinCount));*/
     }
 
     private static void addItem(WorldRankItem item) {
@@ -54,15 +54,16 @@ public class WorldRankContent {
         return new WorldRankItem(""+rank, name, "记:"+recite+"  录:"+typein);
     }
 
-    private static WorldRankItem createDummyItem(int position) {
-        return new WorldRankItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        builder.append("\nMore details information here.");
-        return builder.toString();
+    public static void initFromStr(String str) {
+        ITEMS.clear();
+        ITEM_MAP.clear();
+        XmlParser xmlParser = new XmlParser(str);
+        xmlParser.split("USER");
+        for (int i = 0; i < xmlParser.size(); i++) {
+            xmlParser.setIndex(i);
+            addItem(createItem(i+1, xmlParser.get("NAME"),
+                    xmlParser.getInt("TYPEIN"), xmlParser.getInt("RECITE")));
+        }
     }
 
     public static class WorldRankItem {

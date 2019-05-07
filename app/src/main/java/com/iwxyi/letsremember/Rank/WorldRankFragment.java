@@ -10,14 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.iwxyi.letsremember.Globals.Paths;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.WorldRankContent.WorldRankItem;
+import com.iwxyi.letsremember.Utils.ConnectUtil;
+import com.iwxyi.letsremember.Utils.StringCallback;
+import com.iwxyi.letsremember.Utils.XmlParser;
 
 public class WorldRankFragment extends Fragment  {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnWorldRankInteractionListener mListener;
+    private MyWorldRankRecyclerViewAdapter adapter;
 
     public WorldRankFragment() {
     }
@@ -45,6 +50,7 @@ public class WorldRankFragment extends Fragment  {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_worldrank_list, container, false);
 
+        // 初始化内容
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
@@ -53,8 +59,19 @@ public class WorldRankFragment extends Fragment  {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyWorldRankRecyclerViewAdapter(com.iwxyi.letsremember.Rank.WorldRankContent.ITEMS, mListener));
+            adapter = new MyWorldRankRecyclerViewAdapter(WorldRankContent.ITEMS, mListener);
+            recyclerView.setAdapter(adapter);
         }
+
+        // 获取排行榜
+        ConnectUtil.Get(Paths.getNetPath("getRank"), new StringCallback(){
+            @Override
+            public void onFinish(String content) {
+                WorldRankContent.initFromStr(content);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
         return view;
     }
 
