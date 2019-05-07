@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
 
 import java.util.ArrayList;
@@ -241,10 +242,12 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "取消放入铁盒子", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.NONE_BOX);
                     setBoxShowed(Def.NONE_BOX);
+                    App.setVal("boxCopperCount", --User.boxCopperCount);
                 } else {
                     Toast.makeText(getContext(), "已放入铁盒子中，将长期记忆", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.COPPER_BOX);
                     setBoxShowed(Def.COPPER_BOX);
+                    App.setVal("boxCopperCount", ++User.boxCopperCount);
                 }
                 break;
             case R.id.iv_wood:
@@ -252,10 +255,12 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "取消放入木盒子", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.NONE_BOX);
                     setBoxShowed(Def.NONE_BOX);
+                    App.setVal("boxWoodCount", --User.boxCopperCount);
                 } else {
                     Toast.makeText(getContext(), "已放入木盒子中，建议一段时间后复习", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.WOOD_BOX);
                     setBoxShowed(Def.WOOD_BOX);
+                    App.setVal("boxWoodCount", ++User.boxCopperCount);
                 }
                 break;
             case R.id.iv_ice:
@@ -263,10 +268,12 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "取消放入冰盒子", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.NONE_BOX);
                     setBoxShowed(Def.NONE_BOX);
+                    App.setVal("boxIceCount", --User.boxCopperCount);
                 } else {
                     Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.ICE_BOX);
                     setBoxShowed(Def.ICE_BOX);
+                    App.setVal("boxIceCount", ++User.boxCopperCount);
                 }
                 break;
             default:
