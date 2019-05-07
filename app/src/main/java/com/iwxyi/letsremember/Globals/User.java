@@ -11,11 +11,16 @@ public class User {
     public static String nickname;   // 昵称
     public static String mobile;     // 手机号
     public static String email;      // 邮箱
+
     public static int integral;      // 积分
     public static int reciteShort;   // 背诵单词类
     public static int reciteMiddle;  // 背诵诗文类
     public static int reciteLong;    // 背诵长篇类
     public static int typeinCount;   // 录入
+
+    public static int boxIceCount;    // 冰盒子数量
+    public static int boxWoodCount;   // 木盒子数量
+    public static int boxCopperCount; // 铁盒子数量
 
     static {
 

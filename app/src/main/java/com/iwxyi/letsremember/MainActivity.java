@@ -86,7 +86,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        initData();
         initApplicationFirstUse();
+    }
+
+    private void initData() {
+        if (App.getInt("firstOpen") == 0) {
+            App.setVal("firstOpen", DateTimeUtil.getTimestamp());
+        }
+
+        User.integral = App.getInt("integral");
+        User.reciteShort = App.getInt("reciteShort");
+        User.reciteMiddle = App.getInt("reciteMiddle");
+        User.reciteLong = App.getInt("reciteLong");
+        User.typeinCount = App.getInt("typeinCount");
+
+        User.boxIceCount = App.getInt("boxIceCount");
+        User.boxWoodCount = App.getInt("boxWoodCount");
+        User.boxCopperCount = App.getInt("boxCopperCount");
     }
 
     private void initView() {
@@ -103,16 +120,6 @@ public class MainActivity extends AppCompatActivity {
         if (!User.isLogin() && App.getInt("user_id") != 0) {
             startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), Def.code_login);
         }
-
-        if (App.getInt("firstOpen") == 0) {
-            App.setVal("firstOpen", DateTimeUtil.getTimestamp());
-        }
-
-        User.integral = App.getInt("integral");
-        User.reciteShort = App.getInt("reciteShort");
-        User.reciteMiddle = App.getInt("reciteMiddle");
-        User.reciteLong = App.getInt("reciteLong");
-        User.typeinCount = App.getInt("typeinCount");
     }
 
     private void initFragment() {
