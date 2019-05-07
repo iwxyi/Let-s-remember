@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ft.show(groupFragment);
                     }
+                    groupFragment.refreshInformation();
                     break;
                 default :
                     return false;

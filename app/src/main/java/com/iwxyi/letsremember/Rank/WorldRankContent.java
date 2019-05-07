@@ -64,7 +64,6 @@ public class WorldRankContent {
 //            xmlParser.setIndex(i);
 //            addItem(createItem(i+1, xmlParser.get("NICKNAME"),
 //                    xmlParser.getInt("TYPEIN"), xmlParser.getInt("RECITE")));
-            App.deb("===="+xmlParser.getItem(i));
             addItem(new WorldRankItem(i+1, xmlParser.getItem(i)));
         }
     }
