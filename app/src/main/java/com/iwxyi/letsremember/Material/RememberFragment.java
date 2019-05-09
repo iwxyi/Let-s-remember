@@ -273,7 +273,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "已放入冰盒子中，建议稍后复习", Toast.LENGTH_SHORT).show();
                     chapter_manager.setChapterBox(Def.ICE_BOX);
                     setBoxShowed(Def.ICE_BOX);
-                    App.setVal("boxIceCount", ++User.boxCopperCount);
+                    App.setVal("boxIceCount", ++User.boxIceCount);
                 }
                 break;
             default:

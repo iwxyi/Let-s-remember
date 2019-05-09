@@ -33,6 +33,9 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
     private TextView mMineReciteTv;
     private TextView mMineTypeinTv;
     private CardView mInformationCv;
+    private Button mIceBoxBtn;
+    private Button mWoodBoxBtn;
+    private Button mCopperBoxBtn;
 
     public static NavMineFragment newInstance(String param1, String param2) {
         NavMineFragment fragment = new NavMineFragment();
@@ -41,23 +44,27 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
 
     private void initView(@NonNull final View itemView) {
         mWorldRankBtn = (Button) itemView.findViewById(R.id.btn_world_rank);
+        mWorldRankBtn.setOnClickListener(this);
         mSettingsBtn = (Button) itemView.findViewById(R.id.btn_settings);
+        mSettingsBtn.setOnClickListener(this);
         mMineHeadIm = (RoundImageView) itemView.findViewById(R.id.im_mine_head);
         mMineNameTv = (TextView) itemView.findViewById(R.id.tv_mine_name);
         mMineNameDescTv = (TextView) itemView.findViewById(R.id.tv_mine_name_desc);
         mFriendGroupBtn = (Button) itemView.findViewById(R.id.btn_friend_group);
+        mFriendGroupBtn.setOnClickListener(this);
         mGroupRankBtn = (Button) itemView.findViewById(R.id.btn_group_rank);
+        mGroupRankBtn.setOnClickListener(this);
         mMineIntegralTv = (TextView) itemView.findViewById(R.id.tv_mine_integral);
         mMineReciteTv = (TextView) itemView.findViewById(R.id.tv_mine_recite);
         mMineTypeinTv = (TextView) itemView.findViewById(R.id.tv_mine_typein);
         mInformationCv = (CardView) itemView.findViewById(R.id.cv_information);
-
-
-        mWorldRankBtn.setOnClickListener(this);
-        mSettingsBtn.setOnClickListener(this);
-        mFriendGroupBtn.setOnClickListener(this);
-        mGroupRankBtn.setOnClickListener(this);
         mInformationCv.setOnClickListener(this);
+        mIceBoxBtn = (Button) itemView.findViewById(R.id.btn_ice_box);
+        mIceBoxBtn.setOnClickListener(this);
+        mWoodBoxBtn = (Button) itemView.findViewById(R.id.btn_wood_box);
+        mWoodBoxBtn.setOnClickListener(this);
+        mCopperBoxBtn = (Button) itemView.findViewById(R.id.btn_copper_box);
+        mCopperBoxBtn.setOnClickListener(this);
 
         refreshInformation();
     }
@@ -83,6 +90,10 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
         mMineIntegralTv.setText("" + User.integral);
         mMineReciteTv.setText("" + User.getRecite());
         mMineTypeinTv.setText("" + User.typeinCount);
+
+        mIceBoxBtn.setText("冰盒子("+User.boxIceCount+")");
+        mWoodBoxBtn.setText("木盒子("+User.boxWoodCount+")");
+        mCopperBoxBtn.setText("铁盒子("+User.boxCopperCount+")");
     }
 
     public void showPersonInformation() {
@@ -106,6 +117,12 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.cv_information:
                 showPersonInformation();
+                break;
+            case R.id.btn_ice_box:// TODO 19/05/09
+                break;
+            case R.id.btn_wood_box:// TODO 19/05/09
+                break;
+            case R.id.btn_copper_box:// TODO 19/05/09
                 break;
             default:
                 break;
