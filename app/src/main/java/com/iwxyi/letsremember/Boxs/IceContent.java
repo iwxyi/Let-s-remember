@@ -45,6 +45,7 @@ public class IceContent {
                 // 获取章节名字和路径
                 String sect_name = sections[j].getName();
                 String sect_path = sections[j].getPath();
+                sect_name = sect_name.substring(0, sect_name.length()-4);
                 // 遍历章节内所有的文件
                 String file_content = FileUtil.readTextVals(sect_path);
                 String[] card_list = StringUtil.getXmls(file_content, "card").toArray(new String[0]);
@@ -66,14 +67,6 @@ public class IceContent {
         ITEM_MAP.put(""+item.id, item);
     }
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
 
     public static class IceItem {
 
