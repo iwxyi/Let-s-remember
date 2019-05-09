@@ -43,17 +43,17 @@ public class IceContent {
             File[] sections = sect_dir.listFiles();
             for (int j = 0; j < sections.length; j++) {
                 // 获取章节名字和路径
-                String sect_name = sections[i].getName();
-                String sect_path = sections[i].getPath();
+                String sect_name = sections[j].getName();
+                String sect_path = sections[j].getPath();
                 // 遍历章节内所有的文件
                 String file_content = FileUtil.readTextVals(sect_path);
                 String[] card_list = StringUtil.getXmls(file_content, "card").toArray(new String[0]);
                 for (int k = 0; k < card_list.length; k++) {
-                    String card = card_list[i];
+                    String card = card_list[k];
                     // 判断记忆卡片的盒子类型，如果是当前的盒子则开始判断
                     int box = StringUtil.getXmlInt(card, "box");
                     if (box == Def.ICE_BOX) {
-                        String content = StringUtil.getXml(card, "content");
+                        String content = StringUtil.getXml(card, "content").trim();
                         addItem(new IceItem(all_index++, pack_name, sect_name, k, content, 0));
                     }
                 }
