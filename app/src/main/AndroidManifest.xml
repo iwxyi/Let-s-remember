@@ -42,6 +42,10 @@
         <activity
             android:name=".Rank.RankActivity"
             android:label="@string/title_activity_rank"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Boxs.BoxsActivity"
+            android:label="@string/title_activity_boxs"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

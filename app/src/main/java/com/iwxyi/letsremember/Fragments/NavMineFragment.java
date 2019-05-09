@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Boxs.BoxsActivity;
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
@@ -118,11 +119,17 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
             case R.id.cv_information:
                 showPersonInformation();
                 break;
-            case R.id.btn_ice_box:// TODO 19/05/09
+            case R.id.btn_ice_box:
+                App.setVal("box_last", 1);
+                startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
-            case R.id.btn_wood_box:// TODO 19/05/09
+            case R.id.btn_wood_box:
+                App.setVal("box_last", 2);
+                startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
-            case R.id.btn_copper_box:// TODO 19/05/09
+            case R.id.btn_copper_box:
+                App.setVal("box_last", 3);
+                startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
             default:
                 break;
