@@ -66,10 +66,6 @@ public class IceContent {
         ITEM_MAP.put(""+item.id, item);
     }
 
-    private static IceItem createDummyItem(int position) {
-        return new IceItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
     private static String makeDetails(int position) {
         StringBuilder builder = new StringBuilder();
         builder.append("Details about Item: ").append(position);
