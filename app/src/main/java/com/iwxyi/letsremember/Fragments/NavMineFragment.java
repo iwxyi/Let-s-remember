@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwxyi.letsremember.Boxs.BoxsActivity;
+import com.iwxyi.letsremember.Boxs.IceContent;
 import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.RankActivity;
@@ -120,15 +122,16 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
                 showPersonInformation();
                 break;
             case R.id.btn_ice_box:
-                App.setVal("box_last", 1);
+                App.setVal("box_last", Def.ICE_BOX);
+                IceContent.refreshContent();
                 startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
             case R.id.btn_wood_box:
-                App.setVal("box_last", 2);
+                App.setVal("box_last", Def.WOOD_BOX);
                 startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
             case R.id.btn_copper_box:
-                App.setVal("box_last", 3);
+                App.setVal("box_last", Def.COPPER_BOX);
                 startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
             default:
