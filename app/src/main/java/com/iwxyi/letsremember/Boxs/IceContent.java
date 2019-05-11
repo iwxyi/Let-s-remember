@@ -1,9 +1,13 @@
 package com.iwxyi.letsremember.Boxs;
 
+import android.text.GetChars;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.Utils.FileUtil;
 import com.iwxyi.letsremember.Utils.StringUtil;
 
@@ -19,14 +23,12 @@ public class IceContent {
 
     public static final Map<String, IceItem> ITEM_MAP = new HashMap<String, IceItem>();
 
-    private static final int COUNT = 25;
-
     static {
         refreshContent();
     }
 
     public static void refreshContent() {
-        ITEM_MAP.clear();
+        ITEMS.clear();
         ITEM_MAP.clear();
 
         int all_index = 1;
@@ -60,6 +62,7 @@ public class IceContent {
                 }
             }
         }
+        App.setVal("boxIceCount", User.boxIceCount = all_index-1);
     }
 
     private static void addItem(IceItem item) {
