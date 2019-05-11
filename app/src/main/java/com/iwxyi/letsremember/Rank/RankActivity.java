@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.WorldRankContent;

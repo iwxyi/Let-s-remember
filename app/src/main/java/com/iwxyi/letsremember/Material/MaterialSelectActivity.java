@@ -137,6 +137,17 @@ public class MaterialSelectActivity extends AppCompatActivity implements
 
     }
 
+    @Override
+    public void onCardClicked(int index) {
+        App.setVal("selected_card", index);
+        App.setVal("last_card", index);
+
+        if (rememberFragment != null) {
+            rememberFragment.setChapter(index);
+        }
+        mViewPager.setCurrentItem(2);
+    }
+
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";

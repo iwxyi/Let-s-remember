@@ -102,5 +102,6 @@ public class CardsFragment extends Fragment {
 
     public interface OnCardsFragmentInteractionListener {
         void onCardClicked(CardItem item);
+        void onCardClicked(int index);
     }
 }

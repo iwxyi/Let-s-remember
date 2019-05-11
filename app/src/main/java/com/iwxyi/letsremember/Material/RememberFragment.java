@@ -281,6 +281,11 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    public void setChapter(int x) {
+        chapter_manager.jumpChapter(x);
+        initShowed();
+    }
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onRememberFragmentInteraction(uri);

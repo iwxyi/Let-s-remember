@@ -30,7 +30,7 @@ public class MyCardsRecyclerViewAdapter extends RecyclerView.Adapter<MyCardsRecy
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
@@ -40,9 +40,8 @@ public class MyCardsRecyclerViewAdapter extends RecyclerView.Adapter<MyCardsRecy
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
                     mListener.onCardClicked(holder.mItem);
+                    mListener.onCardClicked(position);
                 }
             }
         });
