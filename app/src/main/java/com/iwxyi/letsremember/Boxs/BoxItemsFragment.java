@@ -211,7 +211,14 @@ public class BoxItemsFragment extends Fragment {
                     }
                 }
             }
-            App.setVal("boxIceCount", User.boxIceCount = all_index-1);
+
+            if (boxType == Def.ICE_BOX){
+                App.setVal("boxIceCount", User.boxIceCount = all_index-1);
+            } else if (boxType == Def.WOOD_BOX){
+                App.setVal("boxWoodCount", User.boxWoodCount = all_index-1);
+            } else if (boxType == Def.COPPER_BOX){
+                App.setVal("boxCopperCount", User.boxCopperCount = all_index-1);
+            }
         }
 
         private void addItem(BoxItem item) {

@@ -29,6 +29,7 @@ public class BoxsActivity extends AppCompatActivity implements BoxItemsFragment.
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class BoxsActivity extends AppCompatActivity implements BoxItemsFragment.
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +52,17 @@ public class BoxsActivity extends AppCompatActivity implements BoxItemsFragment.
                         .setAction("Action", null).show();
             }
         });
+        fab.hide();
 
+
+        int last = App.getInt("box_last");
+        if (last == Def.ICE_BOX) {
+            mViewPager.setCurrentItem(0);
+        } else if (last == Def.WOOD_BOX) {
+            mViewPager.setCurrentItem(1);
+        } else if (last == Def.COPPER_BOX) {
+            mViewPager.setCurrentItem(2);
+        }
     }
 
 
@@ -113,6 +125,7 @@ public class BoxsActivity extends AppCompatActivity implements BoxItemsFragment.
             View rootView = inflater.inflate(R.layout.fragment_boxs, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
             return rootView;
         }
     }
@@ -139,6 +152,48 @@ public class BoxsActivity extends AppCompatActivity implements BoxItemsFragment.
         @Override
         public int getCount() {
             return 3;
+        }
+
+    }
+
+    public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        /**
+         * 切换页面时，修改Activity的标题
+         * @param i 页面索引，从0开始
+         */
+        @Override
+        public void onPageSelected(int i) {
+            if (toolbar == null) {
+                toolbar = (Toolbar) findViewById(R.id.toolbar);
+            }
+            switch (i) {
+                case 0:
+                    if (toolbar != null) {
+                        toolbar.setTitle("冰盒子");
+                    }
+                    break;
+                case 1:
+                    if (toolbar != null) {
+                        toolbar.setTitle("木盒子");
+                    }
+                    break;
+                case 2:
+                    if (toolbar != null) {
+                        toolbar.setTitle("铁盒子");
+                    }
+                    break;
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
         }
     }
 }
