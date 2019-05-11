@@ -2,6 +2,7 @@ package com.iwxyi.letsremember.Rank;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -70,7 +71,18 @@ public class RankActivity extends AppCompatActivity implements WorldRankFragment
 
     @Override
     public void onWorldRankInteraction(WorldRankContent.WorldRankItem item) {
+        String msg = "";
+        msg += "用户名：" + item.nickname + " (" + item.username + ")";
+        msg += "\n排　名：" + item.rank;
+        msg += "\n积　分：" + item.integral;
+        msg += "\n记　忆：" + item.recite;
+        msg += "\n录　入：" + item.typein;
 
+        new AlertDialog.Builder(this)
+                .setTitle("用户信息")
+                .setMessage(msg)
+                .setPositiveButton("确定", null)
+                .show();
     }
 
     public static class PlaceholderFragment extends Fragment {

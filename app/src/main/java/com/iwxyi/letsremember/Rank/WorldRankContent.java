@@ -75,6 +75,7 @@ public class WorldRankContent {
         public String username;
         public String nickname;
         public String details;
+        public int integral;
         public int recite;
         public int typein;
 
@@ -96,6 +97,7 @@ public class WorldRankContent {
             this.user_id = StringUtil.getXmlInt(str, "USER_ID");
             this.username = StringUtil.getXml(str, "USERNAME");
             this.nickname = StringUtil.getXml(str, "NICKNAME");
+            this.integral = StringUtil.getXmlInt(str, "INTEGRAL");
             this.recite = StringUtil.getXmlInt(str, "RECITE");
             this.typein = StringUtil.getXmlInt(str, "TYPEIN");
 
@@ -110,6 +112,7 @@ public class WorldRankContent {
             this.user_id = StringUtil.getXmlInt(str, "USER_ID");
             this.username = StringUtil.getXml(str, "USERNAME");
             this.nickname = StringUtil.getXml(str, "NICKNAME");
+            this.integral = StringUtil.getXmlInt(str, "INTEGRAL");
             this.recite = StringUtil.getXmlInt(str, "RECITE");
             this.typein = StringUtil.getXmlInt(str, "TYPEIN");
         }
