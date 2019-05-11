@@ -93,4 +93,6 @@ public class User {
         String[] params = {"user_id", ""+user_id, "integral", ""+integral};
         ConnectUtil.Post(Paths.getNetPath("updateUserInfo"), params);
     }
+
+
 }
