@@ -17,11 +17,11 @@ import java.util.ArrayList;
  * @email  wxy19980615@gmail.com
  */
 public class CardManager {
-    private String pack_name = "";
-    private String sect_name = "";
+    public String pack_name = "";
+    public String sect_name = "";
     private String full_text;
     public ArrayList<String> card_list;
-    private int index;
+    public int index;
     private CardBean card;
 
     public CardManager(String pack, String file) {

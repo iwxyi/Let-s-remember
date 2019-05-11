@@ -23,6 +23,7 @@ import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
+import com.iwxyi.letsremember.Utils.Recent;
 
 import java.util.ArrayList;
 
@@ -229,14 +230,15 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
                 positive = false;
                 initShowed();
                 break;
-            case R.id.btn_prev:
+            case R.id.btn_prev: // 返回上一个记忆卡片
                 chapter_manager.moveChapter(-1);
                 initShowed();
                 break;
-            case R.id.btn_next:
+            case R.id.btn_next: // 下一个记忆卡片
                 chapter_manager.addRememberTimestamp();
                 chapter_manager.moveChapter(1);
                 initShowed();
+                Recent.addRecent(chapter_manager.pack_name, chapter_manager.sect_name, chapter_manager.index);
                 break;
             case R.id.iv_copper:
                 if (chapter_manager.getChapterBox() == Def.COPPER_BOX) {
