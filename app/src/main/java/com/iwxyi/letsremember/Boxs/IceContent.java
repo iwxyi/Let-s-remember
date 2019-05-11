@@ -55,7 +55,7 @@ public class IceContent {
                     int box = StringUtil.getXmlInt(card, "box");
                     if (box == Def.ICE_BOX) {
                         String content = StringUtil.getXml(card, "content").trim();
-                        addItem(new IceItem(all_index++, pack_name, sect_name, k, content, 0));
+                        addItem(new IceItem(all_index++, pack_name, sect_name, k+1, content, 0));
                     }
                 }
             }
