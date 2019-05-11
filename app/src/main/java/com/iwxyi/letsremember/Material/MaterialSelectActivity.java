@@ -61,6 +61,13 @@ public class MaterialSelectActivity extends AppCompatActivity implements
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("选择记忆包");
+
+        Intent intent = getIntent();
+        if (intent != null && intent.getExtras() != null) {
+            if (intent.getBooleanExtra("open", false) == true) {
+                mViewPager.setCurrentItem(2);
+            }
+        }
     }
 
     @Override

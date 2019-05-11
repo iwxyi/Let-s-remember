@@ -154,6 +154,7 @@ public class RememberFragment extends Fragment implements View.OnClickListener {
         chapter_manager = new CardManager(
                 App.getVal("last_package", "index"),
                 App.getVal("last_section", "index"));
+
         if (mContentTv == null) {
             return;
         }

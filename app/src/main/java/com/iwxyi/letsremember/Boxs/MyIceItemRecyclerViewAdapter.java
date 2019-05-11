@@ -41,7 +41,7 @@ public class MyIceItemRecyclerViewAdapter extends RecyclerView.Adapter<MyIceItem
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onIceItemInteraction(holder.mItem);
+                    mListener.onIceItemClicked(holder.mItem);
                 }
             }
         });

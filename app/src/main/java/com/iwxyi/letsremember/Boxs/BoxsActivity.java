@@ -1,6 +1,7 @@
 package com.iwxyi.letsremember.Boxs;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Material.MaterialSelectActivity;
 import com.iwxyi.letsremember.R;
 
 public class BoxsActivity extends AppCompatActivity implements IceItemFragment.OnIceFragmentInteractionListener {
@@ -68,8 +71,24 @@ public class BoxsActivity extends AppCompatActivity implements IceItemFragment.O
     }
 
     @Override
-    public void onIceItemInteraction(IceContent.IceItem item) {
+    public void onIceItemClicked(IceContent.IceItem item) {
+        String pack = item.pack;
+        String sect = item.sect;
+        int card = item.index-1; // 因为 index 是从 1 开始的
 
+        App.setVal("last_package", pack);
+        App.setVal("last_section", sect);
+//        App.setVal("last_card", card);
+//        App.setVal("selected_package", pack);
+//        App.setVal("selected_section", sect);
+//        App.setVal("selected_card", card);
+        App.setVal("card:"+pack+"/"+sect, card);
+
+        Intent activity_change= new Intent(BoxsActivity.this, MaterialSelectActivity.class);    //切换 Activityanother至MainActivity
+        Bundle bundle = new Bundle();// 创建Bundle对象
+        bundle.putBoolean("open", true);//  放入data值为int型
+        activity_change.putExtras(bundle);// 将Bundle对象放入到Intent上
+        startActivity(activity_change);//  开始跳转
     }
 
     public static class PlaceholderFragment extends Fragment {

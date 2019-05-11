@@ -77,6 +77,6 @@ public class IceItemFragment extends Fragment {
     }
 
     public interface OnIceFragmentInteractionListener {
-        void onIceItemInteraction(IceItem item);
+        void onIceItemClicked(IceItem item);
     }
 }
