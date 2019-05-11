@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Boxs.BoxItemsFragment;
 import com.iwxyi.letsremember.Boxs.BoxsActivity;
-import com.iwxyi.letsremember.Boxs.IceContent;
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
@@ -123,7 +123,6 @@ public class NavMineFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_ice_box:
                 App.setVal("box_last", Def.ICE_BOX);
-                IceContent.refreshContent();
                 startActivity(new Intent(getContext(), BoxsActivity.class));
                 break;
             case R.id.btn_wood_box:

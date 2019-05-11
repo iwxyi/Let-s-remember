@@ -21,10 +21,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.iwxyi.letsremember.Globals.App;
+import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Material.MaterialSelectActivity;
 import com.iwxyi.letsremember.R;
 
-public class BoxsActivity extends AppCompatActivity implements IceItemFragment.OnIceFragmentInteractionListener {
+public class BoxsActivity extends AppCompatActivity implements BoxItemsFragment.OnBoxFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -71,7 +72,7 @@ public class BoxsActivity extends AppCompatActivity implements IceItemFragment.O
     }
 
     @Override
-    public void onIceItemClicked(IceContent.IceItem item) {
+    public void onBoxItemClicked(BoxItemsFragment.BoxContent.BoxItem item) {
         String pack = item.pack;
         String sect = item.sect;
         int card = item.index-1; // 因为 index 是从 1 开始的
@@ -126,7 +127,11 @@ public class BoxsActivity extends AppCompatActivity implements IceItemFragment.O
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return IceItemFragment.newInstance(1);
+                    return BoxItemsFragment.newInstance(1, Def.ICE_BOX);
+                case 1:
+                    return BoxItemsFragment.newInstance(1, Def.WOOD_BOX);
+                case 2:
+                    return BoxItemsFragment.newInstance(1, Def.COPPER_BOX);
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
