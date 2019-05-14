@@ -147,10 +147,11 @@ public class CardManager {
      */
     public void jumpChapter(int x) {
         index = x;
+        if (index >= card_list.size()) {
+            index = card_list.size()-1;
+        }
         if (index < 0) {
             index = 0;
-        } else if (index >= card_list.size()) {
-            index = card_list.size()-1;
         }
         Log.i("====章节位置", ""+index+"/"+card_list.size());
 
@@ -158,15 +159,17 @@ public class CardManager {
         App.setVal("card:"+pack_name+"/"+ sect_name, index);
     }
 
-    public void jumpChapterOnly(int x) {
+    public boolean jumpChapterOnly(int x) {
         index = x;
+        if (index >= card_list.size()) {
+            return false;
+        }
         if (index < 0) {
-            index = 0;
-        } else if (index >= card_list.size()) {
-            index = card_list.size()-1;
+            return false;
         }
         Log.i("====章节位置", ""+index+"/"+card_list.size());
 
         card = new CardBean(card_list.get(index));
+        return true;
     }
 }

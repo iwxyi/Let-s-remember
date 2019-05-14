@@ -18,4 +18,6 @@ public class Def {
     public static int ICE_BOX = 1;
     public static int WOOD_BOX = 2;
     public static int COPPER_BOX = 3;
+
+    public static int code_remember = 10;
 }
