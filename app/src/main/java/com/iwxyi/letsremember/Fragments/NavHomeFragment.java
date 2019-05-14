@@ -85,6 +85,10 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
     }
 
     public void initData() {
+        if (mInspirationTv == null) { // 没有初始化的话就不进行修改数据
+            return ;
+        }
+
         if (!App.getVal("inspiration").isEmpty()) {
             mInspirationTv.setText(App.getVal("inspiration"));
         }
