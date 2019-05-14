@@ -61,6 +61,10 @@ public class CardManager {
         return card.getDescription();
     }
 
+    public int getCount() {
+        return card_list.size();
+    }
+
     public ArrayList<CardBean.PlaceBean> getPlaces() {
         if (card == null) {
             return new ArrayList<CardBean.PlaceBean>();
@@ -152,5 +156,17 @@ public class CardManager {
 
         card = new CardBean(card_list.get(index));
         App.setVal("card:"+pack_name+"/"+ sect_name, index);
+    }
+
+    public void jumpChapterOnly(int x) {
+        index = x;
+        if (index < 0) {
+            index = 0;
+        } else if (index >= card_list.size()) {
+            index = card_list.size()-1;
+        }
+        Log.i("====章节位置", ""+index+"/"+card_list.size());
+
+        card = new CardBean(card_list.get(index));
     }
 }

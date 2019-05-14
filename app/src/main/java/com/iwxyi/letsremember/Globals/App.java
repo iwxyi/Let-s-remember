@@ -75,6 +75,7 @@ public class App extends Application {
 
     public static void setVal(String key, int val) {
         SettingsUtil.setVal(context, key, val);
+        log("setVal " + key + " = " + val);
     }
 
     public static void setVal(String key, long val) {
@@ -90,6 +91,7 @@ public class App extends Application {
     }
 
     public static int getInt(String key) {
+        log("getVal " + key + " = " + SettingsUtil.getInt(context, key));
         return SettingsUtil.getInt(context, key);
     }
 

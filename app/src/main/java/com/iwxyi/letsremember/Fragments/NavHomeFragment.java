@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.iwxyi.letsremember.Globals.App;
 import com.iwxyi.letsremember.Globals.Def;
 import com.iwxyi.letsremember.Globals.User;
+import com.iwxyi.letsremember.Material.CardManager;
 import com.iwxyi.letsremember.Material.MaterialSelectActivity;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.TypeinActivity;
@@ -68,8 +69,15 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
             mInspirationTv.setText(App.getVal("inspiration"));
         }
 
-        if (!App.getVal("recent_package").equals("")) {
-
+        // 读取最新的记录
+        if (!App.getVal("recent_package_1").equals("")) {
+            CardManager manager = new CardManager(App.getVal("recent_package_1"), App.getVal("recent_section_1"));
+            // TODO 这句话导致位置初始化
+            manager.jumpChapterOnly(App.getInt("recent_card_1"));
+            String title = App.getVal("recent_package_1") + " / " + App.getVal("recent_section_1") + " / "
+                    + (App.getInt("recent_card_1")+1) + "  " + (int)(manager.index * 100 / manager.getCount()) + "%";
+            mTitle1Recent.setText(title);
+            mDetail1Recent.setText(manager.getContent());
         }
     }
 

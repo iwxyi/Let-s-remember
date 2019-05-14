@@ -45,6 +45,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:layout_marginVertical="@dimen/border_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -53,22 +54,31 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/border_margin">
+                    android:layout_margin="@dimen/border_margin"
+                    android:padding="@dimen/border_margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    loonggg:cardCornerRadius="3dp"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <LinearLayout
+                        android:layout_margin="@dimen/border_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/recent_title1"
+                            android:textSize="15sp"
+                            android:textColor="@color/fontBlack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <View
                             android:background="@color/colorLightGray"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp" />
+                            android:layout_height="1dp"
+                            android:layout_margin="2dp"/>
 
                         <TextView
                             android:id="@+id/recent_detail1"
