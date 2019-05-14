@@ -40,134 +40,179 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            loonggg:cardBackgroundColor="@color/backgroundGray"
-            android:clickable="true"
-            android:focusable="true"
-            loonggg:cardCornerRadius="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:layout_marginTop="16dp">
+            android:layout_height="match_parent">
 
-            <!--卡片总体布局-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/border_margin"
                 android:orientation="vertical">
 
-                <!--上半部分，左右分开-->
-                <LinearLayout
+                <!--第一个内容-->
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="@dimen/border_margin">
 
-                    <!--记忆计划-->
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/border_margin_big"
                         android:orientation="vertical">
 
                         <TextView
-                            android:text="记忆计划"
-                            android:gravity="center"
-                            android:textSize="22sp"
-                            android:textColor="@color/fontBlack"
+                            android:id="@+id/recent_title1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <View
+                            android:background="@color/colorLightGray"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <TextView
+                            android:id="@+id/recent_detail1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/tv_memory_plan"
-                            android:text="小学四年级语文"
-                            android:textSize="@dimen/square_fontSize"
-                            android:gravity="center"
-                            android:padding="@dimen/text_padding"
-                            android:background="@drawable/textview_border"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="@dimen/square_height"/>
-
                     </LinearLayout>
 
-                    <!--剩余xx天-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/border_margin_big"
-                        android:orientation="vertical">
+                </android.support.v7.widget.CardView>
 
-                        <TextView
-                            android:text="剩余"
-                            android:gravity="center"
-                            android:textSize="22sp"
-                            android:textColor="@color/fontBlack"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/tv_remain_days"
-                            android:text="18天"
-                            android:gravity="center"
-                            android:textSize="@dimen/square_fontSize"
-                            android:padding="@dimen/text_padding"
-                            android:background="@drawable/textview_border"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="@dimen/square_height"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <!--已学-->
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/layout_already_study"
+                <!--以前使用的历史记录-->
+                <android.support.v7.widget.CardView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/border_margin_big"
-                    android:layout_marginBottom="@dimen/border_margin_big"
-                    android:background="@drawable/textview_border">
+                    loonggg:cardBackgroundColor="@color/backgroundGray"
+                    android:clickable="true"
+                    android:focusable="true"
+                    loonggg:cardCornerRadius="10dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="16dp">
 
-                    <TextView
-                        android:text="已学 45%"
-                        android:gravity="center_vertical"
-                        android:textSize="15sp"
-                        android:textColor="@color/fontBlack"
-                        android:paddingHorizontal="@dimen/text_padding"
-                        loonggg:layout_constraintLeft_toLeftOf="@id/layout_already_study"
-                        loonggg:layout_constraintRight_toLeftOf="@id/btn_change_plan"
-                        loonggg:layout_constraintTop_toTopOf="@id/layout_already_study"
-                        loonggg:layout_constraintBottom_toBottomOf="@id/layout_already_study"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"/>
-
-                    <Button
-                        android:id="@+id/btn_change_plan"
-                        android:text="修改计划"
-                        android:layout_width="wrap_content"
+                    <!--卡片总体布局-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        loonggg:layout_constraintRight_toRightOf="@id/layout_already_study"
-                        android:gravity="center_vertical"
-                        />
+                        android:layout_margin="@dimen/border_margin"
+                        android:orientation="vertical">
 
-                </android.support.constraint.ConstraintLayout>
+                        <!--上半部分，左右分开-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!--记忆计划-->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/border_margin_big"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:text="记忆计划"
+                                    android:gravity="center"
+                                    android:textSize="22sp"
+                                    android:textColor="@color/fontBlack"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/tv_memory_plan"
+                                    android:text="小学四年级语文"
+                                    android:textSize="@dimen/square_fontSize"
+                                    android:gravity="center"
+                                    android:padding="@dimen/text_padding"
+                                    android:background="@drawable/textview_border"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="@dimen/square_height"/>
+
+                            </LinearLayout>
+
+                            <!--剩余xx天-->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/border_margin_big"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:text="剩余"
+                                    android:gravity="center"
+                                    android:textSize="22sp"
+                                    android:textColor="@color/fontBlack"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/tv_remain_days"
+                                    android:text="18天"
+                                    android:gravity="center"
+                                    android:textSize="@dimen/square_fontSize"
+                                    android:padding="@dimen/text_padding"
+                                    android:background="@drawable/textview_border"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="@dimen/square_height"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!--已学-->
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/layout_already_study"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/border_margin_big"
+                            android:layout_marginBottom="@dimen/border_margin_big"
+                            android:background="@drawable/textview_border">
+
+                            <TextView
+                                android:text="已学 45%"
+                                android:gravity="center_vertical"
+                                android:textSize="15sp"
+                                android:textColor="@color/fontBlack"
+                                android:paddingHorizontal="@dimen/text_padding"
+                                loonggg:layout_constraintLeft_toLeftOf="@id/layout_already_study"
+                                loonggg:layout_constraintRight_toLeftOf="@id/btn_change_plan"
+                                loonggg:layout_constraintTop_toTopOf="@id/layout_already_study"
+                                loonggg:layout_constraintBottom_toBottomOf="@id/layout_already_study"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"/>
+
+                            <Button
+                                android:id="@+id/btn_change_plan"
+                                android:text="修改计划"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                loonggg:layout_constraintRight_toRightOf="@id/layout_already_study"
+                                android:gravity="center_vertical"
+                                />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <Button
+                    android:id="@+id/btn_start_remember"
+                    android:text="开始记忆吧"
+                    android:textColor="@color/fontBlack"
+                    android:layout_marginVertical="@dimen/border_margin_big"
+                    android:background="@drawable/textview_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <Button
-            android:id="@+id/btn_start_remember"
-            android:text="开始记忆吧"
-            android:textColor="@color/fontBlack"
-            android:layout_marginVertical="@dimen/border_margin_big"
-            android:background="@drawable/textview_border"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        </ScrollView>
 
     </LinearLayout>
 

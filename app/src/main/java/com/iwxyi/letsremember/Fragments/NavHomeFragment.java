@@ -30,6 +30,8 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
     private TextView mMemoryPlanTv;
     private TextView mRemainDaysTv;
     private Button mChangePlanBtn;
+    private TextView mTitle1Recent;
+    private TextView mDetail1Recent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,11 +59,17 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
         mChangePlanBtn.setOnClickListener(this);
 
         mInspirationTv.setOnClickListener(this);
+        mTitle1Recent = (TextView) itemView.findViewById(R.id.recent_title1);
+        mDetail1Recent = (TextView) itemView.findViewById(R.id.recent_detail1);
     }
 
     private void initData() {
         if (!App.getVal("inspiration").isEmpty()) {
             mInspirationTv.setText(App.getVal("inspiration"));
+        }
+
+        if (!App.getVal("recent_package").equals("")) {
+
         }
     }
 
@@ -85,7 +93,7 @@ public class NavHomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.tv_inspiration:
                 InputDialog.inputDialog(getContext(), "请输入励志语", App.getVal("inspiration"),
-                        new StringCallback(){
+                        new StringCallback() {
                             @Override
                             public void onFinish(String content) {
                                 mInspirationTv.setText(content);
