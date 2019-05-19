@@ -10,6 +10,9 @@
         android:id="@+id/add_card"
         android:title="新增卡片" />
     <item
+        android:id="@+id/upload_package"
+        android:title="上传记忆包" />
+    <item
         android:id="@+id/rename_package"
         android:title="重命名记忆包" />
     <item

@@ -414,6 +414,13 @@ public class NavTypeinFragment extends Fragment implements View.OnClickListener,
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.upload_package:
+                if (card_names.size() < 10) {
+                    Toast.makeText(getContext(), "记忆卡片数量不足上传个数(10)，请加油！", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "只有完全自己做的记忆包才能上传！", Toast.LENGTH_SHORT).show();
+                }
+                break;
             case R.id.add_package:
                 InputDialog.inputDialog(getContext(), "请输入记忆包名字", "", new StringCallback(){
                     @Override

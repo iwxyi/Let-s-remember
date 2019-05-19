@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ft.show(homeFragment);
                     }
+                    homeFragment.initData();
                     break;
                 case R.id.navigation_typein:
                     if (typeinFragment == null) {
