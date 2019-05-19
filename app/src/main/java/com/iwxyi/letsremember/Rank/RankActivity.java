@@ -1,5 +1,6 @@
 package com.iwxyi.letsremember.Rank;
 
+import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -20,8 +21,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iwxyi.letsremember.Globals.Paths;
+import com.iwxyi.letsremember.Globals.User;
 import com.iwxyi.letsremember.R;
 import com.iwxyi.letsremember.Rank.WorldRankContent;
+import com.iwxyi.letsremember.Utils.ConnectUtil;
+import com.iwxyi.letsremember.Utils.StringCallback;
+import com.iwxyi.letsremember.Utils.StringUtil;
 
 public class RankActivity extends AppCompatActivity implements WorldRankFragment.OnWorldRankInteractionListener {
 
@@ -70,7 +76,7 @@ public class RankActivity extends AppCompatActivity implements WorldRankFragment
     }
 
     @Override
-    public void onWorldRankInteraction(WorldRankContent.WorldRankItem item) {
+    public void onWorldRankInteraction(final WorldRankContent.WorldRankItem item) {
         String msg = "";
         msg += "用户名：" + item.nickname + " (" + item.username + ")";
         msg += "\n排　名：" + item.rank;
@@ -81,7 +87,19 @@ public class RankActivity extends AppCompatActivity implements WorldRankFragment
         new AlertDialog.Builder(this)
                 .setTitle("用户信息")
                 .setMessage(msg)
-                .setPositiveButton("确定", null)
+                .setPositiveButton("添加好友", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String[] params = new String[]{"user_id", User.id(), "user_id2", ""+item.user_id};
+                        ConnectUtil.Post(Paths.getNetPath("addFriend"), params, new StringCallback(){
+                            @Override
+                            public void onFinish(String content) {
+                                Toast.makeText(RankActivity.this, StringUtil.getXml(content, "result"), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("确定", null)
                 .show();
     }
 
